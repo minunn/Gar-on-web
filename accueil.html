@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="image/ico" href=""> <!-- favicon -->
+        <link rel="stylesheet" type="text/css" href="Accueil.css">
+        <title>Cartographie</title>
+    </head>
+
+    <body>
+        <header> <!-- Les positions, dimensions, couleurs, ... des éléments doivent être exactement les mêmes que sur les autres pages ! -->
+            <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
+                <p><a href="">Connexion</a></p>
+            </div>
+
+            <div id="langues"> <!-- Choix de la langue -->
+                <!-- Les balises div servent à organiser les éléments avec flexbox -->
+                <div id="fr"><a href=""><img src="" id="drapeau_fr" alt="Drapeau français">FR</a></div>
+                <div id="en"><a href=""><img src="" id="drapeau_en" alt="Drapeau anglais">EN</a></div>
+                <div id="nl"><a href=""><img src="" id="drapeau_nl" alt="Drapeau néerlandais">NL</a></div>
+            </div>
+
+            <div id="navigation"> <!-- Menu de navigation -->
+                <!-- Les balises div servent à organiser les éléments avec flexbox -->
+                <a href=""><div class="elements">Accueil</div></a>
+                <a href=""><div class="elements">L'association</div></a>
+                <a href=""><div class="elements">Nos actions</div></a>
+                <a href=""><div class="elements">Actualités</div></a>
+                <a href=""><div class="elements">Infos pratiques</div></a>
+                <a href=""><div class="elements">Blog</div></a>
+                <a href=""><div class="elements">Contact</div></a>
+                <a href=""><div class="elements">Réservation</div></a>
+                <a href=""><div class="elements">Membres</div></a>
+            </div>
+
+            <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->
+                <img src="" id="logo" alt="Logo association">
+                <h1>Cartographie</h1>
+                <img src="" if="FB" alt="Logo Facebook">
+            </div>
+        </header>
+        <article>
+            <div id="carte"> <!-- Carte navigable -->
+                <!-- PROVISOIRE -->
+                <img id="photo_provisoire" src="carte.png">
+            </div>
+
+            <div id="legende"> <!-- Légende de la carte -->
+                <h2>Légende</h2>
+                <!-- Chaque élément sera représenté par son icône et une rapide description -->
+                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p>
+                <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
+            </div>
+
+            <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
+                <h2>Titre</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+
+            <footer>
+                <div id="retour">Haut de page</div>
+            </footer>
+        </article>
+    </body>
+</html>

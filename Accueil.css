@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+}
+
+#connexion {
+    position: absolute;
+    right: 5vw;
+    border: 1px solid black;
+    width: 8%
+}
+
+#langues {
+    border: 1px solid black;
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#navigation {
+    margin: 5% auto auto auto;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.elements {
+    width: 150%;
+    height: 250%;
+    background-color: brown;
+    border-radius: 2vw;
+}
+
+#titre {
+    margin: 5% auto auto auto;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 4vw;
+}
+
+#carte {
+    border: 1px solid grey;
+    border-radius: 5vw;
+    margin: 0 20% 0 20%;
+}
+
+#legende {
+    margin: 5% 0 0 10%;
+    position: relative;
+    text-align: left;
+}
+
+#texte {
+    margin: 5% 20% 0 20%;
+    border: 1px solid grey;
+    border-radius: 5vw;
+}
+
+#retour {
+    font-size: 150%;
+    margin: 5% 45% 0 45%;
+    border: 1px solid grey;
+    border-radius: 5vw;
+}
