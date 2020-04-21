@@ -65,7 +65,7 @@ h1{
     background:rgb(80, 78, 78);
     outline: none;
     height: 40px;
-    color: rgb(128, 17, 17);
+    color: #fff;
     font-size: 16px; 
 }
 
@@ -75,11 +75,15 @@ h1{
     border: none;
     outline: none;
     height: 50px; 
+    width: 200px;
     background: #fb2525 ;
     color: #fff;
     font-size: 18px; 
-    border-radius: 20px;
+    border-radius: 20px;    
+    position: absolute;
+    right: 30px;
 }
+
 /* Connexion bouton -- > Face arrière */
 .loginbox input[type="submit"]:hover
 {
@@ -94,10 +98,13 @@ h1{
     border: none;
     outline: none;
     height: 50px; 
+    width: 200px;
     background: #fb2525 ;
     color: #fff;
     font-size: 18px; 
-    border-radius: 20px;
+    border-radius: 20px;    
+    
+    
 }
 /* Retour page accueil bouton -- > Face arrière */
 .loginbox input[type="button"]:hover
@@ -105,4 +112,17 @@ h1{
     cursor: pointer;
     background: #ffc107;
     color: #000;
+}
+
+
+.eye{
+    position: absolute;
+    height: 33px;
+    width: 33px;
+    right: 50px;
+    bottom: 199px;
+}
+
+#hide1{
+    display: none;
 }

@@ -2,7 +2,9 @@
 <head>
     <title> Login </title>
     <meta charset="utf8">
-    <link type="text/css" rel="stylesheet" href="style.css"> 
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="login.js"></script>
+
 </head>
 <body> 
     <img src="fondcarte.png" class="fondcarte"> 
@@ -12,10 +14,15 @@
         <form> 
             <p> Nom d'utilisateur </p>
             <input type="text" name="" placeholder="Entrez votre nom d'utilisateur">
+            
             <p> Mot de Passe </p>
-            <input type="password" name="" placeholder="Entrez votre mot de passe">
-            <input type="submit" name="" value="Connexion">
+            <span class="eye" onclick="myFunction()">
+                <img src="eye-slash-solid.svg" id="hide1">
+                <img src="eye-solid.svg"  id="hide2">
+            </span>
+            <input type="password" name="" placeholder="Entrez votre mot de passe" id="myInput">
             <input type="button" name="" value="Retour à l'accueil">
+            <input type="submit" name="" value="Connexion">
         </form>
     </div>
 
