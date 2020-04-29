@@ -18,10 +18,13 @@
             <hr>
         </div>
         <div id="main">
+            <div class="maindiv">
+                <img src="cartetmp.PNG" alt="">
+            </div>
             <?php 
                 for ($indexPK=0; $indexPK < 16; $indexPK++) { 
                     echo "
-                    <a href='marqueurs.php?PK$indexPK'><div id='PK1' class='maindiv'>
+                    <a href='marqueurs.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
                     if (isset($_GET["PK$indexPK"])){
