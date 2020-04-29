@@ -1,3 +1,13 @@
+<?php
+
+
+?> 
+
+
+
+
+
+
 <html> 
 <head>
     <title> Login </title>
@@ -11,18 +21,18 @@
     <div class="loginbox">
     <img src="loginpic.svg" class="avatar"> <br>
         <h1> Page Administrateur </h1>
-        <form> 
+        <form method="POST" action="#"> 
             <p> Nom d'utilisateur </p>
-            <input type="text" name="" placeholder="Entrez votre nom d'utilisateur">
+            <input type="text" name="username" placeholder="Entrez votre nom d'utilisateur">
             
             <p> Mot de Passe </p>
             <span class="eye" onclick="myFunction()">
-                <img src="eye-slash-solid.svg" id="hide1">
+                <img src="eye-slash-solid.svg" id="hide1" class=".fa.fa-check-circle">
                 <img src="eye-solid.svg"  id="hide2">
             </span>
-            <input type="password" name="" placeholder="Entrez votre mot de passe" id="myInput">
+            <input type="password" name="password" placeholder="Entrez votre mot de passe" id="myInput">
             <input type="button" name="" value="Retour à l'accueil">
-            <input type="submit" name="" value="Connexion">
+            <input type="submit" name="submit" value="Connexion">
         </form>
     </div>
 

@@ -102,10 +102,9 @@ h1{
     background: #fb2525 ;
     color: #fff;
     font-size: 18px; 
-    border-radius: 20px;    
-    
-    
+    border-radius: 20px;       
 }
+
 /* Retour page accueil bouton -- > Face arrière */
 .loginbox input[type="button"]:hover
 {
@@ -120,9 +119,13 @@ h1{
     height: 33px;
     width: 33px;
     right: 50px;
-    bottom: 199px;
+    bottom: 199px;    
 }
 
 #hide1{
     display: none;
 }
+
+.fa.fa-check-circle {
+    color: #fff;
+    }
