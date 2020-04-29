@@ -12,7 +12,7 @@
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
-            <div class="sidebardiv">Marqueurs</div>
+            <a href="marqueurs.php"> <div class="sidebardiv">Marqueurs</div></a>
             <div class="sidebardiv">Plages</div>
             <div class="sidebardiv">Autres</div>
             <hr>
