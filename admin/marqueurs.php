@@ -22,7 +22,7 @@
                 <img src="cartetmp.PNG" alt="">
             </div>
             <?php 
-                for ($indexPK=0; $indexPK < 16; $indexPK++) { 
+                for ($indexPK=1; $indexPK <= 16; $indexPK++) { 
                     echo "
                     <a href='marqueurs.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
@@ -30,9 +30,46 @@
                     if (isset($_GET["PK$indexPK"])){
                         for ($indexMarqueurs=1; $indexMarqueurs <= 3 ; $indexMarqueurs++) { 
                             echo "
-                            <div class='maindiv marqueurs'>
+                            <a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs'><div class='maindiv marqueurs'>
                                 <h3>Marqueur $indexMarqueurs</h3>
-                            </div>";
+                            </div></a>";
+                            if (isset($_GET["marqueur$indexMarqueurs"])) {
+                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerPosition'><div class='maindiv marqueurs'>Changer de position</div></a>";
+                                if (isset($_GET['changerPosition'])){
+                                    echo "
+                                    <div class='maindiv marqueurs'>
+                                        <form action='changerPos' method='post'>
+                                            X : <input type='text' name='posX' id='posX'><br>
+                                            Y : <input type='text' name='posY' id='posY'><br>
+                                            Z : <input type='text' name='posZ' id='posZ'><br>
+                                            <input type='submit' value='Modifier'>
+                                        </form>    
+                                    </div>
+                                    ";
+                                }
+                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerTexte'><div class='maindiv marqueurs'>Changer texte du marqueur</div></a>";
+                                if (isset($_GET['changerTexte'])) {
+                                    echo "
+                                    <div class='maindiv marqueurs'>
+                                        <form action='changerText' method='post'>
+                                            <input type='text' name='texteMarqueur' id='texteMarqueur'><br>
+                                            <input type='submit' value='Modifier'>
+                                        </form>    
+                                    </div>
+                                    ";
+                                }
+                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerImage'><div class='maindiv marqueurs'>Changer image</div></a>";
+                                if (isset($_GET['changerImage'])) {
+                                    echo "
+                                    <div class='maindiv marqueurs'>
+                                        <form action='changerImg' method='post'>
+                                            <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
+                                            <input type='submit' value='Modifier'>
+                                        </form>
+                                    </div>
+                                    ";
+                                }
+                            }
                         }
                         echo "
                         <div class='maindiv marqueurs'>

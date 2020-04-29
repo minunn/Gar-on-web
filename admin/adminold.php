@@ -1,3 +1,9 @@
+<?php 
+echo "<?php echo 'nut'; ?>";
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +30,12 @@
             </div></a>
                 <div class="maindiv marqueurs">
                     <h3>Marqueur 1</h3>
+                </div>
+                <div class="maindiv marqueurs">
+                    <form action="changer" method="post">
+                        <input type="file" name="changerImage" id="changerImage" accept="image/*">
+                        
+                    </form>    
                 </div>
                 <div class="maindiv marqueurs">
                     <h3>Marqueur 2</h3>
