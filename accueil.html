@@ -4,9 +4,10 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" type="image/ico" href=""> <!-- favicon -->
-        <link rel="stylesheet" type="text/css" href="Accueil.css">
-        <title>Cartographie</title>
+        <link rel="shortcut icon" type="image/ico" href="Images/favicon.png"> <!-- favicon -->
+        <link rel="stylesheet" type="text/css" href="accueil.css">
+        <script src="accueil.js"></script>
+        <title>Cartographie | France | Ami Garonne</title>
     </head>
 
     <body>
@@ -17,50 +18,50 @@
 
             <div id="langues"> <!-- Choix de la langue -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
-                <div id="fr"><a href=""><img src="" id="drapeau_fr" alt="Drapeau français">FR</a></div>
-                <div id="en"><a href=""><img src="" id="drapeau_en" alt="Drapeau anglais">EN</a></div>
-                <div id="nl"><a href=""><img src="" id="drapeau_nl" alt="Drapeau néerlandais">NL</a></div>
+                <div id="fr"><a href=""><img src="Images/drapeau_fr.jpg" class="drapeaux" alt="Drapeau français">FR</a></div>
+                <div id="en"><a href=""><img src="Images/drapeau_en.jpg" class="drapeaux" alt="Drapeau anglais">EN</a></div>
+                <div id="nl"><a href=""><img src="Images/drapeau_nl.png" class="drapeaux" alt="Drapeau néerlandais">NL</a></div>
             </div>
 
             <div id="navigation"> <!-- Menu de navigation -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
-                <a href=""><div class="elements">Accueil</div></a>
-                <a href=""><div class="elements">L'association</div></a>
-                <a href=""><div class="elements">Nos actions</div></a>
-                <a href=""><div class="elements">Actualités</div></a>
-                <a href=""><div class="elements">Infos pratiques</div></a>
-                <a href=""><div class="elements">Blog</div></a>
-                <a href=""><div class="elements">Contact</div></a>
-                <a href=""><div class="elements">Réservation</div></a>
-                <a href=""><div class="elements">Membres</div></a>
+                <a href=""><div class="elements"><p>Accueil</p></div></a>
+                <a href=""><div class="elements"><p>L'association</p></div></a>
+                <a href=""><div class="elements"><p>Nos actions</p></div></a>
+                <a href=""><div class="elements"><p>Actualités</p></div></a>
+                <a href=""><div class="elements"><p>Infos pratiques</p></div></a>
+                <a href=""><div class="elements"><p>Blog</p></div></a>
+                <a href=""><div class="elements"><p>Contact</p></div></a>
+                <a href=""><div class="elements"><p>Réservation</p></div></a>
+                <a href=""><div class="elements"><p>Membres</p></div></a>
             </div>
 
             <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->
-                <img src="" id="logo" alt="Logo association">
+                <img src="Images/logo_AMI.png" id="asso" alt="Logo association">
                 <h1>Cartographie</h1>
-                <img src="" if="FB" alt="Logo Facebook">
+                <img src="Images/logo_facebook.png" id="fb" alt="Logo Facebook"></a>
             </div>
         </header>
-        <article>
+        <article id="background">
             <div id="carte"> <!-- Carte navigable -->
-                <!-- PROVISOIRE -->
-                <img id="photo_provisoire" src="carte.png">
+                <h2>La carte interactive</h2>
+                <iframe width="800" height="800" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45622.14596781569!2d0.29458514398611674!3d44.384235991217615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aa5f9985b99ae9%3A0x40665174815a940!2s47400%20Tonneins!5e0!3m2!1sfr!2sfr!4v1588680690663!5m2!1sfr!2sfr"></iframe>
             </div>
 
             <div id="legende"> <!-- Légende de la carte -->
-                <h2>Légende</h2>
+                <h3>Légende</h3>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p>
+                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p><br>
                 <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
-                <h2>Titre</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Titre</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
 
             <footer>
-                <div id="retour">Haut de page</div>
+                <a href="#connexion"><div id="retour">Haut de page</div></a>
             </footer>
         </article>
     </body>
