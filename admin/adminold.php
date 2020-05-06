@@ -6,11 +6,13 @@ echo "<?php echo 'nut'; ?>";
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="wrapper">
         <div id="header">
@@ -18,34 +20,36 @@ echo "<?php echo 'nut'; ?>";
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
-            <div class="sidebardiv" >Marqueurs</div>
+            <div class="sidebardiv">Marqueurs</div>
             <div class="sidebardiv">Plages</div>
             <div class="sidebardiv">Itinéraires</div>
             <div class="sidebardiv">Autres</div>
             <hr>
         </div>
         <div id="main">
-            <a href="admin.php?PK1"><div id="PK1" class="maindiv">
-                <h2>PK1</h2>
-            </div></a>
-                <div class="maindiv marqueurs">
-                    <h3>Marqueur 1</h3>
+            <a href="admin.php?PK1">
+                <div id="PK1" class="maindiv">
+                    <h2>PK1</h2>
                 </div>
-                <div class="maindiv marqueurs">
-                    <form action="changer" method="post">
-                        <input type="file" name="changerImage" id="changerImage" accept="image/*">
-                        
-                    </form>    
-                </div>
-                <div class="maindiv marqueurs">
-                    <h3>Marqueur 2</h3>
-                </div>
-                <div class="maindiv marqueurs">
-                    <h3>Marqueur 3</h3>
-                </div>
-                <div class="maindiv marqueurs">
-                    <h3>+</h3>
-                </div>
+            </a>
+            <div class="maindiv marqueurs">
+                <h3>Marqueur 1</h3>
+            </div>
+            <div class="maindiv marqueurs">
+                <form action="changer" method="post">
+                    <input type="file" name="changerImage" id="changerImage" accept="image/*">
+
+                </form>
+            </div>
+            <div class="maindiv marqueurs">
+                <h3>Marqueur 2</h3>
+            </div>
+            <div class="maindiv marqueurs">
+                <h3>Marqueur 3</h3>
+            </div>
+            <div class="maindiv marqueurs">
+                <h3>+</h3>
+            </div>
             <!--<div id="PK2" class="maindiv">
                 <h2>PK2</h2>
             </div>
@@ -62,6 +66,7 @@ echo "<?php echo 'nut'; ?>";
             ?>
         </div>
     </div>
-    
+
 </body>
+
 </html>

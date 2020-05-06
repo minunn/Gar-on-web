@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
     <div id="wrapper">
         <div id="header">
-            <h1>Administration</h1>
+            <a href="../admin.php">
+                <h1>Administration</h1>
+            </a>
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
-        <a href="marqueurs.php"><div class="sidebardiv">Marqueurs</div></a>
-           <div class="sidebardiv" style="background-color: darkgray;">Plages</div>
-           <a href="users.php"><div class="sidebardiv">Autres</div></a>
+            <a href="marqueurs.php">
+                <div class="sidebardiv">Marqueurs</div>
+            </a>
+            <div class="sidebardiv" style="background-color: darkgray;">Plages</div>
+            <a href="users.php"><a href="users.php">
+                    <div class="sidebardiv">utilisateurs</div>
+                </a></a>
             <hr>
         </div>
         <div id="main">
@@ -46,7 +54,7 @@
                                     </div>
                                     ";
                                 }
-                                echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerTexte'><div class='maindiv plages'>Changer texte du plages</div></a>";
+                                echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerTexte'><div class='maindiv plages'>Changer texte de la plage</div></a>";
                                 if (isset($_GET['changerTexte'])) {
                                     echo "
                                     <div class='maindiv plages'>
@@ -82,21 +90,22 @@
 
 </body>
 <script>
-    var getParams = function (url) {
-	var params = {};
-	var parser = document.createElement('a');
-	parser.href = url;
-	var query = parser.search.substring(1);
-	var vars = query.split('&');
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split('=');
-		params[pair[0]] = decodeURIComponent(pair[1]);
-	}
-	return params;
+var getParams = function(url) {
+    var params = {};
+    var parser = document.createElement('a');
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+    }
+    return params;
 };
 var urlParams = getParams(window.location.href);
 var paramKeys = Object.keys(urlParams);
 var elementToScrollTo = document.getElementById(paramKeys[0])
 elementToScrollTo.scrollIntoView()
 </script>
+
 </html>
