@@ -1,3 +1,15 @@
+<?php
+session_start();
+$db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
+$sql_marqueur_position = "SELECT * FROM marqueur_position";
+$result_marqueur_position = $db->prepare($sql_marqueur_position);
+$result_marqueur_position -> execute();
+
+$sql_marqueur_texte = "SELECT * FROM marqueur_texte";
+$result_marqueur_texte = $db->prepare($sql_marqueur_texte);
+$result_marqueur_texte -> execute();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +48,7 @@
     </div>
 
 </body>
+<img src="" alt="">
 <script defer>
 
   var divMap = document.getElementById('map')
@@ -46,16 +59,39 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  L.marker([44.5501, 0.0051]).addTo(map)
+<?php
+if ($result_marqueur_position->rowCount() > 0 )
+{
+  $data_marqueur_position = $result_marqueur_position -> fetchAll();
+
+  foreach ($data_marqueur_position as $value){
+
+    $latitude = $value["X"];
+    $longitude = $value["Y"];
+
+    $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
+    #$texteMarqueur = $data_marqueur_texte[$key]["texte"];
+    echo "
+    L.marker([$latitude, $longitude]).addTo(map)
+        .bindPopup('test, a rajouter texte marqueur depuis db')
+    ";
+  }
+
+}
+
+
+?>
+
+/*  L.marker([44.5501, 0.0051]).addTo(map)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+      .openPopup();*/
 
   L.circle([44.57873, -0.03416], {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.5,
     radius: 500
-  }).addTo(mymap);
+  }).addTo(map);
 
 </script>
 
