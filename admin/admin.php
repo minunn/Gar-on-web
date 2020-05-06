@@ -24,8 +24,8 @@
         </div>
         <div id="sidebar">
             <a href="marqueurs.php"> <div class="sidebardiv">Marqueurs</div></a>
-            <div class="sidebardiv">Plages</div>
-            <div class="sidebardiv">Autres</div>
+            <a href="plages.php"><div class="sidebardiv">Plages</div></a>
+            <a href="users.php"><div class="sidebardiv">Autres</div></a>
             <hr>
         </div>
         <div id="main">
