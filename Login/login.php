@@ -1,8 +1,3 @@
-<?php 
-    session_start();
-?> 
-
-
 <html>
 
 <head>
@@ -16,6 +11,8 @@
 <body>
 
     <?php
+        session_start();
+        
         if(isset($_SESSION['username']))
         {
             echo '<center> <h1> Vous êtes connecté en tant que : ' . $_SESSION['username'] . ' </center> </h1>' ;
