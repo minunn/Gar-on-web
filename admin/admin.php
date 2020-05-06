@@ -15,7 +15,7 @@
 
     <style>
     #map {
-        height: 300px;
+        height: 35vw;
     }
     </style>
 </head>
