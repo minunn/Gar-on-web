@@ -21,14 +21,14 @@
             <div class="maindiv">
                 <img src="cartetmp.PNG" alt="">
             </div>
-            <?php 
-                for ($indexPK=1; $indexPK <= 16; $indexPK++) { 
+            <?php
+                for ($indexPK=1; $indexPK <= 16; $indexPK++) {
                     echo "
                     <a href='marqueurs.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
                     if (isset($_GET["PK$indexPK"])){
-                        for ($indexMarqueurs=1; $indexMarqueurs <= 3 ; $indexMarqueurs++) { 
+                        for ($indexMarqueurs=1; $indexMarqueurs <= 3 ; $indexMarqueurs++) {
                             echo "
                             <a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs'><div class='maindiv marqueurs'>
                                 <h3>Marqueur $indexMarqueurs</h3>
@@ -41,9 +41,8 @@
                                         <form action='changerPos' method='post'>
                                             X : <input type='text' name='posX' id='posX'><br>
                                             Y : <input type='text' name='posY' id='posY'><br>
-                                            Z : <input type='text' name='posZ' id='posZ'><br>
                                             <input type='submit' value='Modifier'>
-                                        </form>    
+                                        </form>
                                     </div>
                                     ";
                                 }
@@ -54,7 +53,7 @@
                                         <form action='changerText' method='post'>
                                             <input type='text' name='texteMarqueur' id='texteMarqueur'><br>
                                             <input type='submit' value='Modifier'>
-                                        </form>    
+                                        </form>
                                     </div>
                                     ";
                                 }
