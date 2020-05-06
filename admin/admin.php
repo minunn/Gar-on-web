@@ -23,9 +23,7 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            <a href="../admin.php">
-                <h1>Administration</h1>
-            </a>
+            <h1>Administration</h1>
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
