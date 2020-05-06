@@ -29,13 +29,13 @@
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
-            <a href="marqueurs.php">
+            <a href="rubriques/marqueurs.php">
                 <div class="sidebardiv">Marqueurs</div>
             </a>
-            <a href="plages.php">
+            <a href="rubriques/plages.php">
                 <div class="sidebardiv">Plages</div>
             </a>
-            <a href="users.php">
+            <a href="rubriques/users.php">
                 <div class="sidebardiv">Utilisateurs</div>
             </a>
             <hr>
