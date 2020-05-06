@@ -1,5 +1,5 @@
 <?php
-session_start();
+ session_start();
 
 If(isset($_POST['submit']))
 {
@@ -17,7 +17,7 @@ If(isset($_POST['submit']))
         if (password_verify($password, $data[0]["password"]))
         {
             echo "<center> <h1> Connexion effectuée </center> </h1>";
-            $_SESSION['email'] = $username;
+            $_SESSION['username'] = $username;
         }
         else
         {
@@ -26,11 +26,8 @@ If(isset($_POST['submit']))
     }
     else
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO user (username, password) VALUES ('$username', '$password')";
-        $req = $db->prepare($sql);
-        $req -> execute();
-        echo "<center> <h1> Enregistrement effectué </center> </h1>";
+        
+        echo "<center> <h1> Compte Invalide </center> </h1>";
     }
 }
 
