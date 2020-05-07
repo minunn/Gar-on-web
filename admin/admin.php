@@ -1,16 +1,13 @@
 <?php
 session_start();
+
 $db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
 
 
-
-
-$sql_marqueur_image = "SELECT * FROM marqueur_image";
-$result_marqueur_image = $db->prepare($sql_marqueur_image);
-$result_marqueur_image -> execute();
-
-
-
+#$sql_marqueur_image = "SELECT * FROM marqueur_image";
+#$result_marqueur_image = $db->prepare($sql_marqueur_image);
+#$result_marqueur_image -> execute();
+# // TODO: à ajouter la possibilité d'ajouter des images
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +51,6 @@ $result_marqueur_image -> execute();
 <script defer>
 
   var divMap = document.getElementById('map')
-  console.log(divMap);
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -65,35 +61,34 @@ $result_marqueur_image -> execute();
   $sql_selectID = "SELECT id FROM marqueur_position WHERE 1";
   $result_marqueurID = $db->prepare($sql_selectID);
   $result_marqueurID -> execute();
-  foreach ($result_marqueurID as $valuee) {
-    	$ab = $valuee["id"];
-      #echo "$ab : ";
-      $sql_marqueur_position = "SELECT * FROM marqueur_position WHERE id = $ab";
-      $result_marqueur_position = $db->prepare($sql_marqueur_position);
-      $result_marqueur_position -> execute();
-      $data_marqueur_position = $result_marqueur_position -> fetchAll();
+  foreach ($result_marqueurID as $marqueurActuel) {
+    	$idMarqueurActuel = $marqueurActuel["id"];
 
-      $sql_marqueur_texte = "SELECT * FROM marqueur_texte WHERE id = $ab";
-      $result_marqueur_texte = $db->prepare($sql_marqueur_texte);
-      $result_marqueur_texte -> execute();
-      $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
+      $data_marqueur_position = sqlSelect("SELECT * FROM marqueur_position WHERE id = $idMarqueurActuel", $db);
+
+      $data_marqueur_texte = sqlSelect("SELECT * FROM marqueur_texte WHERE id = $idMarqueurActuel", $db);
 
       # SQL retourne une liste avec seulement un élément dedans, du coup, on sélectionne le premier élément de la liste
       $latitude = $data_marqueur_position[0]["X"];
       $longitude = $data_marqueur_position[0]["Y"];
       #echo "$latitude, $longitude <br>";
 
-
       $texte = $data_marqueur_texte[0]["texte"];
       #echo "$texte <br>";
+
       echo"L.marker([$latitude, $longitude]).addTo(map)
           .bindPopup('$texte')
           ";
+  }
 
+  function sqlSelect($sql, $db){
+    $sqlCode = $sql;
+    $result = $db->prepare($sqlCode);
+    $result -> execute();
+    $data = $result -> fetchAll();
+    return $data;
   }
 ?>
-
-
 </script>
 
 </html>
