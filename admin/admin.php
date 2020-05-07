@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-session_start();
 
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
@@ -39,7 +38,16 @@ require_once 'rubriques/auth_check.php';
     <div id="wrapper">
         <div id="header">
             <h1>Administration</h1>
-            <button>Déconnection</button>
+            <?php
+       if(isset($_GET['logout']))
+              {
+                session_destroy();
+                header("Location: ../login/login.php");
+              }
+    ?>
+  <form id="frm" method="post"  action="?logout" >
+    <input style='grid-column: 2;' type="submit" value="logout" id="logout " />
+    </form>
         </div>
         <div id="sidebar">
             <a href="rubriques/marqueurs.php">
@@ -65,9 +73,6 @@ require_once 'rubriques/auth_check.php';
 var divMap = document.getElementById('map')
 console.log(divMap);
 var map = L.map(divMap).setView([44.4563, 0.1325], 10);
-
-  var divMap = document.getElementById('map')
-  var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
