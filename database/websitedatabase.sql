@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 06 mai 2020 à 11:20
+-- Généré le : jeu. 07 mai 2020 à 14:40
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.5
 
@@ -96,10 +96,19 @@ CREATE TABLE `plages_texte` (
 --
 
 CREATE TABLE `users` (
-  `id` int(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(2, 'test', '$2y$10$LdVlzWO/X9FQb8J4fg.EFu9vLYc2VAYiMnZU1FsS1afpvYa7Vmguu'),
+(3, 'hugo', '$2y$10$Kv3SfURul5ZKfdeX9IkA3.rowiM8A6w.nOQ0pt0lr0hQ721ZacYsi'),
+(4, 'marco', '$2y$10$EYeCxs5bbWf.gqrPVN0CF.mQeiuKz3Wc9P.x1ZksqbOqHpMA3JtUK');
 
 --
 -- Index pour les tables déchargées
@@ -146,6 +155,16 @@ ALTER TABLE `plages_texte`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
