@@ -70,9 +70,6 @@ require_once 'rubriques/auth_check.php';
 
 </body>
 <script defer>
-var divMap = document.getElementById('map')
-console.log(divMap);
-var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
