@@ -70,6 +70,8 @@ if ($result_marqueur_position->rowCount() > 0 )
     $longitude = $value["Y"];
 
     $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
+    #Attention, si un marqueur n'a pas de texte, il n'ajoute pas le marqueur
+    # TODO: peut-être fusionner les tables des marqueurs ensemble pour avoir MARQUEURS(#ID, latitude, longitude, texte, image)
     foreach ($data_marqueur_texte as $value2) {
       $text = $value2["texte"];
       echo "
