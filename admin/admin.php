@@ -62,9 +62,6 @@ require_once 'rubriques/auth_check.php';
 
 </body>
 <script defer>
-var divMap = document.getElementById('map')
-console.log(divMap);
-var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
   var divMap = document.getElementById('map')
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
