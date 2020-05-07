@@ -13,7 +13,7 @@ if(!empty($_POST)){
         $valid = false;
         $error_password = "Veuillez renseigner un mot de passe ! ";
     }
-
+   
 }
 
 ?> 
@@ -56,7 +56,9 @@ if(!empty($_POST)){
                                 }
                             ?>
                             <input type="password" name="password" placeholder="Entrez votre mot de passe" id="myInput" >
-                            <input type="button" name="" value="Retour à l'accueil" href="test.php">
+                            
+                            <input type="button" name="button" value="Retour à l'accueil" href="../index.html">
+                            
                             <input type="submit" name="submit" value="Connexion">
                         </form>
                     </div>

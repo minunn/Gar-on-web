@@ -64,11 +64,13 @@ div {
     background-color: white;
     margin-left: 10px;
     margin-bottom: 3px;
+
 }
 
 .marqueurs {
     position: relative;
     left: 5%;
+
 }
 
 .maindiv:hover {

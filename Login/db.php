@@ -1,4 +1,6 @@
 <?php
+
+
  session_start();
 
 If(isset($_POST['submit']))
@@ -18,15 +20,17 @@ If(isset($_POST['submit']))
         {
             echo "<center> <h1> Connexion effectuée </center> </h1>";
             $_SESSION['username'] = $username;
+            header('Location: /admin/admin.php');
+            exit();
         }
         else
         {
             echo "<center> <h1> Votre mot de passe est incorrect </center> </h1> ";
+            
         }
     }
     else
     {
-        
         echo "<center> <h1> Compte Invalide </center> </h1>";
     }
 }
