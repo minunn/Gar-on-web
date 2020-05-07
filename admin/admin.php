@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 session_start();
 
@@ -8,25 +9,32 @@ $db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
 #$result_marqueur_image = $db->prepare($sql_marqueur_image);
 #$result_marqueur_image -> execute();
 # // TODO: à ajouter la possibilité d'ajouter des images
+
+require_once '../database/db.php';
+require_once 'rubriques/auth_check.php';
 ?>
-<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
+    <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""/>
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
 
     <style>
-      #map{ height: 300px;}
+    #map {
+        height: 35vw;
+    }
     </style>
 </head>
+
 <body>
     <div id="wrapper">
         <div id="header">
@@ -34,21 +42,29 @@ $db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
             <button>Déconnection</button>
         </div>
         <div id="sidebar">
-            <a href="marqueurs.php"> <div class="sidebardiv">Marqueurs</div></a>
-            <a href="plages.php"><div class="sidebardiv">Plages</div></a>
-            <a href="users.php"><div class="sidebardiv">Autres</div></a>
+            <a href="rubriques/marqueurs.php">
+                <div class="sidebardiv">Marqueurs</div>
+            </a>
+            <a href="rubriques/plages.php">
+                <div class="sidebardiv">Plages</div>
+            </a>
+            <a href="rubriques/users.php">
+                <div class="sidebardiv">Utilisateurs</div>
+            </a>
             <hr>
         </div>
         <div id="main">
-        <div class="maindiv">
+            <div class="maindiv">
                 <div id="map"></div>
             </div>
         </div>
     </div>
 
 </body>
-
 <script defer>
+var divMap = document.getElementById('map')
+console.log(divMap);
+var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
   var divMap = document.getElementById('map')
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
