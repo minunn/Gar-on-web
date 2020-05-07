@@ -20,7 +20,8 @@ if (!empty($_POST)) {
 <html>
 
 <head>
-    <title> Login </title>
+    <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
+    <title> Login </title>    
     <meta charset="utf8">
     <link type="text/css" rel="stylesheet" href="style.css">
     <script type="text/javascript" src="login.js"></script>
