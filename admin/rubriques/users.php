@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<?php
+require_once '../../database/db.php';
+require_once 'auth_check.php';
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -43,15 +47,15 @@
                 <div id="map"></div>
             </div>
             <?php
-                        for ($indexusers=1; $indexusers <= 3 ; $indexusers++) {
-                            echo "
+            for ($indexusers = 1; $indexusers <= 3; $indexusers++) {
+                echo "
                             <a href='users.php?users$indexusers'><div class='maindiv users'>
                                 <h3>users $indexusers</h3>
                             </div></a>";
-                            if (isset($_GET["users$indexusers"])) {
-                                echo "<a href='users.php?users$indexusers&changerPosition'><div class='maindiv users'>Nom d'utilisateur</div></a>";
-                                if (isset($_GET['changerPosition'])){
-                                    echo "
+                if (isset($_GET["users$indexusers"])) {
+                    echo "<a href='users.php?users$indexusers&changerPosition'><div class='maindiv users'>Nom d'utilisateur</div></a>";
+                    if (isset($_GET['changerPosition'])) {
+                        echo "
                                     <div class='maindiv users'>
                                         <form action='changernomutilisateur' method='post'>
                                         <input type='text' name='texteusername' id='texteusername'><br>
@@ -59,10 +63,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                                echo "<a href='users.php?users$indexusers&changerTexte'><div class='maindiv users'>mot de passe</div></a>";
-                                if (isset($_GET['changerTexte'])) {
-                                    echo "
+                    }
+                    echo "<a href='users.php?users$indexusers&changerTexte'><div class='maindiv users'>mot de passe</div></a>";
+                    if (isset($_GET['changerTexte'])) {
+                        echo "
                                     <div class='maindiv users'>
                                         <form action='changermotdepasse' method='post'>
                                             <input type='text' name='textepassword' id='textepassword'><br>
@@ -70,10 +74,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                            }
-                        }
-                        echo "
+                    }
+                }
+            }
+            echo "
                         <div class='maindiv users'>
                             <h3>+</h3>
                         </div>";

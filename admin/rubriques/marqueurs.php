@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<?php
+require_once '../../database/db.php';
+require_once 'auth_check.php';
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -43,21 +47,21 @@
                 <div id="map"></div>
             </div>
             <?php
-                for ($indexPK=1; $indexPK <= 16; $indexPK++) {
-                    echo "
+            for ($indexPK = 1; $indexPK <= 16; $indexPK++) {
+                echo "
                     <a href='marqueurs.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
-                    if (isset($_GET["PK$indexPK"])){
-                        for ($indexMarqueurs=1; $indexMarqueurs <= 3 ; $indexMarqueurs++) {
-                            echo "
+                if (isset($_GET["PK$indexPK"])) {
+                    for ($indexMarqueurs = 1; $indexMarqueurs <= 3; $indexMarqueurs++) {
+                        echo "
                             <a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs'><div class='maindiv marqueurs'>
                                 <h3>Marqueur $indexMarqueurs</h3>
                             </div></a>";
-                            if (isset($_GET["marqueur$indexMarqueurs"])) {
-                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerPosition'><div class='maindiv marqueurs'>Changer de position</div></a>";
-                                if (isset($_GET['changerPosition'])){
-                                    echo "
+                        if (isset($_GET["marqueur$indexMarqueurs"])) {
+                            echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerPosition'><div class='maindiv marqueurs'>Changer de position</div></a>";
+                            if (isset($_GET['changerPosition'])) {
+                                echo "
                                     <div class='maindiv marqueurs'>
                                         <form action='changerPos' method='post'>
                                             X : <input type='text' name='posX' id='posX'><br>
@@ -66,10 +70,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerTexte'><div class='maindiv marqueurs'>Changer texte du marqueur</div></a>";
-                                if (isset($_GET['changerTexte'])) {
-                                    echo "
+                            }
+                            echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerTexte'><div class='maindiv marqueurs'>Changer texte du marqueur</div></a>";
+                            if (isset($_GET['changerTexte'])) {
+                                echo "
                                     <div class='maindiv marqueurs'>
                                         <form action='changerText' method='post'>
                                             <input type='text' name='texteMarqueur' id='texteMarqueur'><br>
@@ -77,10 +81,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                                echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerImage'><div class='maindiv marqueurs'>Changer image</div></a>";
-                                if (isset($_GET['changerImage'])) {
-                                    echo "
+                            }
+                            echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerImage'><div class='maindiv marqueurs'>Changer image</div></a>";
+                            if (isset($_GET['changerImage'])) {
+                                echo "
                                     <div class='maindiv marqueurs'>
                                         <form action='changerImg' method='post'>
                                             <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
@@ -88,15 +92,15 @@
                                         </form>
                                     </div>
                                     ";
-                                }
                             }
                         }
-                        echo "
+                    }
+                    echo "
                         <div class='maindiv marqueurs'>
                             <h3>+</h3>
                         </div>";
-                    }
                 }
+            }
             ?>
         </div>
     </div>

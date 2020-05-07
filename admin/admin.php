@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+require_once '../database/db.php';
+require_once 'rubriques/auth_check.php';
+?>
 <html>
 
 <head>

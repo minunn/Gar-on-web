@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<?php
+require_once '../../database/db.php';
+require_once 'auth_check.php';
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -44,21 +48,21 @@
                 <div id="map"></div>
             </div>
             <?php
-                for ($indexPK=1; $indexPK <= 16; $indexPK++) {
-                    echo "
+            for ($indexPK = 1; $indexPK <= 16; $indexPK++) {
+                echo "
                     <a href='plages.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
-                    if (isset($_GET["PK$indexPK"])){
-                        for ($indexplages=1; $indexplages <= 3 ; $indexplages++) {
-                            echo "
+                if (isset($_GET["PK$indexPK"])) {
+                    for ($indexplages = 1; $indexplages <= 3; $indexplages++) {
+                        echo "
                             <a href='plages.php?PK$indexPK&plages$indexplages'><div class='maindiv plages'>
                                 <h3>plages $indexplages</h3>
                             </div></a>";
-                            if (isset($_GET["plages$indexplages"])) {
-                                echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerPosition'><div class='maindiv plages'>Changer de position</div></a>";
-                                if (isset($_GET['changerPosition'])){
-                                    echo "
+                        if (isset($_GET["plages$indexplages"])) {
+                            echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerPosition'><div class='maindiv plages'>Changer de position</div></a>";
+                            if (isset($_GET['changerPosition'])) {
+                                echo "
                                     <div class='maindiv plages'>
                                         <form action='changerPos' method='post'>
                                             X : <input type='text' name='posX' id='posX'><br>
@@ -67,10 +71,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                                echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerTexte'><div class='maindiv plages'>Changer texte de la plage</div></a>";
-                                if (isset($_GET['changerTexte'])) {
-                                    echo "
+                            }
+                            echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerTexte'><div class='maindiv plages'>Changer texte de la plage</div></a>";
+                            if (isset($_GET['changerTexte'])) {
+                                echo "
                                     <div class='maindiv plages'>
                                         <form action='changerText' method='post'>
                                             <input type='text' name='texteplages' id='texteplages'><br>
@@ -78,10 +82,10 @@
                                         </form>
                                     </div>
                                     ";
-                                }
-                                echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerImage'><div class='maindiv plages'>Changer image</div></a>";
-                                if (isset($_GET['changerImage'])) {
-                                    echo "
+                            }
+                            echo "<a href='plages.php?PK$indexPK&plages$indexplages&changerImage'><div class='maindiv plages'>Changer image</div></a>";
+                            if (isset($_GET['changerImage'])) {
+                                echo "
                                     <div class='maindiv plages'>
                                         <form action='changerImg' method='post'>
                                             <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
@@ -89,15 +93,15 @@
                                         </form>
                                     </div>
                                     ";
-                                }
                             }
                         }
-                        echo "
+                    }
+                    echo "
                         <div class='maindiv plages'>
                             <h3>+</h3>
                         </div>";
-                    }
                 }
+            }
             ?>
         </div>
     </div>
