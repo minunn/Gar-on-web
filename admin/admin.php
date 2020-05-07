@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-$db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
+$db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
 
 #$sql_marqueur_image = "SELECT * FROM marqueur_image";

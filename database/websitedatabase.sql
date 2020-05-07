@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 07 mai 2020 à 14:40
+-- Hôte : localhost
+-- Généré le : jeu. 07 mai 2020 à 16:24
 -- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.5
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,6 +44,14 @@ CREATE TABLE `marqueur_position` (
   `Y` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `marqueur_position`
+--
+
+INSERT INTO `marqueur_position` (`id`, `X`, `Y`) VALUES
+(2222, 44.5787, -0.03416),
+(12345, 44.5501, 0.0051);
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +62,14 @@ CREATE TABLE `marqueur_texte` (
   `id` int(50) NOT NULL,
   `texte` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `marqueur_texte`
+--
+
+INSERT INTO `marqueur_texte` (`id`, `texte`) VALUES
+(2222, 'Ceci est un test pog'),
+(12345, 'test2aaa');
 
 -- --------------------------------------------------------
 
