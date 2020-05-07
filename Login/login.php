@@ -1,29 +1,9 @@
-<?php
-
-if (!empty($_POST)) {
-    extract($_POST);
-    $valid = true;
-
-    if (empty($username)) {
-        $valid = false;
-        $error_username = "Veuillez renseigner un nom d'utilisateur !";
-    }
-    if (empty($password)) {
-        $valid = false;
-        $error_password = "Veuillez renseigner un mot de passe ! ";
-    }
-}
-
-?>
-
-
 <html>
-
-<head>
-    <title> Login </title>
-    <meta charset="utf8">
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="login.js"></script>
+<?php require_once '../database/db.php';  ?>
+<title> Login </title>
+<meta charset="utf8">
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="login.js"></script>
 
 </head>
 
@@ -34,7 +14,24 @@ if (!empty($_POST)) {
     <div class="loginbox">
         <img src="loginpic.svg" class="avatar"> <br>
         <h1> Page Administrateur </h1>
-        <form method="POST" action="../database/db.php">
+        <form method="POST">
+            <?php
+
+            if (!empty($_POST)) {
+                extract($_POST);
+                $valid = true;
+
+                if (empty($username)) {
+                    $valid = false;
+                    $error_username = "Veuillez renseigner un nom d'utilisateur !";
+                }
+                if (empty($password)) {
+                    $valid = false;
+                    $error_password = "Veuillez renseigner un mot de passe ! ";
+                }
+            }
+
+            ?>
             <p> Nom d'utilisateur </p>
             <?php
             if (isset($error_username)) {
@@ -56,7 +53,8 @@ if (!empty($_POST)) {
 
             <input type="password" name="password" placeholder="Entrez votre mot de passe" id="myInput">
 
-            <input type="button" name="button" value="Retour à l'accueil" href="../index.html">
+            <input type="button" name="button" onclick="window.location.href = '../index.php'"
+                value=" Retour à l'accueil" href="../index.html">
 
             <input type="submit" name="submit" value="Connexion">
         </form>
