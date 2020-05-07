@@ -1,13 +1,15 @@
 <?php
 session_start();
 $db = new PDO('mysql:host=localhost;dbname=admindb', 'root', '');
-$sql_marqueur_position = "SELECT * FROM marqueur_position";
-$result_marqueur_position = $db->prepare($sql_marqueur_position);
-$result_marqueur_position -> execute();
 
-$sql_marqueur_texte = "SELECT * FROM marqueur_texte";
-$result_marqueur_texte = $db->prepare($sql_marqueur_texte);
-$result_marqueur_texte -> execute();
+
+
+
+$sql_marqueur_image = "SELECT * FROM marqueur_image";
+$result_marqueur_image = $db->prepare($sql_marqueur_image);
+$result_marqueur_image -> execute();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -60,44 +62,37 @@ $result_marqueur_texte -> execute();
   }).addTo(map);
 
 <?php
-if ($result_marqueur_position->rowCount() > 0 )
-{
-  $data_marqueur_position = $result_marqueur_position -> fetchAll();
+  $sql_selectID = "SELECT id FROM marqueur_position WHERE 1";
+  $result_marqueurID = $db->prepare($sql_selectID);
+  $result_marqueurID -> execute();
+  foreach ($result_marqueurID as $valuee) {
+    	$ab = $valuee["id"];
+      #echo "$ab : ";
+      $sql_marqueur_position = "SELECT * FROM marqueur_position WHERE id = $ab";
+      $result_marqueur_position = $db->prepare($sql_marqueur_position);
+      $result_marqueur_position -> execute();
+      $data_marqueur_position = $result_marqueur_position -> fetchAll();
 
-  foreach ($data_marqueur_position as $value){
+      $sql_marqueur_texte = "SELECT * FROM marqueur_texte WHERE id = $ab";
+      $result_marqueur_texte = $db->prepare($sql_marqueur_texte);
+      $result_marqueur_texte -> execute();
+      $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
 
-    $latitude = $value["X"];
-    $longitude = $value["Y"];
+      # SQL retourne une liste avec seulement un élément dedans, du coup, on sélectionne le premier élément de la liste
+      $latitude = $data_marqueur_position[0]["X"];
+      $longitude = $data_marqueur_position[0]["Y"];
+      #echo "$latitude, $longitude <br>";
 
-    $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
-    #Attention, si un marqueur n'a pas de texte, il n'ajoute pas le marqueur
-    # TODO: peut-être fusionner les tables des marqueurs ensemble pour avoir MARQUEURS(#ID, latitude, longitude, texte, image)
-    foreach ($data_marqueur_texte as $value2) {
-      $text = $value2["texte"];
-      echo "
-      L.marker([$latitude, $longitude]).addTo(map)
-          .bindPopup('$text')
-      ";
-    }
-    #$texteMarqueur = $data_marqueur_texte["texte"];
+
+      $texte = $data_marqueur_texte[0]["texte"];
+      #echo "$texte <br>";
+      echo"L.marker([$latitude, $longitude]).addTo(map)
+          .bindPopup('$texte')
+          ";
 
   }
-
-}
-
-
 ?>
 
-  /*L.marker([44.5501, 0.0051]).addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br><img src="https://tenor.com/view/meme-approved-knuckles-smile-stamp-congratulations-gif-16981994">')
-      .openPopup();*/
-
-  L.circle([44.57873, -0.03416], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-  }).addTo(map);
 
 </script>
 
