@@ -20,7 +20,7 @@ If(isset($_POST['submit']))
         {
             echo "<center> <h1> Connexion effectuée </center> </h1>";
             $_SESSION['username'] = $username;
-            header('Location: /admin/admin.php');
+            header('Location: /Gar-On-Web/admin/admin.php');
             exit();
         }
         else
@@ -32,6 +32,8 @@ If(isset($_POST['submit']))
     else
     {
         echo "<center> <h1> Compte Invalide </center> </h1>";
+        header('Location: /Gar-On-Web/index.php');
+        exit();
     }
 }
 

@@ -55,6 +55,7 @@ if(!empty($_POST)){
                                     echo "<br> <strong>". $error_password . "</strong>";
                                 }
                             ?>
+                            
                             <input type="password" name="password" placeholder="Entrez votre mot de passe" id="myInput" >
                             
                             <input type="button" name="button" value="Retour à l'accueil" href="../index.html">
