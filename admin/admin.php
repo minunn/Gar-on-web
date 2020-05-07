@@ -48,7 +48,7 @@ $result_marqueur_texte -> execute();
     </div>
 
 </body>
-<img src="" alt="">
+
 <script defer>
 
   var divMap = document.getElementById('map')
@@ -70,11 +70,15 @@ if ($result_marqueur_position->rowCount() > 0 )
     $longitude = $value["Y"];
 
     $data_marqueur_texte = $result_marqueur_texte -> fetchAll();
-    #$texteMarqueur = $data_marqueur_texte[$key]["texte"];
-    echo "
-    L.marker([$latitude, $longitude]).addTo(map)
-        .bindPopup('test, a rajouter texte marqueur depuis db')
-    ";
+    foreach ($data_marqueur_texte as $value2) {
+      $text = $value2["texte"];
+      echo "
+      L.marker([$latitude, $longitude]).addTo(map)
+          .bindPopup('$text')
+      ";
+    }
+    #$texteMarqueur = $data_marqueur_texte["texte"];
+
   }
 
 }
@@ -82,8 +86,8 @@ if ($result_marqueur_position->rowCount() > 0 )
 
 ?>
 
-/*  L.marker([44.5501, 0.0051]).addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+  /*L.marker([44.5501, 0.0051]).addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br><img src="https://tenor.com/view/meme-approved-knuckles-smile-stamp-congratulations-gif-16981994">')
       .openPopup();*/
 
   L.circle([44.57873, -0.03416], {
