@@ -1,19 +1,16 @@
 <html>
-<<<<<<< HEAD
-<?php require_once '../database/db.php';  ?>
-<title> Login </title>
+<?php require_once '../database/db.php';  ?> <title> Login </title>
 <meta charset="utf8">
 <link type="text/css" rel="stylesheet" href="style.css">
 <script type="text/javascript" src="login.js"></script>
-=======
+
 
 <head>
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
-    <title> Login </title>    
+    <title> Login </title>
     <meta charset="utf8">
     <link type="text/css" rel="stylesheet" href="style.css">
     <script type="text/javascript" src="login.js"></script>
->>>>>>> 6da94244e65e658d94920f7ab8c516c10e1af296
 
 </head>
 
