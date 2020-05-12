@@ -17,7 +17,7 @@
     <body onload="initialize()">
         <header>
             <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
-                <p><a href="Login/login.php">Connexion</a></p>
+                <p><a href="login/login.php">Connexion</a></p>
             </div>
 
             <div id="langues"> <!-- Choix de la langue -->
