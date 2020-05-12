@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?php
-session_start();
-
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
 
