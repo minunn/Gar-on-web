@@ -1,6 +1,6 @@
 <?php
 
-
+/* Variable qui permet de démarrrer la session */
 session_start();
 
 if (isset($_POST['submit'])) {

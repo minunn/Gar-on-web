@@ -5,7 +5,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
+        <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png">
         <link rel="stylesheet" type="text/css" href="index/index.css">
         <title>Cartographie | France | Ami Garonne</title>
         <script src="index/index.js"></script>
@@ -15,9 +15,9 @@
     </head>
 
     <body onload="initialize()">
-        <header> <!-- Les positions, dimensions, couleurs, ... des éléments doivent être exactement les mêmes que sur les autres pages ! -->
+        <header>
             <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
-                <p><a href="Login/login.php">Connexion</a></p>
+                <p><a href="login/login.php">Connexion</a></p>
             </div>
 
             <div id="langues"> <!-- Choix de la langue -->
@@ -60,10 +60,21 @@
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
-                <h3>Titre</h3>
+                <h3>Titre</h3><br>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-
+            <div id="telecharger"> <!-- Section pour télécharger la carte dans tous ces formats -->
+                <h3>Télecharger la carte</h3><br>
+                <p>Cliquez sur un bouton ci-dessous pour télécharger la carte au format souhaité.</p>
+                <div class="boutons">
+                    <div class="formats"><a href="">KMZ</a></div>
+                    <div class="formats"><a href="">KML</a></div>
+                </div>
+                <div class="boutons">
+                    <div class="formats"><a href="">S57</a></div>
+                    <div class="formats"><a href="">Open CPN</a></div>
+                </div>
+            </div>
             <footer>
                 <a href="#connexion"><div id="retour">Haut de page</div></a>
             </footer>
