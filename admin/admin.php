@@ -9,7 +9,7 @@ $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 #$result_marqueur_image -> execute();
 # // TODO: à ajouter la possibilité d'ajouter des images
 
-//appel des fichier pour check si l'utilisateur est connecter 
+//appel des fichier pour check si l'utilisateur est connecter
 require_once '../database/db.php';
 require_once 'rubriques/auth_check.php';
 ?>
@@ -42,7 +42,7 @@ require_once 'rubriques/auth_check.php';
             <?php
        if(isset($_GET['logout']))
               {
-                  //permet de ce logout du compte 
+                  //permet de ce logout du compte
                 session_destroy();
                 header("Location: ../login/login.php");
               }
