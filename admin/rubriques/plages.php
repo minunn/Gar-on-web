@@ -11,7 +11,7 @@ require_once 'auth_check.php';
     <title>admin</title>
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="../style.css">
-
+<!-- ajout map leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin="" />
@@ -50,12 +50,14 @@ require_once 'auth_check.php';
                 <div id="map"></div>
             </div>
             <?php
+            //ajout des onglet PK 1 à pk16
             for ($indexPK = 1; $indexPK <= 16; $indexPK++) {
                 echo "
                     <a href='plages.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
                 if (isset($_GET["PK$indexPK"])) {
+                    //ajout des onglet plages 1 à pk16
                     for ($indexplages = 1; $indexplages <= 3; $indexplages++) {
                         echo "
                             <a href='plages.php?PK$indexPK&plages$indexplages'><div class='maindiv plages'>
