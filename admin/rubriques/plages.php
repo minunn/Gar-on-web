@@ -57,7 +57,7 @@ require_once 'auth_check.php';
                         <h2>PK$indexPK</h2>
                     </div></a>";
                 if (isset($_GET["PK$indexPK"])) {
-                    //ajout des onglet plages 1 à pk16
+                    //ajout des onglet plages 
                     for ($indexplages = 1; $indexplages <= 3; $indexplages++) {
                         echo "
                             <a href='plages.php?PK$indexPK&plages$indexplages'><div class='maindiv plages'>
