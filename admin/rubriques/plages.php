@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+//appel des fichier pour check si l'utilisateur est connecter 
 require_once '../../database/db.php';
 require_once 'auth_check.php';
 ?>
