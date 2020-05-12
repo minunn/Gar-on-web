@@ -1,8 +1,5 @@
 <html>
-<?php require_once '../database/db.php';  ?> <title> Login </title> <!-- Récupère les éléments de la BDD -->
-<meta charset="utf8">
-<link type="text/css" rel="stylesheet" href="style.css">
-<script type="text/javascript" src="login.js"></script>
+<?php require_once '../database/db.php';  ?>  <!-- Récupère les éléments de la BDD -->
 
 
 <head>
@@ -44,7 +41,7 @@
             <p> Nom d'utilisateur </p> <!-- NOM D'UTILISATEUR -->
 
             <?php
-            
+
             /* Ici s'affiche : "Veuillez renseigner un nom d'utilisateur!" */ 
             if (isset($error_username)) {
                 echo "<br> <strong>" . $error_username . "</strong>";
