@@ -3,20 +3,20 @@
 
 
 <head>
-    <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
+    <link rel="shortcut icon" type="image/ico" href="../index/images/favicon.png"> <!-- favicon -->
     <title> Login </title> <!-- Titre de la page -->
     <meta charset="utf8"> <!-- Méta Charset UTF-8 qui permet l'affichage de caractères spéciaux -->
-    <link type="text/css" rel="stylesheet" href="style.css"> <!-- CSS Relié -->
-    <script type="text/javascript" src="login.js"></script> <!-- JS Relié -->
+    <link type="text/css" rel="stylesheet" href="css/style.css"> <!-- CSS Relié -->
+    <script type="text/javascript" src="js/login.js"></script> <!-- JS Relié -->
 
 </head>
 
 <body>
 
 
-    <img src="fondcarte.png" class="fondcarte"> <!-- Image du fonds de carte -->
+    <img src="images/fondcarte.png" class="fondcarte"> <!-- Image du fonds de carte -->
     <div class="loginbox"> <!-- DEBUT DE LA DIV LOGINBOX -->
-        <img src="loginpic.svg" class="avatar"> <br>  <!-- Image qui représente un utilisateur -->
+        <img src="images/loginpic.svg" class="avatar"> <br>  <!-- Image qui représente un utilisateur -->
         <h1> Page Administrateur </h1> <!-- Titre : Page Administrateur  -->
         <form method="POST"> <!-- Méthode POST pour le formulaire -->
 
@@ -54,8 +54,8 @@
             <p> Mot de Passe </p>  <!-- MOT DE PASSE -->
 
             <span class="eye" onclick="myFunction()">  <!-- Au clic la fonction JS se met en route / Cette fonction permet de masquer ou non le mot de passe que l'on rentre -->
-                <img src="eye-slash-solid.svg" id="hide1" class=".fa.fa-check-circle">  <!-- Image de l'oeil barré qui masque le mot de passe -->
-                <img src="eye-solid.svg" id="hide2">  <!-- Image de l'oeil -->
+                <img src="images/eye-slash-solid.svg" id="hide1" class=".fa.fa-check-circle">  <!-- Image de l'oeil barré qui masque le mot de passe -->
+                <img src="images/eye-solid.svg" id="hide2">  <!-- Image de l'oeil -->
             </span>
 
             <?php

@@ -10,7 +10,7 @@ require_once 'auth_check.php';
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <title>admin</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
