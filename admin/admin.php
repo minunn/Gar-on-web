@@ -7,8 +7,6 @@
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="style.css">
 
-
-
     <style>
     #map {
         height: 35vw;
@@ -52,5 +50,5 @@
     </div>
 
 </body>
-  <?php include 'map.php'; ?>
+  <?php include '../map.php'; ?>
 </html>
