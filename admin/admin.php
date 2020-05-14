@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
-    <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
+    <link rel="shortcut icon" type="image/ico" href="../index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="css/style.css">
 
     <?php
