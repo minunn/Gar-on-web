@@ -33,7 +33,7 @@ require_once 'rubriques/auth_check.php';
     ?>
 
   <form id="frm" method="post"  action="?logout" >
-    <input class="testing" type="submit" value="logout" id="logout" style="border: none;outline: none;height: 50px;width: 200px;background: #3E3D3D;color: #fff;font-size: 18px;border-radius: 20px;position: absolute;right: 30px;"/>  
+    <input class="testing" type="submit" value="logout" id="logout""/>  
 </form>
     
         </div>
