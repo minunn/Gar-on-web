@@ -7,6 +7,11 @@ div {
     padding: 3px;
 }
 
+a, a:link, a:visited, a:hover, a:active{
+  text-decoration: none;
+  color: black;
+}
+
 #wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
