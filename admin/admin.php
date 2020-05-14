@@ -55,5 +55,5 @@ require_once 'rubriques/auth_check.php';
     </div>
 
 </body>
-  <?php include 'map.php'; ?>
+  <?php include '../map.php'; ?>
 </html>

@@ -3,15 +3,9 @@
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
-# // TODO: à ajouter la possibilité d'ajouter des images avec ce morceau de code
-
-#$result_marqueur_image = $db->prepare($sql_marqueur_image);
-#$result_marqueur_image -> execute();
-
-
 //appel des fichier pour check si l'utilisateur est connecter
-require_once '../database/db.php';
-require_once 'rubriques/auth_check.php';
+require_once 'database/db.php';
+require_once 'admin/rubriques/auth_check.php';
 ?>
 <?php
   echo '
@@ -25,6 +19,7 @@ require_once 'rubriques/auth_check.php';
   echo "
   var divMap = document.getElementById('map')
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
+
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
