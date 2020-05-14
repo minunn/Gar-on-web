@@ -3,11 +3,11 @@ a {
     text-decoration: none;
 }
 
-a:hover 
+a:hover
 {
-     color:#00A0C6; 
-     text-decoration:none; 
-     cursor:pointer;  
+     color:#00A0C6;
+     text-decoration:none;
+     cursor:pointer;
 }
 
 body {
@@ -22,7 +22,7 @@ div {
 
 a, a:link, a:visited, a:hover, a:active{
   text-decoration: none;
-  color: black;
+  color: #00A0C6;
 }
 
 #wrapper {
