@@ -51,11 +51,19 @@ require_once 'admin/rubriques/auth_check.php';
       $latitude = $data_marqueur_position[0]["X"];
       $longitude = $data_marqueur_position[0]["Y"];
 
-      $texte = $data_marqueur_texte[0]["texte"];
 
-      echo"L.marker([$latitude, $longitude]).addTo(map)
-          .bindPopup('$texte')
-          ";
+
+      if (isset($data_marqueur_texte[0]["texte"])) {
+        $texte = $data_marqueur_texte[0]["texte"];
+        echo"L.marker([$latitude, $longitude]).addTo(map)
+            .bindPopup('$texte');
+            ";
+      }
+      else {
+        echo"L.marker([$latitude, $longitude]).addTo(map);";
+      }
+
+
   }
 
   #fonction afin d'éviter d'encombrer le code
