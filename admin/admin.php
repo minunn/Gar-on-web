@@ -7,6 +7,12 @@
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="css/style.css">
 
+    <?php
+//appel des fichier pour check si l'utilisateur est connecter 
+require_once '../database/db.php';
+require_once 'rubriques/auth_check.php';
+?>
+
     <style>
     #map {
         height: 35vw;
@@ -21,9 +27,8 @@
             <?php
        if(isset($_GET['logout']))
               {
-                  //permet de ce logout du compte
                 session_destroy();
-                header("Location: ../login/login.php");
+                header('Location: /Gar-On-Web/login/login.php');
               }
     ?>
   <form id="frm" method="post"  action="?logout" >
