@@ -1,7 +1,20 @@
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: grey;
 }
+
 
 div {
     padding: 3px;
@@ -20,6 +33,7 @@ a, a:link, a:visited, a:hover, a:active{
     grid-auto-rows: minmax(0px, auto);
 
 }
+
 
 #header {
     display: grid;
