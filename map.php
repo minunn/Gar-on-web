@@ -3,12 +3,6 @@
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
-# // TODO: à ajouter la possibilité d'ajouter des images avec ce morceau de code
-
-#$result_marqueur_image = $db->prepare($sql_marqueur_image);
-#$result_marqueur_image -> execute();
-
-
 //appel des fichier pour check si l'utilisateur est connecter
 require_once 'database/db.php';
 require_once 'admin/rubriques/auth_check.php';

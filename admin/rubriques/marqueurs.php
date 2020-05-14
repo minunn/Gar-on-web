@@ -10,7 +10,7 @@ require_once 'auth_check.php';
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
     <title>admin</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
     #map {
         height: 35vw;
@@ -61,8 +61,8 @@ require_once 'auth_check.php';
                                 echo "
                                     <div class='maindiv marqueurs'>
                                         <form action='changerPos' method='post'>
-                                            X : <input type='text' name='posX' id='posX'><br>
-                                            Y : <input type='text' name='posY' id='posY'><br>
+                                            Latitude :  <input type='text' name='posX' id='posX'><br>
+                                            Longitude : <input type='text' name='posY' id='posY'><br>
                                             <input type='submit' value='Modifier'>
                                         </form>
                                     </div>

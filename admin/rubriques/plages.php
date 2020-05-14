@@ -10,7 +10,7 @@ require_once 'auth_check.php';
     <meta charset="UTF-8">
     <title>admin</title>
     <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png"> <!-- favicon -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 
     <style>
