@@ -35,7 +35,7 @@ require_once 'auth_check.php';
     ?>
 
             <form id="frm" method="post"  action="?logout" >
-    <input class="testing" type="submit" value="logout" id="logout" style="border: none;outline: none;height: 50px;width: 200px;background: #3E3D3D;color: #fff;font-size: 18px;border-radius: 20px;position: absolute;right: 30px;"/>  
+    <input class="testing" type="submit" value="logout" id="logout" style="border: none;outline: none;height: 50px;width: 200px;background: #3E3D3D;color: #fff;font-size: 18px;border-radius: 20px;position: absolute;right: 30px;"/>
 </form>
         </div>
         <div id="sidebar">
@@ -55,18 +55,25 @@ require_once 'auth_check.php';
             <?php
             $nombreCartes = 16;
             for ($indexPK = 1; $indexPK <= $nombreCartes; $indexPK++) {
+              #On affiche toutes les cartes que l'admin peut modifier
                 echo "
                     <a href='marqueurs.php?PK$indexPK'><div id='PK$indexPK' class='maindiv'>
                         <h2>PK$indexPK</h2>
                     </div></a>";
+
+                #Si l'admin a cliqué sur une des cartes, on affiche les marqueurs qu'il peut Modifier
                 if (isset($_GET["PK$indexPK"])) {
-                    for ($indexMarqueurs = 1; $indexMarqueurs <= 3; $indexMarqueurs++) {
+                  $nombreMarqueurs = 3;
+                    for ($indexMarqueurs = 1; $indexMarqueurs <= $nombreMarqueurs; $indexMarqueurs++) {
                         echo "
                             <a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs'><div class='maindiv marqueurs'>
                                 <h3>Marqueur $indexMarqueurs</h3>
                             </div></a>";
+                        #Si l'admin a cliqué sur un des marqueurs, on affiche les options
                         if (isset($_GET["marqueur$indexMarqueurs"])) {
+                            #Option 1 : Position
                             echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerPosition'><div class='maindiv marqueurs'>Changer de position</div></a>";
+                            #Si l'admin a cliqué sur cette option, on affiche ce qu'il peut modifier
                             if (isset($_GET['changerPosition'])) {
                                 echo "
                                     <div class='maindiv marqueurs'>
@@ -78,7 +85,9 @@ require_once 'auth_check.php';
                                     </div>
                                     ";
                             }
+                            #Option 2 : Texte du marqueur
                             echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerTexte'><div class='maindiv marqueurs'>Changer texte du marqueur</div></a>";
+                            #Pareil pour cette option
                             if (isset($_GET['changerTexte'])) {
                                 echo "
                                     <div class='maindiv marqueurs'>
@@ -89,7 +98,9 @@ require_once 'auth_check.php';
                                     </div>
                                     ";
                             }
+                            #Option 3 : Image du marqueur
                             echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerImage'><div class='maindiv marqueurs'>Changer image</div></a>";
+                            #Pareil pour cette option
                             if (isset($_GET['changerImage'])) {
                                 echo "
                                     <div class='maindiv marqueurs'>
@@ -102,6 +113,7 @@ require_once 'auth_check.php';
                             }
                         }
                     }
+                    #// TODO: La possibilité de rajouter des marqueurs
                     echo "
                         <div class='maindiv marqueurs'>
                             <h3>+</h3>
@@ -115,6 +127,10 @@ require_once 'auth_check.php';
 </body>
 <?php include '../../map.php'; ?>
 <script>
+//Script pour scroll directement sur la carte sélectionnée
+//Sans ce code, à chaque fois que l'admin clique sur une option, ça le ramenera au haut de la page
+
+//Cette fonction récupère une url et renvoie les paramètre de cette url
 var getParams = function(url) {
     var params = {};
     var parser = document.createElement('a');
@@ -129,6 +145,7 @@ var getParams = function(url) {
 };
 var urlParams = getParams(window.location.href);
 var paramKeys = Object.keys(urlParams);
+//On récupère le premier paramètre de l'url, qui correspond à la carte sélectionnée
 var elementToScrollTo = document.getElementById(paramKeys[0])
 elementToScrollTo.scrollIntoView()
 </script>

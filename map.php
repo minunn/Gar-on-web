@@ -47,6 +47,7 @@ require_once 'admin/rubriques/auth_check.php';
       #// TODO: ajouter pouvoir ajouter des images
       #$data_marqueur_image = sqlSelect("SELECT * FROM marqueur_imageWHERE id = $idMarqueurActuel", $db);
 
+
       # SQL retourne une liste avec seulement un élément dedans, du coup, on sélectionne le premier élément de la liste
       $latitude = $data_marqueur_position[0]["X"];
       $longitude = $data_marqueur_position[0]["Y"];
