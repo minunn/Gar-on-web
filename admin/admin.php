@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php
-//appel des fichier pour check si l'utilisateur est connecter 
+//appel des fichier pour check si l'utilisateur est connecter
 require_once '../database/db.php';
 require_once 'rubriques/auth_check.php';
 ?>
@@ -33,9 +33,9 @@ require_once 'rubriques/auth_check.php';
     ?>
 
   <form id="frm" method="post"  action="?logout" >
-    <input class="testing" type="submit" value="logout" id="logout""/>  
+    <input class="testing" type="submit" value="logout" id="logout"/>  
 </form>
-    
+
         </div>
         <div id="sidebar">
             <a href="rubriques/marqueurs.php">
