@@ -43,7 +43,7 @@
             <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->
                 <img src="index/images/logo_AMI.png" id="asso" alt="Logo association">
                 <h1>Cartographie</h1>
-                <img src="index/images/logo_facebook.png" id="fb" alt="Logo Facebook"></a>
+                <img src="index/images/logo_facebook.png" id="fb" alt="Logo Facebook">
             </div>
         </header>
         <article id="background">
@@ -53,7 +53,7 @@
             </div>
 
             <div id="legende"> <!-- Légende de la carte -->
-                <h3>Légende</h3>
+                <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
                 <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p><br>
                 <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
