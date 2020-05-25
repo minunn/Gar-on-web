@@ -2,15 +2,15 @@
 <html>
 <?php
 //appel des fichier pour check si l'utilisateur est connecter
-require_once '../../database/db.php';
+require_once '../db.php';
 require_once 'auth_check.php';
 ?>
 
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/ico" href="../../index/images/favicon.png"> <!-- favicon -->
+    <link rel="shortcut icon" type="image/ico" href="../../images/favicon.png"> <!-- favicon -->
     <title>admin</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/adminstyle.css">
     <style>
     #map {
         height: 35vw;
@@ -30,7 +30,7 @@ require_once 'auth_check.php';
        if(isset($_GET['logout']))
               {
                 session_destroy();
-                header('Location: /Gar-On-Web/login/login.php');
+                header('Location: /Gar-On-Web/pages/login.php');
               }
     ?>
 
