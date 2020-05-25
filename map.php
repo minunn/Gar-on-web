@@ -51,7 +51,7 @@ require_once 'pages/rubriques/auth_check.php';
     }
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
       $imgSource = '"rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource />";
+      $image = "<img src=$imgSource".' width="100%"/>';
       $popup .= " " .$image;
     }
     if ($popup == '') {
@@ -59,7 +59,9 @@ require_once 'pages/rubriques/auth_check.php';
     }
     else {
       echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map)
-          .bindPopup('$popup');
+          .bindPopup('$popup',{
+            maxWidth: 'auto'
+          });
           ";
     }
 

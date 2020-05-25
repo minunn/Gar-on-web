@@ -13,11 +13,7 @@ require_once 'db.php';
 require_once 'rubriques/auth_check.php';
 ?>
 
-    <style>
-    #map {
-        height: 35vw;
-    }
-    </style>
+    
 </head>
 
 <body>

@@ -11,11 +11,6 @@ require_once 'auth_check.php';
     <link rel="shortcut icon" type="image/ico" href="../../images/favicon.png"> <!-- favicon -->
     <title>admin</title>
     <link rel="stylesheet" href="../../css/adminstyle.css">
-    <style>
-    #map {
-        height: 35vw;
-    }
-    </style>
 
 
 </head>
