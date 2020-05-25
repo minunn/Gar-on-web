@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <title>admin</title>
     <link rel="shortcut icon" type="image/ico" href="../index/images/favicon.png"> <!-- favicon -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/adminstyle.css">
 
     <?php
 //appel des fichier pour check si l'utilisateur est connecter
-require_once '../database/db.php';
+require_once 'db.php';
 require_once 'rubriques/auth_check.php';
 ?>
 
@@ -33,7 +33,7 @@ require_once 'rubriques/auth_check.php';
     ?>
 
   <form id="frm" method="post"  action="?logout" >
-    <input class="testing" type="submit" value="logout" id="logout"/>  
+    <input class="testing" type="submit" value="logout" id="logout"/>
 </form>
 
         </div>

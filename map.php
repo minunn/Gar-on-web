@@ -4,8 +4,8 @@
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
 //appel des fichier pour check si l'utilisateur est connecter
-require_once 'database/db.php';
-require_once 'admin/rubriques/auth_check.php';
+require_once 'pages/db.php';
+require_once 'pages/rubriques/auth_check.php';
 ?>
 <?php
   echo '
