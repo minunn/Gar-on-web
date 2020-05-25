@@ -6,7 +6,7 @@
     <link rel="shortcut icon" type="image/ico" href="../index/images/favicon.png"> <!-- favicon -->
     <title> Login </title> <!-- Titre de la page -->
     <meta charset="utf8"> <!-- Méta Charset UTF-8 qui permet l'affichage de caractères spéciaux -->
-    <link type="text/css" rel="stylesheet" href="css/style.css"> <!-- CSS Relié -->
+    <link type="text/css" rel="stylesheet" href="css/loginstyle.css"> <!-- CSS Relié -->
     <script type="text/javascript" src="js/login.js"></script> <!-- JS Relié -->
 
 </head>
