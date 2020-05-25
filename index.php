@@ -8,7 +8,7 @@
         <link rel="shortcut icon" type="image/ico" href="images/favicon.png">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Cartographie | France | Ami Garonne</title>
-        <script src="index/js/index.js"></script>
+        <script src="js/index.js"></script>
         <!-- API Leaflet -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -17,14 +17,14 @@
     <body onload="initialize()">
         <header>
             <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
-                <p><a href="login/login.php">Connexion</a></p>
+                <p><a href="pages/login.php">Connexion</a></p>
             </div>
 
             <div id="langues"> <!-- Choix de la langue -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
-                <div id="fr"><a href=""><img src="index/images/drapeau_fr.jpg" class="drapeaux" alt="Drapeau français">FR</a></div>
-                <div id="en"><a href=""><img src="index/images/drapeau_en.jpg" class="drapeaux" alt="Drapeau anglais">EN</a></div>
-                <div id="nl"><a href=""><img src="index/images/drapeau_nl.png" class="drapeaux" alt="Drapeau néerlandais">NL</a></div>
+                <div id="fr"><a href=""><img src="images/drapeau_fr.jpg" class="drapeaux" alt="Drapeau français">FR</a></div>
+                <div id="en"><a href=""><img src="images/drapeau_en.jpg" class="drapeaux" alt="Drapeau anglais">EN</a></div>
+                <div id="nl"><a href=""><img src="images/drapeau_nl.png" class="drapeaux" alt="Drapeau néerlandais">NL</a></div>
             </div>
 
             <div id="navigation"> <!-- Menu de navigation -->
@@ -41,9 +41,9 @@
             </div>
 
             <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->
-                <img src="index/images/logo_AMI.png" id="asso" alt="Logo association">
+                <img src="images/logo_AMI.png" id="asso" alt="Logo association">
                 <h1>Cartographie</h1>
-                <img src="index/images/logo_facebook.png" id="fb" alt="Logo Facebook">
+                <img src="images/logo_facebook.png" id="fb" alt="Logo Facebook">
             </div>
         </header>
         <article id="background">
