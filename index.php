@@ -5,8 +5,8 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" type="image/ico" href="index/images/favicon.png">
-        <link rel="stylesheet" type="text/css" href="index/css/index.css">
+        <link rel="shortcut icon" type="image/ico" href="images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Cartographie | France | Ami Garonne</title>
         <script src="index/js/index.js"></script>
         <!-- API Leaflet -->
