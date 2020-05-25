@@ -1,7 +1,7 @@
 <?php
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
-$db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
+$db = new PDO('mysql:host=localhost;dbname=garonweb-db-new', 'root', '');
 
 //appel des fichier pour check si l'utilisateur est connecter
 require_once 'pages/db.php';
@@ -26,6 +26,46 @@ require_once 'pages/rubriques/auth_check.php';
   }).addTo(map);"?>
 
 <?php
+
+  $sql_selectMarqueurs = "SELECT * FROM marqueurs";
+  $result_marqueur = $db->prepare($sql_selectMarqueurs);
+  $result_marqueur -> execute();
+
+  foreach ($result_marqueur as $marqueurActuel) {
+    $idMarqueur = $marqueurActuel["ID_marqueur"];
+    echo "console.log('$idMarqueur');";
+    $latitudeMarqueur = $marqueurActuel["Latitude"];
+    echo "console.log('$latitudeMarqueur');";
+    $longitudeMarqueur = $marqueurActuel["Longitude"];
+    echo "console.log('$longitudeMarqueur');";
+    $texteMarqueur = $marqueurActuel["Texte"];
+    echo "console.log('$texteMarqueur');";
+    $photoMarqueur = $marqueurActuel["Photo"];
+    #echo "console.log('$photoMarqueur');";
+    $imagetypeMarqueur = $marqueurActuel["Image_type"];
+    echo "console.log('$imagetypeMarqueur');";
+
+    $popup = '';
+    if (isset($texteMarqueur)) {
+      $popup .= $texteMarqueur;
+    }
+    if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
+      $imgSource = '"rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+      $image = "<img src=$imgSource />";
+      $popup .= " " .$image;
+    }
+    if ($popup == '') {
+      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map);";
+    }
+    else {
+      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map)
+          .bindPopup('$popup');
+          ";
+    }
+
+  }
+
+  /*
   #Au début, on veut juste récupérer les ID de chaque marqueurs.
   #Le problème que j'avais c'était que chaque parties des marqueurs (position, texte, image)
   #sont séparé, je pouvais pas savoir quels textes allait sur quels marqueurs,
@@ -34,8 +74,7 @@ require_once 'pages/rubriques/auth_check.php';
   #On récupère les ID dans la table marqueur_position parce que même si le marqueur
   #n'a pas de texte ou d'images à afficher, on doit forcement récupérer récupérer sa position
   #pour l'ajouter à la carte.
-  $result_marqueurID = $db->prepare($sql_selectID);
-  $result_marqueurID -> execute();
+
   #Pour chaque ID, on récupère la position, le texte et l'image du marqueur correspondant
   foreach ($result_marqueurID as $marqueurActuel) {
     	$idMarqueurActuel = $marqueurActuel["id"];
@@ -66,7 +105,7 @@ require_once 'pages/rubriques/auth_check.php';
 
 
   }
-
+*/
   #fonction afin d'éviter d'encombrer le code
   function sqlSelect($sql, $db){
     $sqlCode = $sql;
