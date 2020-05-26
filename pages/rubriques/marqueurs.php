@@ -70,9 +70,10 @@ require_once 'auth_check.php';
                             echo "<a href='marqueurs.php?PK$indexPK&marqueur$indexMarqueurs&changerPosition'><div class='maindiv marqueurs'>Changer de position</div></a>";
                             #Si l'admin a cliqué sur cette option, on affiche ce qu'il peut modifier
                             if (isset($_GET['changerPosition'])) {
+                                $phpself = $_SERVER['PHP_SELF'];
                                 echo "
                                     <div class='maindiv marqueurs'>
-                                        <form action='changerPos' method='post'>
+                                        <form action='$phpself?PK$indexPK&marqueur$indexMarqueurs&changerPosition' method='post'>
                                             Latitude :  <input type='text' name='posX' id='posX'><br>
                                             Longitude : <input type='text' name='posY' id='posY'><br>
                                             <input type='submit' value='Modifier'>
