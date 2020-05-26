@@ -30,14 +30,20 @@
             <div id="navigation"> <!-- Menu de navigation -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
                 <a href=""><div class="elements"><p>Accueil</p></div></a>
-                <a href=""><div class="elements"><p>L'association</p></div></a>
-                <a href=""><div class="elements"><p>Nos actions</p></div></a>
-                <a href=""><div class="elements"><p>Actualités</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menu_1_on()"><p>L'association</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menu_2_on()"><p>Nos actions</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menu_3_on()"><p>Actualités</p></div></a>
                 <a href=""><div class="elements"><p>Infos pratiques</p></div></a>
                 <a href=""><div class="elements"><p>Blog</p></div></a>
                 <a href=""><div class="elements"><p>Contact</p></div></a>
                 <a href=""><div class="elements"><p>Réservation</p></div></a>
                 <a href=""><div class="elements"><p>Membres</p></div></a>
+            </div>
+
+            <div id="sous-navigation"> <!-- Sous-menus de navigation -->
+                <div id="sous-menu_1" class="sous-menu" onmouseover="sous_menu_1_on()" onmouseout="sous_menu_1_off()"><a href="">Notre histoire</a><br><a href="">Nos partenaires</a></div>
+                <div id="sous-menu_2" class="sous-menu" onmouseover="sous_menu_2_on()" onmouseout="sous_menu_2_off()"><a href="">Balade fluviale</a><br><a href="">Balade avec visite guidée</a><br><a href="">Une journée à Lagruère</a><br><a href="">Sortie pêche</a><br><a href="">Cartographie</a><br><a href="">Garo Challenge</a><br></div>
+                <div id="sous-menu_3" class="sous-menu" onmouseover="sous_menu_3_on()" onmouseout="sous_menu_3_off()"><a href="">Galerie</a><br><a href="">2019</a><br><a href="">2018</a></div>
             </div>
 
             <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->

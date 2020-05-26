@@ -51,11 +51,13 @@ header {
 }
 
 #navigation {
-  width: 65%;
+  width: 60%;
   height: auto;
-  margin: 5% auto;
+  margin: 3% auto 1% auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -64,12 +66,32 @@ header {
 }
 
 .elements {
-  width: 80%;
+  width: 90%;
   height: 100%;
   background-color: lightgrey;
   border-radius: 1vw;
-  padding: 1% 0 1% 0;
-  margin-right: 4vw;
+  margin-right: 3vw;
+}
+
+.sous-menu {
+  position: absolute;
+  background-color: darkgray;
+  width: 7%;
+  visibility: hidden;
+}
+
+#sous-menu_1 {
+  margin-left: 25.6vw;
+  border-radius: 10% / 25%;
+  height: auto;
+}
+#sous-menu_2 {
+  margin-left: 33vw;
+  border-radius: 10%;
+}
+#sous-menu_3 {
+  margin-left: 39.9vw;
+  border-radius: 10% / 25%;
 }
 
 #titre {
