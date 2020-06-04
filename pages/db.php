@@ -1,13 +1,13 @@
 <?php
 
-/* Variable qui permet de démarrrer la session */
+/* Variable qui permet de démarrer la session */
 session_start();
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    /* Permet de se connecter à la base de donée */ 
+    /* Permet de se connecter à la base de donnée */ 
     $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
     /* Requête qui permet de connecter un utilisateur */  
     $sql = "SELECT * FROM users where username = '$username'";

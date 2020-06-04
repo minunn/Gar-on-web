@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/adminstyle.css">
 
     <?php
-//appel des fichier pour check si l'utilisateur est connecter
+//appel des fichier pour vérifier si l'utilisateur est connecté
 require_once 'db.php';
 require_once 'rubriques/auth_check.php';
 ?>
@@ -21,16 +21,16 @@ require_once 'rubriques/auth_check.php';
         <div id="header">
             <h1>Administration</h1>
             <?php
-       if(isset($_GET['logout']))
+            if(isset($_GET['logout']))
               {
                 session_destroy();
                 header('Location: /Gar-On-Web/pages/login.php');
               }
-    ?>
+            ?>
 
-  <form id="frm" method="post"  action="?logout" >
-    <input class="testing" type="submit" value="logout" id="logout"/>
-</form>
+    <form id="frm" method="post"  action="?logout" >
+        <input class="testing" type="submit" value="logout" id="logout"/>
+    </form>
 
         </div>
         <div id="sidebar">
