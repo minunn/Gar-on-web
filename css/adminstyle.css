@@ -96,12 +96,16 @@ a, a:link, a:visited, a:hover, a:active{
     background-color: white;
     margin-left: 10px;
     margin-bottom: 3px;
+    border-style: solid;
+    border-width: 2px;
 
 }
 
 .marqueurs {
     position: relative;
-    left: 5%;
+    /*left: 5%;*/
+    border-style: solid;
+    border-width: 1px;
 
 }
 
