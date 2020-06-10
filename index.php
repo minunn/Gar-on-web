@@ -29,15 +29,15 @@
 
             <div id="navigation"> <!-- Menu de navigation -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
-                <a href=""><div class="elements"><p>Accueil</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Accueil</p></div></a>
                 <a href=""><div class="elements" onmouseover="sous_menu_1_on()"><p>L'association</p></div></a>
                 <a href=""><div class="elements" onmouseover="sous_menu_2_on()"><p>Nos actions</p></div></a>
                 <a href=""><div class="elements" onmouseover="sous_menu_3_on()"><p>Actualités</p></div></a>
-                <a href=""><div class="elements"><p>Infos pratiques</p></div></a>
-                <a href=""><div class="elements"><p>Blog</p></div></a>
-                <a href=""><div class="elements"><p>Contact</p></div></a>
-                <a href=""><div class="elements"><p>Réservation</p></div></a>
-                <a href=""><div class="elements"><p>Membres</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Infos pratiques</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Blog</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Contact</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Réservation</p></div></a>
+                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Membres</p></div></a>
             </div>
 
             <div id="sous-navigation"> <!-- Sous-menus de navigation -->
@@ -46,13 +46,13 @@
                 <div id="sous-menu_3" class="sous-menu" onmouseover="sous_menu_3_on()" onmouseout="sous_menu_3_off()"><a href="">Galerie</a><br><a href="">2019</a><br><a href="">2018</a></div>
             </div>
 
-            <div id="titre"> <!-- Titre de la page avec logo de l'association et page Facebook -->
+            <div id="titre" onmouseover="sous_menus_off()"> <!-- Titre de la page avec logo de l'association et page Facebook -->
                 <img src="images/logo_AMI.png" id="asso" alt="Logo association">
                 <h1>Cartographie</h1>
-                <img src="images/logo_facebook.png" id="fb" alt="Logo Facebook">
+                <a id="fb" href="https://www.facebook.com/amigaronne/"><img id="logo_fb" src="images/logo_facebook.png" alt="Logo Facebook"></a>
             </div>
         </header>
-        <article id="background">
+        <article onmouseover="sous_menus_off()">
             <div id="carte"> <!-- Carte navigable -->
                 <h2>La carte interactive</h2>
                 <div id="map"></div>

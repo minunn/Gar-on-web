@@ -5,16 +5,16 @@
 <head>
     <link rel="shortcut icon" type="image/ico" href="../index/images/favicon.png"> <!-- favicon -->
     <title> Login </title> <!-- Titre de la page -->
-    <meta charset="utf8"> <!-- Méta Charset UTF-8 qui permet l'affichage de caractères spéciaux -->
-    <link type="text/css" rel="stylesheet" href="../css/loginstyle.css"> <!-- CSS Relié -->
-    <script type="text/javascript" src="../js/login.js"></script> <!-- JS Relié -->
+    <meta charset="utf8"> <!-- Méta charset UTF-8 qui permet l'affichage de caractères spéciaux -->
+    <link type="text/css" rel="stylesheet" href="../css/loginstyle.css"> <!-- CSS relié -->
+    <script type="text/javascript" src="../js/login.js"></script> <!-- JS relié -->
 
 </head>
 
 <body>
 
 
-    <img src="../images/fondcarte.png" class="fondcarte"> <!-- Image du fonds de carte -->
+    <img src="../images/fondcarte.png" class="fondcarte"> <!-- Image du fond de carte -->
     <div class="loginbox"> <!-- DEBUT DE LA DIV LOGINBOX -->
         <img src="../images/loginpic.svg" class="avatar"> <br>  <!-- Image qui représente un utilisateur -->
         <h1> Page Administrateur </h1> <!-- Titre : Page Administrateur  -->
@@ -25,15 +25,15 @@
             if (!empty($_POST)) {
                 extract($_POST);
                 $valid = true;
-                /* Si l'utilisateur ne rentre pas de nom d'utilisateur : Un message apparait : "Veuillez renseigner un nom d'utilisateur! " */ 
+                /* Si l'utilisateur ne rentre pas de nom d'utilisateur : Un message apparaît : "Veuillez renseigner un nom d'utilisateur !" */ 
                 if (empty($username)) {
                     $valid = false;
                     $error_username = "Veuillez renseigner un nom d'utilisateur !";
                 }
-                /* Si l'utilisateur ne rentre pas de mot de passe : Un message apparait : "Veuillez renseigner un mot de passe! " */ 
+                /* Si l'utilisateur ne rentre pas de mot de passe : Un message apparaît : "Veuillez renseigner un mot de passe !" */ 
                 if (empty($password)) {
                     $valid = false;
-                    $error_password = "Veuillez renseigner un mot de passe ! ";
+                    $error_password = "Veuillez renseigner un mot de passe !";
                 }
             }
 
@@ -42,7 +42,7 @@
 
             <?php
 
-            /* Ici s'affiche : "Veuillez renseigner un nom d'utilisateur!" */ 
+            /* Ici s'affiche : "Veuillez renseigner un nom d'utilisateur !" */ 
             if (isset($error_username)) {
                 echo "<br> <strong>" . $error_username . "</strong>";
             }
@@ -59,7 +59,7 @@
             </span>
 
             <?php
-            /* Ici s'affiche : "Veuillez renseigner un mot de passe! " */ 
+            /* Ici s'affiche : "Veuillez renseigner un mot de passe !" */ 
             if (isset($error_password)) {
                 echo "<br> <strong>" . $error_password . "</strong>";
             }

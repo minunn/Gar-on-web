@@ -26,31 +26,44 @@ function initialize() {
 }
 
 function sous_menu_1_on() {
+  /* Ferme les autres sous-menus s'ils sont ouverts et ouvre le menu 1 */
   sous_menu_2_off();
   sous_menu_3_off();
   document.getElementById("sous-menu_1").style.visibility = "visible";
 }
 
 function sous_menu_1_off() {
+  /* Ferme le sous-menu 1 */
   document.getElementById("sous-menu_1").style.visibility = "hidden";
 }
 
 function sous_menu_2_on() {
+  /* Ferme les autres sous-menus s'ils sont ouverts et ouvre le menu 2 */
   sous_menu_1_off();
   sous_menu_3_off();
   document.getElementById("sous-menu_2").style.visibility = "visible";
 }
 
 function sous_menu_2_off() {
+  /* Ferme le sous-menu 2 */
   document.getElementById("sous-menu_2").style.visibility = "hidden";
 }
 
 function sous_menu_3_on() {
+  /* Ferme les autres sous-menus s'ils sont ouverts et ouvre le menu 3 */
   sous_menu_1_off();
   sous_menu_2_off();
   document.getElementById("sous-menu_3").style.visibility = "visible";
 }
 
 function sous_menu_3_off() {
+  /* Ferme le sous-menu 3 */
   document.getElementById("sous-menu_3").style.visibility = "hidden";
+}
+
+function sous_menus_off() {
+  /* Ferme tous les sous-menus, appliqué dès la souris quitte le header */
+  sous_menu_1_off();
+  sous_menu_2_off();
+  sous_menu_3_off();
 }
