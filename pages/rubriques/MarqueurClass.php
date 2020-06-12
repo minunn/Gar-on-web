@@ -55,9 +55,21 @@ class MarqueurClass
   {
     // code...
   }
-  public function updateMarqueur($value='')
+  public function updateMarqueur($newMarqueur)
   {
-    // code...
+    $idMarqueur = $newMarqueur["ID"];
+
+    $newNom = $newMarqueur["nomMarqueur"];
+    $newLatitude = $newMarqueur["posX"];
+    $newLongitude = $newMarqueur["posY"];
+
+    if (isset($newMarqueur["texteMarqueur"])) {
+      $newTexte = $newMarqueur["texteMarqueur"];
+    }
+    if (isset($newMarqueur["changerImage"])) {
+      //
+    }
+
   }
   public function deleteMarqueur($value='')
   {

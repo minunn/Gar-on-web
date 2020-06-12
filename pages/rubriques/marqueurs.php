@@ -20,6 +20,9 @@ $Marqueurs = new MarqueurClass;
 $Cartes = new CartesClass;
 
 var_dump($_POST);
+if (isset($_POST["changerImage"])) {
+  var_dump($_POST["changerImage"]);
+}
 
 ?>
 
@@ -80,6 +83,7 @@ var_dump($_POST);
                 foreach ($marqueur as $marqueurActuel) {
                   //var_dump($marqueurActuel);
                   $idMarqueur = $marqueurActuel["ID_marqueur"];
+                  $nom = $marqueurActuel["Nom"];
                   $latitude = $marqueurActuel["Latitude"];
                   $longitude = $marqueurActuel["Longitude"];
                   $texte = $marqueurActuel["Texte"];
@@ -91,26 +95,28 @@ var_dump($_POST);
 
                   echo "<form action='".$_SERVER['PHP_SELF']."' method='post' hidden='true'>";
                   echo"<div class='maindiv marqueurs'>
+                        <h4>Changer Nom</h4>
+                        <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom'><br>
+                      </div>";
+                  echo"<div class='maindiv marqueurs'>
                         <h4>Changer Position</h4>
                         Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude'><br>
                         Longitude : <br><input type='text' name='posY' id='posY' value='$longitude'><br>
-                        <input type='text' name='ID' value='' hidden>
-                        <br><input type='submit' value='Modifier' name='position'>
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Texte</h4>
                         <input type='text' name='texteMarqueur' id='texteMarqueur' value='$texte'><br>
-                        <input type='text' name='ID' value='' hidden>
-                        <input type='submit' value='Modifier' name='texte'>
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Image</h4>
                         $image
                         <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
-                        <input type='text' name='ID' value='' hidden>
-                        <input type='submit' value='Modifier' name='image'>
                       </div>";
-                  echo "</form>";
+                  echo"<div class='maindiv marqueurs'>
+                        <input type='hidden' name='ID' value='$idMarqueur'>
+                        <input type='submit' value='Modifier' name='submit'>
+                      </div>";
+                  echo"</form>";
                 }
 
                 echo "</div>";
