@@ -19,6 +19,7 @@ require_once 'CartesClass.php';
 $Marqueurs = new MarqueurClass;
 $Cartes = new CartesClass;
 
+var_dump($_POST);
 
 ?>
 
@@ -55,21 +56,25 @@ $Cartes = new CartesClass;
             <hr>
         </div>
         <div id="main">
-            <div class="maindiv" onclick='hideChildren(this)'>
+            <div class="maindiv">
                 <div id="map"></div>
             </div>
             <?php
             $cartes = $Cartes->getCartes();
             foreach ($cartes as $carteActuelle) {
               echo "<div id='".$carteActuelle["nom_carte"]."' class='maindiv'>";
-              echo "<h2>".$carteActuelle["nom_carte"]."<br>"."</h2>";
+              echo "<h2>".$carteActuelle["nom_carte"];
+              echo "<span onclick='hideChildren(this)'>▼</span>";
+              echo "</h2>";
 
 
               $marqueurs = $Cartes->getMarqueursFromNomCarte($carteActuelle["nom_carte"]);
               //var_dump($marqueurs);
               foreach ($marqueurs as $marqueursCarteActuelle) {
-                echo '<div class="maindiv marqueurs" onclick="hideChildren(this)">';
-                echo "<h3>". $marqueursCarteActuelle["marqueur"] ."</h3>";
+                echo '<div class="maindiv marqueurs" hidden="true">';
+                echo "<h3>". $marqueursCarteActuelle["marqueur"];
+                echo "<span onclick='hideChildren(this)'>▼</span>";
+                echo "</h3>";
 
                 $marqueur = $Marqueurs->getMarqueurByNom($marqueursCarteActuelle["marqueur"]);
                 foreach ($marqueur as $marqueurActuel) {
@@ -110,7 +115,7 @@ $Cartes = new CartesClass;
 
                 echo "</div>";
               }
-              echo "<div class='maindiv marqueurs'>";
+              echo "<div class='maindiv marqueurs' hidden='true'>";
               echo "<h3>Ajouter un marqueur</h3>";
               echo "</div>";
               echo "</div>";
