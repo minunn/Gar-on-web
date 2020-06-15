@@ -18,11 +18,17 @@ require_once 'MarqueurClass.php';
 require_once 'CartesClass.php';
 $Marqueurs = new MarqueurClass;
 $Cartes = new CartesClass;
+echo "-------------";
 
-var_dump($_POST);
-if (isset($_POST["changerImage"])) {
-  var_dump($_POST["changerImage"]);
+//var_dump($_POST);
+if (isset($_POST["submit"])&&isset($_FILES["changerImage"]["name"])) {
+  var_dump($_FILES);
+  $Marqueurs->updateMarqueur($_POST, $_FILES);
 }
+elseif (isset($_POST["submit"])) {
+  $Marqueurs->updateMarqueur($_POST);
+}
+
 
 ?>
 
@@ -93,15 +99,15 @@ if (isset($_POST["changerImage"])) {
                     $image = "<img src=$imgSource".' width="100%"/>';
                   }
 
-                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' hidden='true'>";
+                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden='true'>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Nom</h4>
-                        <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom'><br>
+                        <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Position</h4>
-                        Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude'><br>
-                        Longitude : <br><input type='text' name='posY' id='posY' value='$longitude'><br>
+                        Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude' required><br>
+                        Longitude : <br><input type='text' name='posY' id='posY' value='$longitude' required><br>
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Texte</h4>
@@ -109,8 +115,7 @@ if (isset($_POST["changerImage"])) {
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Image</h4>
-                        $image
-                        <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
+                        $image <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <input type='hidden' name='ID' value='$idMarqueur'>

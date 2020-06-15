@@ -55,7 +55,7 @@ class MarqueurClass
   {
     // code...
   }
-  public function updateMarqueur($newMarqueur)
+  public function updateMarqueur($newMarqueur,$files = '')
   {
     $idMarqueur = $newMarqueur["ID"];
 
@@ -63,13 +63,54 @@ class MarqueurClass
     $newLatitude = $newMarqueur["posX"];
     $newLongitude = $newMarqueur["posY"];
 
+    $bdd = connectDBS();
+    $query = "UPDATE `marqueurs` SET
+    `Nom` = :nom, `Latitude` = :latitude, `Longitude` = :longitude,
+    `Texte` = :texte,
+    `Photo` = :photo, `Image_type` = :imagetype
+    WHERE `marqueurs`.`ID_marqueur` = :id ";
+
     if (isset($newMarqueur["texteMarqueur"])) {
       $newTexte = $newMarqueur["texteMarqueur"];
     }
-    if (isset($newMarqueur["changerImage"])) {
-      //
+    else {
+      $newTexte = NULL;
     }
+    if (isset($files)) {
+      //$newImage = addslashes(file_get_contents($_FILES['changerImage']['tmp_name']));
+      $newImage = file_get_contents($_FILES['changerImage']['tmp_name']);
+      //$newImage = $_FILES['changerImage']['tmp_name'];
+      $newImageType = $_FILES['changerImage']['type'];
+    }
+    else {
+      $newImage = NULL;
+      $newImageType = NULL;
+    }
+    var_dump($newImage);
 
+    $query .= " ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':nom',$newNom);
+    $stmt->bindValue(':latitude',$newLatitude);
+    $stmt->bindValue(':longitude',$newLongitude);
+    if ($newTexte == NULL) {
+      $stmt->bindValue(':texte',$newTexte,PDO::PARAM_NULL);
+    }
+    else {
+      $stmt->bindValue(':texte',$newTexte);
+    }
+    if ($newImage == NULL) {
+      $stmt->bindValue(':photo',$newImage,PDO::PARAM_NULL);
+      $stmt->bindValue(':imagetype',$newImageType,PDO::PARAM_NULL);
+    }
+    else {
+      $stmt->bindValue(':photo',$newImage);
+      $stmt->bindValue(':imagetype',$newImageType);
+    }
+    $stmt->bindValue(':id',$idMarqueur);
+
+    $stmt->execute();
+    //return ($stmt > 0) ? true : false;
   }
   public function deleteMarqueur($value='')
   {

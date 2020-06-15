@@ -44,7 +44,7 @@ require_once 'pages/rubriques/auth_check.php';
       $popup .= $texteMarqueur;
     }
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
-      $imgSource = '"rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+      $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
       $image = "<img src=$imgSource".' width="100%"/>';
       $popup .= " " .$image;
     }
