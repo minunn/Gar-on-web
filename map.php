@@ -44,19 +44,38 @@ require_once 'pages/rubriques/auth_check.php';
       $popup .= $texteMarqueur;
     }
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
-      $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
+      $imgSource = '"rubriques/viewImage.php?image_id='.$idMarqueur.'"';
       $image = "<img src=$imgSource".' width="100%"/>';
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map);";
-    }
+      echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+
+      }).addTo(map);
+      monMarker.on('dragend',function(e) {
+        //ici on change lat lng une fois le marker lacher 
+        var latset = (e.latlng.lat);
+        var lngset = (e.latlng.lng);
+        $edit = UPDATE `marqueurs` SET `Latitude` = 'latset', `Longitude` = 'lngset' WHERE `marqueurs`.`ID_marqueur` = $idMarqueur;
+        $modify = $db->prepare($edit);
+        $modify -> execute();
+      });";
+     
+      }
+
     else {
-      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map)
+  echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+ 
+      }).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
           });
-          ";
+          monMarker.on('dragend',function(e) {
+            //ici on change lat lng une fois le marker lacher
+    
+          });";
     }
 
   }
