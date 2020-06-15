@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 15 juin 2020 à 16:08
+-- Généré le : lun. 15 juin 2020 à 16:36
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
@@ -50,6 +50,7 @@ INSERT INTO `cartes` (`ID_cartes`, `nom_carte`, `marqueur`, `plage`) VALUES
 --
 
 CREATE TABLE `liste_cartes` (
+  `ID` int(11) NOT NULL,
   `nom_carte` varchar(25) NOT NULL,
   `limites` polygon NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,10 +59,10 @@ CREATE TABLE `liste_cartes` (
 -- Déchargement des données de la table `liste_cartes`
 --
 
-INSERT INTO `liste_cartes` (`nom_carte`, `limites`) VALUES
-('Carte 1', 0x),
-('Carte 2', 0x),
-('Carte 3', 0x);
+INSERT INTO `liste_cartes` (`ID`, `nom_carte`, `limites`) VALUES
+(1, 'Carte 1', 0x000000000103000000010000000400000000000000000000000000000000000000000000000000f03f000000000000f03f0000000000000040000000000000004000000000000000000000000000000000),
+(2, 'Carte 2', 0x000000000103000000010000000400000000000000000000000000000000000000000000000000f03f000000000000f03f0000000000000040000000000000004000000000000000000000000000000000),
+(3, 'Carte 3', 0x000000000103000000010000000400000000000000000000000000000000000000000000000000f03f000000000000f03f0000000000000040000000000000004000000000000000000000000000000000);
 
 -- --------------------------------------------------------
 
@@ -160,6 +161,12 @@ ALTER TABLE `cartes`
   ADD PRIMARY KEY (`ID_cartes`);
 
 --
+-- Index pour la table `liste_cartes`
+--
+ALTER TABLE `liste_cartes`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Index pour la table `marqueurs`
 --
 ALTER TABLE `marqueurs`
@@ -186,6 +193,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cartes`
   MODIFY `ID_cartes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `liste_cartes`
+--
+ALTER TABLE `liste_cartes`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `marqueurs`
