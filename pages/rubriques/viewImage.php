@@ -5,7 +5,6 @@ $db = new PDO('mysql:host=localhost;dbname=garonweb-db-new', 'root', '');
     $result = $db->prepare($sql);
     $result -> execute();
     $data = $result -> fetchAll();
-    #echo "<script> </script>";
 		header("Content-type: " . $data[0]["Image_type"]);
         echo $data[0]["Photo"];
 	}
