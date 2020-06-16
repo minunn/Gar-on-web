@@ -55,11 +55,6 @@ require_once 'pages/rubriques/auth_check.php';
       }).addTo(map);
       monMarker.on('dragend',function(e) {
         //ici on change lat lng une fois le marker lacher 
-        var latset = (e.latlng.lat);
-        var lngset = (e.latlng.lng);
-        $edit = UPDATE `marqueurs` SET `Latitude` = 'latset', `Longitude` = 'lngset' WHERE `marqueurs`.`ID_marqueur` = $idMarqueur;
-        $modify = $db->prepare($edit);
-        $modify -> execute();
       });";
      
       }

@@ -70,7 +70,7 @@
 
             <!-- Bouton Retour à l'accueil -->
             <input type="button" name="button" onclick="window.location.href = '../index.php'"
-                value=" Retour à l'accueil" href="../index.html">
+                value=" Retour à l'accueil" href="../index.php">
 
             <!-- Bouton Connexion -->
             <input type="submit" name="submit" value="Connexion">

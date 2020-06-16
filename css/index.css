@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  /*border: 1px solid black;*/
 }
 
 body {
@@ -21,13 +22,14 @@ a:active {
 }
 
 header {
-  padding: 2% 0 5% 0;
+  padding: 1% 0 5% 0;
   background-color: white;
   width: 100%;
   height: auto;
 }
 
 #connexion {
+  background-color: lightgray;
   padding: 1% 0 1% 0;
   position: absolute;
   right: 5vw;
@@ -40,20 +42,20 @@ header {
   margin-left: 20vw;
   border: 1px solid grey;
   display: flex;
-  width: 20%;
+  width: 7vw;
   justify-content: space-between;
   flex-direction: row;
   font-weight: bold;
 }
 
 .drapeaux {
-  height: 3vh;
+  height: 2vh;
 }
 
 #navigation {
   width: 60%;
   height: auto;
-  margin: 3% auto 1% auto;
+  margin: 2% auto 1% auto;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -68,31 +70,40 @@ header {
 .elements {
   width: 90%;
   height: 100%;
-  background-color: lightgrey;
+  background-color: lightgray;
   border-radius: 1vw;
   box-shadow: 2px 2px 5px black;
   margin-right: 3vw;
 }
 
 .sous-menu {
+  overflow: hidden;
   position: absolute;
-  background-color: darkgray;
+  background-color: white;
+  box-shadow: 0px 0px 5px black;
+  /*line-height: 2em;*/
   width: 7%;
   visibility: hidden;
 }
 
 #sous-menu_1 {
   margin-left: 25.6vw;
-  border-radius: 10% / 25%;
+  border-radius: 15% / 25%;
   height: auto;
 }
 #sous-menu_2 {
   margin-left: 33vw;
-  border-radius: 10%;
+  border-radius: 18% / 8%;
 }
 #sous-menu_3 {
   margin-left: 39.9vw;
-  border-radius: 10% / 25%;
+  border-radius: 15% / 15%;
+}
+
+#sous-menu_1 div,
+#sous-menu_2 div,
+#sous-menu_3 div {
+  padding: 10% 0 10% 0;
 }
 
 #titre {
