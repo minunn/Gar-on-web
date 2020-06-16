@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -16,9 +15,9 @@
 
     <body onload="initialize()">
         <header>
-            <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
-                <p><a href="pages/login.php">Connexion</a></p>
-            </div>
+            <a href="pages/login.php"><div id="connexion" onmouseover="this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"> <!-- Renvoie vers la page de connexion administrateur -->
+                <p>Connexion</p>
+            </div></a>
 
             <div id="langues"> <!-- Choix de la langue -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
@@ -29,21 +28,35 @@
 
             <div id="navigation"> <!-- Menu de navigation -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Accueil</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menu_1_on()"><p>L'association</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menu_2_on()"><p>Nos actions</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menu_3_on()"><p>Actualités</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Infos pratiques</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Blog</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Contact</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Réservation</p></div></a>
-                <a href=""><div class="elements" onmouseover="sous_menus_off()"><p>Membres</p></div></a>
+                <a href="https://www.amigaronne.com/"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Accueil</p></div></a>
+                <a href="https://www.amigaronne.com/l-association"><div class="elements" onmouseover="sous_menu_1_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>L'association</p></div></a>
+                <a href="https://www.amigaronne.com/nos-actions"><div class="elements" onmouseover="sous_menu_2_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Nos actions</p></div></a>
+                <a href="https://www.amigaronne.com/actualites2019"><div class="elements" onmouseover="sous_menu_3_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Actualités</p></div></a>
+                <a href="https://www.amigaronne.com/infos-pratiques"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Infos pratiques</p></div></a>
+                <a href="https://www.amigaronne.com/blog"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Blog</p></div></a>
+                <a href="https://www.amigaronne.com/contact"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Contact</p></div></a>
+                <a href="https://www.amigaronne.com/reservation"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Réservation</p></div></a>
+                <a href="https://www.amigaronne.com/membres"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Membres</p></div></a>
             </div>
 
             <div id="sous-navigation"> <!-- Sous-menus de navigation -->
-                <div id="sous-menu_1" class="sous-menu" onmouseover="sous_menu_1_on()" onmouseout="sous_menu_1_off()"><a href="">Notre histoire</a><br><a href="">Nos partenaires</a></div>
-                <div id="sous-menu_2" class="sous-menu" onmouseover="sous_menu_2_on()" onmouseout="sous_menu_2_off()"><a href="">Balade fluviale</a><br><a href="">Balade avec visite guidée</a><br><a href="">Une journée à Lagruère</a><br><a href="">Sortie pêche</a><br><a href="">Cartographie</a><br><a href="">Garo Challenge</a><br></div>
-                <div id="sous-menu_3" class="sous-menu" onmouseover="sous_menu_3_on()" onmouseout="sous_menu_3_off()"><a href="">Galerie</a><br><a href="">2019</a><br><a href="">2018</a></div>
+                <div id="sous-menu_1" class="sous-menu" onmouseover="sous_menu_1_on()" onmouseout="sous_menu_1_off()">
+                    <div id="histoire" onmouseover="document.getElementById('histoire').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('histoire').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/notre-histoire">Notre histoire</a></div>
+                    <div id="partenaires" onmouseover="document.getElementById('partenaires').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('partenaires').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/nos-partenaires">Nos partenaires</a></div>
+                </div>
+                <div id="sous-menu_2" class="sous-menu" onmouseover="sous_menu_2_on()" onmouseout="sous_menu_2_off()">
+                    <div id="fluviale" onmouseover="document.getElementById('fluviale').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('fluviale').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/balade-fluviale">Balade fluviale</a></div>
+                    <div id="visite" onmouseover="document.getElementById('visite').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('visite').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/balade-avec-visite">Balade avec visite guidée</a></div>
+                    <div id="lagruere" onmouseover="document.getElementById('lagruere').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('lagruere').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/une-journee-a-lagruere">Une journée à Lagruère</a></div>
+                    <div id="peche" onmouseover="document.getElementById('peche').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('peche').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/sortie-peche">Sortie pêche</a></div>
+                    <div id="carto" onmouseover="document.getElementById('carto').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('carto').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/cartographie">Cartographie</a></div>
+                    <div id="garo" onmouseover="document.getElementById('garo').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('garo').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/garo-challenge">Garo Challenge</a></div>
+                </div>
+                <div id="sous-menu_3" class="sous-menu" onmouseover="sous_menu_3_on()" onmouseout="sous_menu_3_off()">
+                    <div id="galerie" onmouseover="document.getElementById('galerie').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('galerie').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/galerie">Galerie</a></div>
+                    <div id="2019" onmouseover="document.getElementById('2019').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('2019').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/2019">2019</a></div>
+                    <div id="2018" onmouseover="document.getElementById('2018').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('2018').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/2018">2018</a></div>
+                </div>
             </div>
 
             <div id="titre" onmouseover="sous_menus_off()"> <!-- Titre de la page avec logo de l'association et page Facebook -->
@@ -61,8 +74,8 @@
             <div id="legende"> <!-- Légende de la carte -->
                 <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p><br>
-                <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
+                <img src="" id="element1" alt="element 1"><p>Description élément 1</p><br>
+                <img src="" id="element2" alt="element 2"><p>Description élément 2</p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
