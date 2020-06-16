@@ -4,6 +4,7 @@
  */
 include_once 'bdd_util.php';
 
+
 class CartesClass
 {
   public function getCartes()
@@ -49,7 +50,26 @@ class CartesClass
     return $data;
   }
 
+  public function setMarqueurCarteFromID($idCarte, $newNomMarqueur)
+  {
+    // code...
+  }
 
+  public function setPlageCarteFromID($idCarte, $newNomMarqueur)
+  {
+    // code...
+  }
+
+  public function addMarqueurCarte($nomCarte, $newNomMarqueur)
+  {
+    $bdd = connectDBS();
+    $query = "INSERT INTO `cartes` (`nom_carte`, `marqueur`)
+    VALUES (:carte, :marqueur) ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':carte',$nomCarte);
+    $stmt->bindValue(':marqueur',$newNomMarqueur);
+    $stmt->execute();
+  }
 
 }
 

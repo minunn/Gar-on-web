@@ -18,15 +18,20 @@ require_once 'MarqueurClass.php';
 require_once 'CartesClass.php';
 $Marqueurs = new MarqueurClass;
 $Cartes = new CartesClass;
-echo "-------------";
 
 //var_dump($_POST);
-if (isset($_POST["submit"])&&isset($_FILES["changerImage"]["name"])) {
-  var_dump($_FILES);
+if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
   $Marqueurs->updateMarqueur($_POST, $_FILES);
 }
-elseif (isset($_POST["submit"])) {
+elseif (isset($_POST["modifMarqueur"])) {
   $Marqueurs->updateMarqueur($_POST);
+}
+
+if (isset($_POST["ajoutMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+  $Marqueurs->createNewMarqueur($_POST, $_FILES);
+}
+elseif (isset($_POST["ajoutMarqueur"])) {
+  $Marqueurs->createNewMarqueur($_POST);
 }
 
 
@@ -73,7 +78,7 @@ elseif (isset($_POST["submit"])) {
             foreach ($cartes as $carteActuelle) {
               echo "<div id='".$carteActuelle["nom_carte"]."' class='maindiv'>";
               echo "<h2>".$carteActuelle["nom_carte"];
-              echo "<span onclick='hideChildren(this)'>▼</span>";
+              echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
               echo "</h2>";
 
 
@@ -82,7 +87,7 @@ elseif (isset($_POST["submit"])) {
               foreach ($marqueurs as $marqueursCarteActuelle) {
                 echo '<div class="maindiv marqueurs" hidden="true">';
                 echo "<h3>". $marqueursCarteActuelle["marqueur"];
-                echo "<span onclick='hideChildren(this)'>▼</span>";
+                echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
                 echo "</h3>";
 
                 $marqueur = $Marqueurs->getMarqueurByNom($marqueursCarteActuelle["marqueur"]);
@@ -119,7 +124,7 @@ elseif (isset($_POST["submit"])) {
                       </div>";
                   echo"<div class='maindiv marqueurs'>
                         <input type='hidden' name='ID' value='$idMarqueur'>
-                        <input type='submit' value='Modifier' name='submit'>
+                        <input type='submit' value='Modifier' name='modifMarqueur'>
                       </div>";
                   echo"</form>";
                 }
@@ -127,8 +132,36 @@ elseif (isset($_POST["submit"])) {
                 echo "</div>";
               }
               echo "<div class='maindiv marqueurs' hidden='true'>";
-              echo "<h3>Ajouter un marqueur</h3>";
+              echo "<h3>Ajouter un marqueur ";
+              echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>+</span>";
+              echo "</h3>";
+              echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden='true'>";
+              echo"<div class='maindiv marqueurs'>
+                    <h4>Changer Nom</h4>
+                    <input type='text' name='nomMarqueur' id='nomMarqueur' value='' required><br>
+                  </div>";
+              echo"<div class='maindiv marqueurs'>
+                    <h4>Changer Position</h4>
+                    Latitude :  <br><input type='text' name='posX' id='posX' value='' required><br>
+                    Longitude : <br><input type='text' name='posY' id='posY' value='' required><br>
+                  </div>";
+              echo"<div class='maindiv marqueurs'>
+                    <h4>Changer Texte</h4>
+                    <input type='text' name='texteMarqueur' id='texteMarqueur' value=''><br>
+                  </div>";
+              echo"<div class='maindiv marqueurs'>
+                    <h4>Changer Image</h4>
+                    <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
+                  </div>";
+              $nomCarte = $carteActuelle["nom_carte"];
+              echo"<div class='maindiv marqueurs'>
+                    <input type='hidden' name='nomCarte' value='$nomCarte'>
+                    <input type='submit' value='Modifier' name='ajoutMarqueur'>
+                  </div>";
+              echo"</form>";
               echo "</div>";
+
+
               echo "</div>";
             }
 
