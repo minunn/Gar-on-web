@@ -14,6 +14,16 @@ class MarqueurClass
   public $imagetype; // NOTE: on va peut-être changer l'endroit où sont stockés les images
                     // On n'aura donc pas besoin de préciser le type de l'image dans ce cas
 
+  public function getImageMarqueurById($id)
+  {
+    $bdd = connectDBS();
+    $query = "SELECT Photo,Image_type FROM `marqueurs` WHERE ID_marqueur = :id ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':id',$id);
+    $stmt->execute();
+    $data = $stmt->fetch();
+    return $data;
+  }
 
   public function getMarqueurByNom($nomMarqueur)
   {
@@ -82,6 +92,8 @@ class MarqueurClass
   }
   public function updateMarqueur($newMarqueur,$files = '')
   {
+    $nomMarqueur = $newMarqueur["nnomMarqueur"];
+    $nomCarte = $newMarqueur["nomCarte"];
     $idMarqueur = $newMarqueur["ID"];
 
     $newNom = $newMarqueur["nomMarqueur"];
@@ -103,7 +115,7 @@ class MarqueurClass
     }
     if (isset($files)) {
       //$newImage = addslashes(file_get_contents($_FILES['changerImage']['tmp_name']));
-      $newImage = file_get_contents($_FILES['changerImage']['tmp_name']);
+      @$newImage = file_get_contents($_FILES['changerImage']['tmp_name']);
       //$newImage = $_FILES['changerImage']['tmp_name'];
       $newImageType = $_FILES['changerImage']['type'];
     }
@@ -111,9 +123,7 @@ class MarqueurClass
       $newImage = NULL;
       $newImageType = NULL;
     }
-    var_dump($newImage);
 
-    $query .= " ";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':nom',$newNom);
     $stmt->bindValue(':latitude',$newLatitude);
@@ -125,8 +135,16 @@ class MarqueurClass
       $stmt->bindValue(':texte',$newTexte);
     }
     if ($newImage == NULL) {
-      $stmt->bindValue(':photo',$newImage,PDO::PARAM_NULL);
-      $stmt->bindValue(':imagetype',$newImageType,PDO::PARAM_NULL);
+      $image = $this->getImageMarqueurById($idMarqueur);
+      if ($image["Photo"] == NULL) {
+        $stmt->bindValue(':photo',$newImage,PDO::PARAM_NULL);
+        $stmt->bindValue(':imagetype',$newImageType,PDO::PARAM_NULL);
+      }
+      else {
+        $stmt->bindValue(':photo',$image["Photo"]);
+        $stmt->bindValue(':imagetype',$image["Image_type"]);
+      }
+
     }
     else {
       $stmt->bindValue(':photo',$newImage);
@@ -135,6 +153,8 @@ class MarqueurClass
     $stmt->bindValue(':id',$idMarqueur);
 
     $stmt->execute();
+    $Cartes = new CartesClass;
+    $Cartes->setMarqueurCarte($nomCarte,$nomMarqueur,$newNom);
     //return ($stmt > 0) ? true : false;
   }
   public function deleteMarqueur($value='')

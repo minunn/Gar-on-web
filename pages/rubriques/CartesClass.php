@@ -50,9 +50,23 @@ class CartesClass
     return $data;
   }
 
-  public function setMarqueurCarteFromID($idCarte, $newNomMarqueur)
+  public function setMarqueurCarte($nomCarte,$nomMarqueur,$newNomMarqueur)
   {
-    // code...
+    $bdd = connectDBS();
+    $query = "SELECT ID_cartes FROM `cartes` WHERE marqueur = :marqueur";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':marqueur',$nomMarqueur);
+    $stmt->execute();
+    $data = $stmt->fetch();
+    $idCarte = $data["ID_cartes"];
+
+    $query = "UPDATE `cartes`
+    SET `marqueur` = :marqueur
+    WHERE `cartes`.`ID_cartes` = :carte ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':carte',$idCarte);
+    $stmt->bindValue(':marqueur',$newNomMarqueur);
+    $stmt->execute();
   }
 
   public function setPlageCarteFromID($idCarte, $newNomMarqueur)

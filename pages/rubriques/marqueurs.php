@@ -19,8 +19,10 @@ require_once 'CartesClass.php';
 $Marqueurs = new MarqueurClass;
 $Cartes = new CartesClass;
 
+
 //var_dump($_POST);
 if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+  var_dump($_POST["modifMarqueur"]);
   $Marqueurs->updateMarqueur($_POST, $_FILES);
 }
 elseif (isset($_POST["modifMarqueur"])) {
@@ -122,8 +124,11 @@ elseif (isset($_POST["ajoutMarqueur"])) {
                         <h4>Changer Image</h4>
                         $image <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
                       </div>";
+                  $nomCarte = $carteActuelle["nom_carte"];
                   echo"<div class='maindiv marqueurs'>
                         <input type='hidden' name='ID' value='$idMarqueur'>
+                        <input type='hidden' name='nomCarte' value='$nomCarte'>
+                        <input type='hidden' name='nnomMarqueur' value='$nom'>
                         <input type='submit' value='Modifier' name='modifMarqueur'>
                       </div>";
                   echo"</form>";
