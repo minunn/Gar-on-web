@@ -51,7 +51,7 @@ require_once 'auth_check.php';
             for ($indexusers = 1; $indexusers <= 3; $indexusers++) {
                 echo "
                             <a href='users.php?users$indexusers'><div class='maindiv users'>
-                                <h3>users $indexusers</h3>
+                                <h3>Utilisateur $indexusers</h3>
                             </div></a>";
                 if (isset($_GET["users$indexusers"])) {
                     echo "<a href='users.php?users$indexusers&changerPosition'><div class='maindiv users'>Nom d'utilisateur</div></a>";
