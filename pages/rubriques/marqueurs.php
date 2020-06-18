@@ -10,37 +10,32 @@
     <script src="../../js/admin.js" charset="utf-8"></script>
 
     <?php
-//appel des fichier pour check si l'utilisateur est connecter
-require_once '../db.php';
-require_once 'auth_check.php';
+      //appel des fichier pour check si l'utilisateur est connecter
+      require_once '../db.php';
+      require_once 'auth_check.php';
 
-require_once 'MarqueurClass.php';
-require_once 'CartesClass.php';
-$Marqueurs = new MarqueurClass;
-$Cartes = new CartesClass;
+      //appel des classes pour les cartes et marqueurs
+      require_once 'CartesClass.php';
+      require_once 'MarqueurClass.php';
+      $Cartes = new CartesClass;
+      $Marqueurs = new MarqueurClass;
 
+      // On vérifie si on a reçu une requête POST
+      if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+        $Marqueurs->updateMarqueur($_POST, $_FILES);
+      }
+      elseif (isset($_POST["modifMarqueur"])) {
+        $Marqueurs->updateMarqueur($_POST);
+      }
 
-//var_dump($_POST);
-if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
-  var_dump($_POST["modifMarqueur"]);
-  $Marqueurs->updateMarqueur($_POST, $_FILES);
-}
-elseif (isset($_POST["modifMarqueur"])) {
-  $Marqueurs->updateMarqueur($_POST);
-}
-
-if (isset($_POST["ajoutMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
-  $Marqueurs->createNewMarqueur($_POST, $_FILES);
-}
-elseif (isset($_POST["ajoutMarqueur"])) {
-  $Marqueurs->createNewMarqueur($_POST);
-}
-
-
-?>
-
-
-    </head>
+      if (isset($_POST["ajoutMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+        $Marqueurs->createNewMarqueur($_POST, $_FILES);
+      }
+      elseif (isset($_POST["ajoutMarqueur"])) {
+        $Marqueurs->createNewMarqueur($_POST);
+      }
+    ?>
+</head>
 
 <body>
     <div id="wrapper">
@@ -54,7 +49,7 @@ elseif (isset($_POST["ajoutMarqueur"])) {
               }
     ?>
 
-  <form id="frm" method="post"  action="?logout" >
+<form id="frm" method="post"  action="?logout" >
     <input class="testing" type="submit" value="logout" id="logout"/>
 </form>
 
@@ -76,6 +71,7 @@ elseif (isset($_POST["ajoutMarqueur"])) {
                 <div id="map"></div>
             </div>
             <?php
+            // On récupère toutes les cartes de la bdd et on les affichent
             $cartes = $Cartes->getCartes();
             foreach ($cartes as $carteActuelle) {
               echo "<div id='".$carteActuelle["nom_carte"]."' class='maindiv'>";
@@ -83,15 +79,15 @@ elseif (isset($_POST["ajoutMarqueur"])) {
               echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
               echo "</h2>";
 
-
+              // Pour chaque carte, on récupère les marqueurs associés et on les affichent
               $marqueurs = $Cartes->getMarqueursFromNomCarte($carteActuelle["nom_carte"]);
-              //var_dump($marqueurs);
               foreach ($marqueurs as $marqueursCarteActuelle) {
                 echo '<div class="maindiv marqueurs" hidden="true">';
                 echo "<h3>". $marqueursCarteActuelle["marqueur"];
                 echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
                 echo "</h3>";
 
+                // Pour chaque marqueurs, on récupère leurs informations et on les affichent
                 $marqueur = $Marqueurs->getMarqueurByNom($marqueursCarteActuelle["marqueur"]);
                 foreach ($marqueur as $marqueurActuel) {
                   //var_dump($marqueurActuel);
@@ -136,6 +132,7 @@ elseif (isset($_POST["ajoutMarqueur"])) {
 
                 echo "</div>";
               }
+              // Ajouter un marqueur
               echo "<div class='maindiv marqueurs' hidden='true'>";
               echo "<h3>Ajouter un marqueur ";
               echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>+</span>";

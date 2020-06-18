@@ -4,6 +4,8 @@
 //appel des fichiers pour vérifier si l'utilisateur est connecté
 require_once '../db.php';
 require_once 'auth_check.php';
+
+// TODO: tout
 ?>
 
 <head>
