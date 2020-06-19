@@ -28,7 +28,7 @@ require_once 'rubriques/auth_check.php';
               }
             ?>
 
-    <form id="frm" method="post"  action="?logout" >
+    <form id="frm" method="post" action="?logout" >
         <input class="testing" type="submit" value="logout" id="logout"/>
     </form>
 

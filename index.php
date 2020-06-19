@@ -28,6 +28,7 @@
 
             <div id="navigation"> <!-- Menu de navigation -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
+                <!-- Les scripts permettent de changer la couleur au survol, ils sont mis ici pour ne pas créer 2 fonctions pour chaque ligne dans le fichier JS -->
                 <a href="https://www.amigaronne.com/"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Accueil</p></div></a>
                 <a href="https://www.amigaronne.com/l-association"><div class="elements" onmouseover="sous_menu_1_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>L'association</p></div></a>
                 <a href="https://www.amigaronne.com/nos-actions"><div class="elements" onmouseover="sous_menu_2_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Nos actions</p></div></a>
@@ -40,6 +41,7 @@
             </div>
 
             <div id="sous-navigation"> <!-- Sous-menus de navigation -->
+            <!-- Les scripts servent à changer la couleur de l'élément au survol -->
                 <div id="sous-menu_1" class="sous-menu" onmouseover="sous_menu_1_on()" onmouseout="sous_menu_1_off()">
                     <div id="histoire" onmouseover="document.getElementById('histoire').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('histoire').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/notre-histoire">Notre histoire</a></div>
                     <div id="partenaires" onmouseover="document.getElementById('partenaires').style.backgroundColor = 'darkgray'" onmouseout="document.getElementById('partenaires').style.backgroundColor = 'white'"><a href="https://www.amigaronne.com/nos-partenaires">Nos partenaires</a></div>
@@ -60,12 +62,13 @@
             </div>
 
             <div id="titre" onmouseover="sous_menus_off()"> <!-- Titre de la page avec logo de l'association et page Facebook -->
+            <!-- On ferme tous les sous-menus au cas où ça n'aurait pas été fait quand l'utilisateur descend sur la page -->
                 <img src="images/logo_AMI.png" id="asso" alt="Logo association">
                 <h1>Cartographie</h1>
                 <a id="fb" href="https://www.facebook.com/amigaronne/"><img id="logo_fb" src="images/logo_facebook.png" alt="Logo Facebook"></a>
             </div>
         </header>
-        <article onmouseover="sous_menus_off()">
+        <article>
             <div id="carte"> <!-- Carte navigable -->
                 <h2>La carte interactive</h2>
                 <div id="map"></div>

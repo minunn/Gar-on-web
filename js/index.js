@@ -67,5 +67,3 @@ function sous_menus_off() {
   sous_menu_2_off();
   sous_menu_3_off();
 }
-
-console.log(document.getElementById("testId").getAttribute("class"));
