@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -7,17 +9,14 @@
         <link rel="shortcut icon" type="image/ico" href="images/favicon.png">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Cartographie | France | Ami Garonne</title>
-        <script src="js/index.js"></script>
-        <!-- API Leaflet -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+        <script src="js/index.js"></script>        
     </head>
 
-    <body onload="initialize()">
+    <body>
         <header>
-            <a href="pages/login.php"><div id="connexion" onmouseover="this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"> <!-- Renvoie vers la page de connexion administrateur -->
-                <p>Connexion</p>
-            </div></a>
+            <div id="connexion"> <!-- Renvoie vers la page de connexion administrateur -->
+                <p><a href="pages/login.php">Connexion</a></p>
+            </div>
 
             <div id="langues"> <!-- Choix de la langue -->
                 <!-- Les balises div servent à organiser les éléments avec flexbox -->
@@ -77,8 +76,8 @@
             <div id="legende"> <!-- Légende de la carte -->
                 <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="" id="element1" alt="element 1"><p>Description élément 1</p><br>
-                <img src="" id="element2" alt="element 2"><p>Description élément 2</p>
+                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p><br>
+                <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
@@ -102,4 +101,5 @@
             </footer>
         </article>
     </body>
+    <?php include 'map.php'; ?>
 </html>

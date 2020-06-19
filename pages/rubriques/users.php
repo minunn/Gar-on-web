@@ -51,7 +51,7 @@ require_once 'auth_check.php';
             for ($indexusers = 1; $indexusers <= 3; $indexusers++) {
                 echo "
                             <a href='users.php?users$indexusers'><div class='maindiv users'>
-                                <h3>users $indexusers</h3>
+                                <h3>Utilisateur $indexusers</h3>
                             </div></a>";
                 if (isset($_GET["users$indexusers"])) {
                     echo "<a href='users.php?users$indexusers&changerPosition'><div class='maindiv users'>Nom d'utilisateur</div></a>";
@@ -87,24 +87,5 @@ require_once 'auth_check.php';
     </div>
 
 </body>
-
-<script>
-var getParams = function(url) {
-    var params = {};
-    var parser = document.createElement('a');
-    parser.href = url;
-    var query = parser.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        params[pair[0]] = decodeURIComponent(pair[1]);
-    }
-    return params;
-};
-var urlParams = getParams(window.location.href);
-var paramKeys = Object.keys(urlParams);
-var elementToScrollTo = document.getElementById(paramKeys[0])
-elementToScrollTo.scrollIntoView()
-</script>
 
 </html>
