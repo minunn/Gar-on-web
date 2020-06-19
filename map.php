@@ -3,9 +3,12 @@
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
 
-//appel des fichier pour check si l'utilisateur est connecter
-require_once 'pages/db.php';
-require_once 'pages/rubriques/auth_check.php';
+/*appel des fichier pour check si l'utilisateur est connecté
+Provoque 2 erreurs car l'utilisateur n'est pas connecté lors de l'appel dans l'index
+Mit en commentaire au cas où mais les fichiers ne semblent pas nécessaires*/
+
+/*require_once 'pages/db.php';
+require_once 'pages/rubriques/auth_check.php';*/
 ?>
 <?php
   echo '
