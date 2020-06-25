@@ -176,9 +176,14 @@ class MarqueurClass
     $Cartes = new CartesClass;
     $Cartes->setMarqueurCarte($nomCarte,$nomMarqueur,$newNom);
   }
-  public function deleteMarqueur($value='')
+  public function deleteMarqueurById($id)
   {
-    // TODO: récupérer id marqueur, supprimer dans table marqueurs et cartes
+    $bdd = connectDBS();
+    $query = "DELETE FROM `marqueurs`
+    WHERE `marqueurs`.`ID_marqueur` = :id";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':id',$id);
+    $stmt->execute();
   }
 }
 ?>
