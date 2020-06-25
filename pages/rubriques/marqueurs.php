@@ -22,6 +22,7 @@
 
       // On vérifie si on a reçu une requête POST
       if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+        echo "modif";
         $Marqueurs->updateMarqueur($_POST, $_FILES);
       }
       elseif (isset($_POST["modifMarqueur"])) {
@@ -29,10 +30,15 @@
       }
 
       if (isset($_POST["ajoutMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
+        echo "ajout";
         $Marqueurs->createNewMarqueur($_POST, $_FILES);
       }
       elseif (isset($_POST["ajoutMarqueur"])) {
         $Marqueurs->createNewMarqueur($_POST);
+      }
+
+      if (isset($_POST["supprMarqueur"])) {
+        $Marqueurs->deleteMarqueurById($_POST["ID"]);
       }
     ?>
 </head>
@@ -127,6 +133,10 @@
                         <input type='hidden' name='nnomMarqueur' value='$nom'>
                         <input type='submit' value='Modifier' name='modifMarqueur'>
                       </div>";
+                  echo "<div class='maindiv marqueurs'>
+                          <input type='submit' value='Supprimer ce marqueur' name='supprMarqueur'>
+                        </div>
+                  ";
                   echo"</form>";
                 }
 
