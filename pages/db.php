@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
             /* Redirige vers la page admin si la connexion s'effectue */ 
-            header('Location: /Gar-On-Web/pages/admin.php');
+            header('Location: admin.php');
             /* Exit de la fonction */ 
             exit();
         }
