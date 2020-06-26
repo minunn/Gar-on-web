@@ -1,7 +1,5 @@
 <?php
-/**
- *
- */
+
 include_once 'bdd_util.php';
 require_once 'CartesClass.php';
 class MarqueurClass
@@ -199,6 +197,4 @@ class MarqueurClass
     $stmt->execute();
   }
 }
-
-
- ?>
+?>

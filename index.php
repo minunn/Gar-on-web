@@ -74,8 +74,8 @@
             <div id="legende"> <!-- Légende de la carte -->
                 <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="" id="element1" alt="element 1"></img><p>Description élément 1</p><br>
-                <img src="" id="element2" alt="element 2"></img><p>Description élément 2</p>
+                <img src="" id="element1" alt="element 1"><p>Description élément 1</p><br>
+                <img src="" id="element2" alt="element 2"><p>Description élément 2</p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->

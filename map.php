@@ -13,11 +13,11 @@ require_once 'pages/rubriques/auth_check.php';*/
 <?php
   echo '
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin="" />
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""></script>
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
   <script type="text/javascript" defer>';
   echo "
   var divMap = document.getElementById('map')
@@ -60,6 +60,7 @@ require_once 'pages/rubriques/auth_check.php';*/
       monMarker.on('dragend',function(e) {
         //ici on change lat lng une fois le marker lacher
       });";
+<<<<<<< HEAD
 
       }
 
@@ -75,6 +76,19 @@ require_once 'pages/rubriques/auth_check.php';*/
             //ici on change lat lng une fois le marker lacher
 
           });";
+=======
+     
+      } else {
+        echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+        }).addTo(map)
+          .bindPopup('$popup',{
+            maxWidth: 'auto'
+        });
+        monMarker.on('dragend',function(e) {
+          //ici on change lat lng une fois le marker lacher
+        });";
+>>>>>>> 35d9a7837b3ac148e18134de34a9c04a7261e1da
     }
 
   }
