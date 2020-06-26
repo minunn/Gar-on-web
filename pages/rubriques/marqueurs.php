@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>admin</title>
     <link rel="shortcut icon" type="image/ico" href="../../index/images/favicon.png"> <!-- favicon -->
     <link rel="stylesheet" href="../../css/adminstyle.css">
 
-    <script src="../../js/admin.js"></script>
+    <script src="../../js/admin.js" charset="utf-8"></script>
 
     <?php
       //appel des fichier pour check si l'utilisateur est connecter
@@ -41,41 +41,36 @@
         $Marqueurs->deleteMarqueurById($_POST["ID"]);
       }
     ?>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="wrapper">
-      <div id="header">
-        <h1>Administration</h1>
-        <?php
-        if(isset($_GET['logout']))
-          {
-            session_destroy();
-            header('Location: /Gar-On-Web/pages/login.php');
-          }
-        ?>
+        <div id="header">
+            <h1>Administration</h1>
+            <?php
+       if(isset($_GET['logout']))
+              {
+                session_destroy();
+                header('Location: /Gar-On-Web/pages/login.php');
+              }
+    ?>
 
-        <form id="frm" method="post"  action="?logout" >
-          <input class="testing" type="submit" value="logout" id="logout"/>
-        </form>
+<form id="frm" method="post"  action="?logout" >
+    <input class="testing" type="submit" value="logout" id="logout"/>
+</form>
 
-      </div>
-      <div id="sidebar">
-        <a href="marqueurs.php">
-          <div class="sidebardiv" style="background-color: darkgray;">Marqueurs</div>
-        </a>
-        <a href="plages.php">
-          <div class="sidebardiv">Plages</div>
-        </a>
-        <a href="users.php">
-          <div class="sidebardiv">Utilisateurs</div>
-        </a>
-        <hr>
-      </div>
-      <div id="main">
-        <div class="maindiv">
-          <div id="map">
-          </div>
+        </div>
+        <div id="sidebar">
+            <a href="marqueurs.php">
+                <div class="sidebardiv" style="background-color: darkgray;">Marqueurs</div>
+            </a>
+            <a href="plages.php">
+                <div class="sidebardiv">Plages</div>
+            </a>
+            <a href="users.php">
+                <div class="sidebardiv">Utilisateurs</div>
+            </a>
+            <hr>
         </div>
         <div id="main">
             <div class="maindiv">
@@ -95,7 +90,10 @@
               foreach ($marqueurs as $marqueursCarteActuelle) {
                 // Pour chaque marqueurs, on récupère leurs informations et on les affichent
                 $marqueur = $Marqueurs->getMarqueurById($marqueursCarteActuelle["ID_marqueur"]);
+
                 echo '<div class="maindiv marqueurs" hidden="true">';
+
+
 
                 foreach ($marqueur as $marqueurActuel) {
                   //var_dump($marqueurActuel);
@@ -147,70 +145,44 @@
 
                 echo "</div>";
               }
-              echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden>";
+              // Ajouter un marqueur
+              echo "<div class='maindiv marqueurs' hidden='true'>";
+              echo "<h3>Ajouter un marqueur ";
+              echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>+</span>";
+              echo "</h3>";
+              echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden='true'>";
               echo"<div class='maindiv marqueurs'>
-                <h4>Changer Nom</h4>
-                <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
-              </div>";
+                    <h4>Changer Nom</h4>
+                    <input type='text' name='nomMarqueur' id='nomMarqueur' value='' required><br>
+                  </div>";
               echo"<div class='maindiv marqueurs'>
-                <h4>Changer Position</h4>
-                Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude' required><br>
-                Longitude : <br><input type='text' name='posY' id='posY' value='$longitude' required><br>
-              </div>";
+                    <h4>Changer Position</h4>
+                    Latitude :  <br><input type='text' name='posX' id='posX' value='' required><br>
+                    Longitude : <br><input type='text' name='posY' id='posY' value='' required><br>
+                  </div>";
               echo"<div class='maindiv marqueurs'>
-                <h4>Changer Texte</h4>
-                <input type='text' name='texteMarqueur' id='texteMarqueur' value='$texte'><br>
-              </div>";
+                    <h4>Changer Texte</h4>
+                    <input type='text' name='texteMarqueur' id='texteMarqueur' value=''><br>
+                  </div>";
               echo"<div class='maindiv marqueurs'>
-                <h4>Changer Image</h4>
-                $image <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
-              </div>";
+                    <h4>Changer Image</h4>
+                    <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
+                  </div>";
               $nomCarte = $carteActuelle["nom_carte"];
               echo"<div class='maindiv marqueurs'>
-                <input type='hidden' name='ID' value='$idMarqueur'>
-                <input type='hidden' name='nomCarte' value='$nomCarte'>
-                <input type='hidden' name='nnomMarqueur' value='$nom'>
-                <input type='submit' value='Modifier' name='modifMarqueur'>
-              </div>";
+                    <input type='hidden' name='nomCarte' value='$nomCarte'>
+                    <input type='submit' value='Modifier' name='ajoutMarqueur'>
+                  </div>";
               echo"</form>";
-            }
               echo "</div>";
-          }
-          // Ajouter un marqueur
-          echo "<div class='maindiv marqueurs' hidden>";
-          echo "<h3>Ajouter un marqueur ";
-          echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>+</span>";
-          echo "</h3>";
-          echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden>";
-            echo"<div class='maindiv marqueurs'>
-              <h4>Changer Nom</h4>
-              <input type='text' name='nomMarqueur' id='nomMarqueur' value='' required><br>
-              </div>";
-            echo"<div class='maindiv marqueurs'>
-              <h4>Changer Position</h4>
-              Latitude :  <br><input type='text' name='posX' id='posX' value='' required><br>
-              Longitude : <br><input type='text' name='posY' id='posY' value='' required><br>
-            </div>";
-            echo"<div class='maindiv marqueurs'>
-              <h4>Changer Texte</h4>
-              <input type='text' name='texteMarqueur' id='texteMarqueur' value=''><br>
-            </div>";
-            echo"<div class='maindiv marqueurs'>
-              <h4>Changer Image</h4>
-              <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
-            </div>";
-            $nomCarte = $carteActuelle["nom_carte"];
-            echo"<div class='maindiv marqueurs'>
-              <input type='hidden' name='nomCarte' value='$nomCarte'>
-              <input type='submit' value='Modifier' name='ajoutMarqueur'>
-            </div>";
-          echo"</form>";
-          echo "</div>";
-          echo "</div>";
-        }
-        ?>
-      </div>
-    </div>
-  </body>
+
+
+              echo "</div>";
+            }
+
+             ?>
+        </div>
+
+</body>
   <?php include '../../map.php'; ?>
 </html>

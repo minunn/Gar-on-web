@@ -60,24 +60,7 @@ require_once 'pages/rubriques/auth_check.php';*/
       monMarker.on('dragend',function(e) {
         //ici on change lat lng une fois le marker lacher
       });";
-<<<<<<< HEAD
 
-      }
-
-    else {
-  echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
-        draggable:true,
-
-      }).addTo(map)
-          .bindPopup('$popup',{
-            maxWidth: 'auto'
-          });
-          monMarker.on('dragend',function(e) {
-            //ici on change lat lng une fois le marker lacher
-
-          });";
-=======
-     
       } else {
         echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
         draggable:true,
@@ -88,7 +71,6 @@ require_once 'pages/rubriques/auth_check.php';*/
         monMarker.on('dragend',function(e) {
           //ici on change lat lng une fois le marker lacher
         });";
->>>>>>> 35d9a7837b3ac148e18134de34a9c04a7261e1da
     }
 
   }
