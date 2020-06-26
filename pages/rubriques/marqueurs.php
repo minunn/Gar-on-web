@@ -88,13 +88,10 @@
               // Pour chaque carte, on récupère les marqueurs associés et on les affichent
               $marqueurs = $Cartes->getMarqueursFromNomCarte($carteActuelle["nom_carte"]);
               foreach ($marqueurs as $marqueursCarteActuelle) {
-                echo '<div class="maindiv marqueurs" hidden="true">';
-                echo "<h3>". $marqueursCarteActuelle["marqueur"];
-                echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
-                echo "</h3>";
-
                 // Pour chaque marqueurs, on récupère leurs informations et on les affichent
-                $marqueur = $Marqueurs->getMarqueurByNom($marqueursCarteActuelle["marqueur"]);
+                $marqueur = $Marqueurs->getMarqueurById($marqueursCarteActuelle["ID_marqueur"]);
+                echo '<div class="maindiv marqueurs" hidden="true">';
+
                 foreach ($marqueur as $marqueurActuel) {
                   //var_dump($marqueurActuel);
                   $idMarqueur = $marqueurActuel["ID_marqueur"];
@@ -103,6 +100,9 @@
                   $longitude = $marqueurActuel["Longitude"];
                   $texte = $marqueurActuel["Texte"];
                   $image = '';
+                  echo "<h3>". $nom;
+                  echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
+                  echo "</h3>";
                   if (isset($marqueurActuel["Photo"]) && isset($marqueurActuel["Image_type"])) {
                     $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
                     $image = "<img src=$imgSource".' width="100%"/>';

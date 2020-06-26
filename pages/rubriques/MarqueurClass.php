@@ -13,6 +13,16 @@ class MarqueurClass
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':nomMarqueur',$nomMarqueur);
     $stmt->execute();
+    $data = $stmt->fetch();
+    return $data;
+  }
+  public function getMarqueurById($id)
+  {
+    $bdd = connectDBS();
+    $query = "SELECT * FROM `marqueurs` WHERE ID_marqueur = :id";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':id',$id);
+    $stmt->execute();
     $data = $stmt->fetchAll();
     return $data;
   }
@@ -32,6 +42,7 @@ class MarqueurClass
     $data = $stmt->fetch();
     return $data;
   }
+
 
   public function createNewMarqueur($newMarqueur,$files = '')
   {
@@ -175,8 +186,8 @@ class MarqueurClass
 
     // Pour éviter que le code soit encore plus encombré, j'ai fait une fonction
     // dans la class CartesClass qui se charge de la deuxième partie
-    $Cartes = new CartesClass;
-    $Cartes->setMarqueurCarte($nomCarte,$nomMarqueur,$newNom);
+    //$Cartes = new CartesClass;
+    //$Cartes->setMarqueurCarte($nomCarte,$idMarqueur,$newNom);
   }
   public function deleteMarqueurById($id)
   {

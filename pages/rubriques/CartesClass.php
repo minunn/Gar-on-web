@@ -3,6 +3,7 @@
  *
  */
 include_once 'bdd_util.php';
+require_once 'MarqueurClass.php';
 
 
 class CartesClass
@@ -31,7 +32,7 @@ class CartesClass
   public function getMarqueursFromNomCarte($nomCarte)
   {
     $bdd = connectDBS();
-    $query = "SELECT marqueur FROM `cartes` WHERE nom_carte = :carte";
+    $query = "SELECT ID_marqueur FROM `cartes` WHERE nom_carte = :carte";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':carte',$nomCarte);
     $stmt->execute();
@@ -50,12 +51,12 @@ class CartesClass
     return $data;
   }
 
-  public function setMarqueurCarte($nomCarte,$nomMarqueur,$newNomMarqueur)
+  public function setMarqueurCarte($nomCarte,$idMarqueur,$newIdMarqueur)
   {
     $bdd = connectDBS();
     $query = "SELECT ID_cartes FROM `cartes` WHERE marqueur = :marqueur";
     $stmt = $bdd->prepare($query);
-    $stmt->bindValue(':marqueur',$nomMarqueur);
+    $stmt->bindValue(':marqueur',$idMarqueur);
     $stmt->execute();
     $data = $stmt->fetch();
     $idCarte = $data["ID_cartes"];
@@ -65,7 +66,7 @@ class CartesClass
     WHERE `cartes`.`ID_cartes` = :carte ";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':carte',$idCarte);
-    $stmt->bindValue(':marqueur',$newNomMarqueur);
+    $stmt->bindValue(':marqueur',$newIdMarqueur);
     $stmt->execute();
   }
 
@@ -76,12 +77,16 @@ class CartesClass
 
   public function addMarqueurCarte($nomCarte, $newNomMarqueur)
   {
+    $Marqueurs = new MarqueurClass;
+    $marqueur = $Marqueurs->getMarqueurByNom($newNomMarqueur);
+    var_dump($marqueur);
+
     $bdd = connectDBS();
-    $query = "INSERT INTO `cartes` (`nom_carte`, `marqueur`)
+    $query = "INSERT INTO `cartes` (`nom_carte`, `ID_marqueur`)
     VALUES (:carte, :marqueur) ";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':carte',$nomCarte);
-    $stmt->bindValue(':marqueur',$newNomMarqueur);
+    $stmt->bindValue(':marqueur',$marqueur["ID_marqueur"]);
     $stmt->execute();
   }
 
