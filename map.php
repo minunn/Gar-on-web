@@ -47,7 +47,8 @@ require_once 'pages/rubriques/auth_check.php';*/
       $popup .= $texteMarqueur;
     }
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
-      $imgSource = '"rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+      // TODO: changer pour qu'on utilise pas un lien absolu
+      $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
       $image = "<img src=$imgSource".' width="100%"/>';
       $popup .= " " .$image;
     }
@@ -57,22 +58,22 @@ require_once 'pages/rubriques/auth_check.php';*/
 
       }).addTo(map);
       monMarker.on('dragend',function(e) {
-        //ici on change lat lng une fois le marker lacher 
+        //ici on change lat lng une fois le marker lacher
       });";
-     
+
       }
 
     else {
   echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
         draggable:true,
- 
+
       }).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
           });
           monMarker.on('dragend',function(e) {
             //ici on change lat lng une fois le marker lacher
-    
+
           });";
     }
 
