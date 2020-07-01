@@ -111,7 +111,7 @@
                     $image = "<img src=$imgSource".' width="100%"/>';
                   }
 
-                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden='true'>";
+                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' id='form$idMarqueur' hidden='true'>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Nom</h4>
                         <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
@@ -184,5 +184,5 @@
         </div>
 
 </body>
-  <?php include '../../map.php'; ?>
+  <?php include 'mapadmin.php'; ?>
 </html>

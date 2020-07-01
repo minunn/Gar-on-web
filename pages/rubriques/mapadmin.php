@@ -53,14 +53,40 @@ require_once 'pages/rubriques/auth_check.php';*/
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map);";
-    }
-    else {
-      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map)
+      echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+
+      }).addTo(map);
+      marqueur$idMarqueur.on('dragend',function(e) {
+        newLatLong = marqueur$idMarqueur.getLatLng();
+        marqueurForm = document.getElementById('form$idMarqueur');
+        inputLat = marqueurForm.children[1].children[2];
+        inputLong = marqueurForm.children[1].children[5];
+
+        inputLat.value = newLatLong.lat;
+        inputLong.value = newLatLong.lng;
+
+        switchFormChildren('marqueur$idMarqueur')
+      });";
+
+      } else {
+        echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+        }).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
-          });
-          ";
+        });
+        marqueur$idMarqueur.on('dragend',function(e) {
+          newLatLong = marqueur$idMarqueur.getLatLng()
+          marqueurForm = document.getElementById('form$idMarqueur')
+          inputLat = marqueurForm.children[1].children[2]
+          inputLong = marqueurForm.children[1].children[5]
+
+          inputLat.value = newLatLong.lat;
+          inputLong.value = newLatLong.lng;
+
+          switchFormChildren('marqueur$idMarqueur')
+        });";
     }
 
   }

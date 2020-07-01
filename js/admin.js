@@ -19,11 +19,10 @@ function switchDivChildren(div){
 
 function switchFormChildren(id){
   console.log("click");
-  //console.log(id);
+  console.log(id);
   let div = document.getElementById(id)
-  //console.log(div)
+  console.log(div)
   div = div.parentElement.parentElement
-  //console.log(div.children);
   let currentlyOpened = document.getElementById(getCookie("openedForm"))
   console.log(currentlyOpened);
   if (currentlyOpened) {
