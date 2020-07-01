@@ -82,7 +82,7 @@
             foreach ($cartes as $carteActuelle) {
               echo "<div id='".$carteActuelle["nom_carte"]."' class='maindiv'>";
               echo "<h2>".$carteActuelle["nom_carte"];
-              echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
+              echo "<span onclick='switchDivChildren(this)' style='cursor: pointer;'>▼</span>";
               echo "</h2>";
 
               // Pour chaque carte, on récupère les marqueurs associés et on les affichent
@@ -104,7 +104,7 @@
                   $texte = $marqueurActuel["Texte"];
                   $image = '';
                   echo "<h3>". $nom;
-                  echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
+                  echo "<span onclick='switchFormChildren(this.id)' id='marqueur$idMarqueur' style='cursor: pointer;'>▼</span>";
                   echo "</h3>";
                   if (isset($marqueurActuel["Photo"]) && isset($marqueurActuel["Image_type"])) {
                     $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
