@@ -82,7 +82,7 @@
             foreach ($cartes as $carteActuelle) {
               echo "<div id='".$carteActuelle["nom_carte"]."' class='maindiv'>";
               echo "<h2>".$carteActuelle["nom_carte"];
-              echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
+              echo "<span onclick='switchDivChildren(this)' style='cursor: pointer;'>▼</span>";
               echo "</h2>";
 
               // Pour chaque carte, on récupère les marqueurs associés et on les affichent
@@ -104,14 +104,14 @@
                   $texte = $marqueurActuel["Texte"];
                   $image = '';
                   echo "<h3>". $nom;
-                  echo "<span onclick='hideChildren(this)' style='cursor: pointer;'>▼</span>";
+                  echo "<span onclick='switchFormChildren(this.id)' id='marqueur$idMarqueur' style='cursor: pointer;'>▼</span>";
                   echo "</h3>";
                   if (isset($marqueurActuel["Photo"]) && isset($marqueurActuel["Image_type"])) {
                     $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
                     $image = "<img src=$imgSource".' width="100%"/>';
                   }
 
-                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' hidden='true'>";
+                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' id='form$idMarqueur' hidden='true'>";
                   echo"<div class='maindiv marqueurs'>
                         <h4>Changer Nom</h4>
                         <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
@@ -184,5 +184,5 @@
         </div>
 
 </body>
-  <?php include '../../map.php'; ?>
+  <?php include 'mapadmin.php'; ?>
 </html>

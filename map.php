@@ -53,24 +53,14 @@ require_once 'pages/rubriques/auth_check.php';*/
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
-        draggable:true,
-
-      }).addTo(map);
-      monMarker.on('dragend',function(e) {
-        //ici on change lat lng une fois le marker lacher
-      });";
-
-      } else {
-        echo"var monMarker = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
-        draggable:true,
-        }).addTo(map)
+      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map);";
+    }
+    else {
+      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur]).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
-        });
-        monMarker.on('dragend',function(e) {
-          //ici on change lat lng une fois le marker lacher
-        });";
+          });
+          ";
     }
 
   }

@@ -122,7 +122,6 @@ INSERT INTO `liste_cartes` (`ID`, `nom_carte`, `limites`) VALUES
 (14, 'Carte 14', ''),
 (15, 'Carte 15', ''),
 (16, 'Carte 16', '');
-
 -- --------------------------------------------------------
 
 --

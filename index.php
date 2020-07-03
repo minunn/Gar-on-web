@@ -74,8 +74,8 @@
             <div id="legende"> <!-- Légende de la carte -->
                 <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="" id="element1" alt="element 1"><p>Description élément 1</p><br>
-                <img src="" id="element2" alt="element 2"><p>Description élément 2</p>
+                <img src="images/marker.png" id="element1" alt="Marqueurs"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><br>
+                <img src="images/marker2.png" id="element2" alt="Plages"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
@@ -86,12 +86,8 @@
                 <h3>Télecharger la carte</h3><br>
                 <p>Cliquez sur un bouton ci-dessous pour télécharger la carte au format souhaité.</p>
                 <div class="boutons">
-                    <div class="formats"><a href="">KMZ</a></div>
-                    <div class="formats"><a href="">KML</a></div>
-                </div>
-                <div class="boutons">
-                    <div class="formats"><a href="">S57</a></div>
-                    <div class="formats"><a href="">Open CPN</a></div>
+                    <div class="formats"><a href="Download/map.kap" download="Download/map.kap">KAP</a></div>
+                    <div class="formats"><a href="Download/points.gpx" download="Download/points.gpx">GPX</a></div>
                 </div>
             </div>
             <footer>
