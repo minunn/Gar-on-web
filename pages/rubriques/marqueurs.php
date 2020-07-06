@@ -88,62 +88,64 @@
               // Pour chaque carte, on récupère les marqueurs associés et on les affichent
               $marqueurs = $Cartes->getMarqueursFromNomCarte($carteActuelle["nom_carte"]);
               foreach ($marqueurs as $marqueursCarteActuelle) {
-                // Pour chaque marqueurs, on récupère leurs informations et on les affichent
-                $marqueur = $Marqueurs->getMarqueurById($marqueursCarteActuelle["ID_marqueur"]);
+                if ($marqueursCarteActuelle["ID_marqueur"] != NULL) {
+                  // Pour chaque marqueurs, on récupère leurs informations et on les affichent
+                  $marqueur = $Marqueurs->getMarqueurById($marqueursCarteActuelle["ID_marqueur"]);
 
-                echo '<div class="maindiv marqueurs" hidden="true">';
+                  echo '<div class="maindiv marqueurs" hidden="true">';
 
 
 
-                foreach ($marqueur as $marqueurActuel) {
-                  //var_dump($marqueurActuel);
-                  $idMarqueur = $marqueurActuel["ID_marqueur"];
-                  $nom = $marqueurActuel["Nom"];
-                  $latitude = $marqueurActuel["Latitude"];
-                  $longitude = $marqueurActuel["Longitude"];
-                  $texte = $marqueurActuel["Texte"];
-                  $image = '';
-                  echo "<h3>". $nom;
-                  echo "<span onclick='switchFormChildren(this.id)' id='marqueur$idMarqueur' style='cursor: pointer;'>▼</span>";
-                  echo "</h3>";
-                  if (isset($marqueurActuel["Photo"]) && isset($marqueurActuel["Image_type"])) {
-                    $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
-                    $image = "<img src=$imgSource".' width="100%"/>';
+                  foreach ($marqueur as $marqueurActuel) {
+                    //var_dump($marqueurActuel);
+                    $idMarqueur = $marqueurActuel["ID_marqueur"];
+                    $nom = $marqueurActuel["Nom"];
+                    $latitude = $marqueurActuel["Latitude"];
+                    $longitude = $marqueurActuel["Longitude"];
+                    $texte = $marqueurActuel["Texte"];
+                    $image = '';
+                    echo "<h3>". $nom;
+                    echo "<span onclick='switchFormChildren(this.id)' id='marqueur$idMarqueur' style='cursor: pointer;'>▼</span>";
+                    echo "</h3>";
+                    if (isset($marqueurActuel["Photo"]) && isset($marqueurActuel["Image_type"])) {
+                      $imgSource = '"viewImage.php?image_id='.$idMarqueur.'"';
+                      $image = "<img src=$imgSource".' width="100%"/>';
+                    }
+
+                    echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' id='form$idMarqueur' hidden='true'>";
+                    echo"<div class='maindiv marqueurs'>
+                          <h4>Changer Nom</h4>
+                          <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
+                        </div>";
+                    echo"<div class='maindiv marqueurs'>
+                          <h4>Changer Position</h4>
+                          Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude' required><br>
+                          Longitude : <br><input type='text' name='posY' id='posY' value='$longitude' required><br>
+                        </div>";
+                    echo"<div class='maindiv marqueurs'>
+                          <h4>Changer Texte</h4>
+                          <input type='text' name='texteMarqueur' id='texteMarqueur' value='$texte'><br>
+                        </div>";
+                    echo"<div class='maindiv marqueurs'>
+                          <h4>Changer Image</h4>
+                          $image <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
+                        </div>";
+                    $nomCarte = $carteActuelle["nom_carte"];
+                    echo"<div class='maindiv marqueurs'>
+                          <input type='hidden' name='ID' value='$idMarqueur'>
+                          <input type='hidden' name='nomCarte' value='$nomCarte'>
+                          <input type='hidden' name='nnomMarqueur' value='$nom'>
+                          <input type='submit' value='Modifier' name='modifMarqueur'>
+                        </div>";
+                    echo "<div class='maindiv marqueurs'>
+                            <input type='submit' value='Supprimer ce marqueur' name='supprMarqueur'>
+                          </div>
+                    ";
+                    echo"</form>";
                   }
 
-                  echo "<form action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data' id='form$idMarqueur' hidden='true'>";
-                  echo"<div class='maindiv marqueurs'>
-                        <h4>Changer Nom</h4>
-                        <input type='text' name='nomMarqueur' id='nomMarqueur' value='$nom' required><br>
-                      </div>";
-                  echo"<div class='maindiv marqueurs'>
-                        <h4>Changer Position</h4>
-                        Latitude :  <br><input type='text' name='posX' id='posX' value='$latitude' required><br>
-                        Longitude : <br><input type='text' name='posY' id='posY' value='$longitude' required><br>
-                      </div>";
-                  echo"<div class='maindiv marqueurs'>
-                        <h4>Changer Texte</h4>
-                        <input type='text' name='texteMarqueur' id='texteMarqueur' value='$texte'><br>
-                      </div>";
-                  echo"<div class='maindiv marqueurs'>
-                        <h4>Changer Image</h4>
-                        $image <input type='file' name='changerImage' id='changerImage' accept='image/*'><br>
-                      </div>";
-                  $nomCarte = $carteActuelle["nom_carte"];
-                  echo"<div class='maindiv marqueurs'>
-                        <input type='hidden' name='ID' value='$idMarqueur'>
-                        <input type='hidden' name='nomCarte' value='$nomCarte'>
-                        <input type='hidden' name='nnomMarqueur' value='$nom'>
-                        <input type='submit' value='Modifier' name='modifMarqueur'>
-                      </div>";
-                  echo "<div class='maindiv marqueurs'>
-                          <input type='submit' value='Supprimer ce marqueur' name='supprMarqueur'>
-                        </div>
-                  ";
-                  echo"</form>";
+                  echo "</div>";
                 }
-
-                echo "</div>";
               }
               // Ajouter un marqueur
               echo "<div class='maindiv marqueurs' hidden='true'>";

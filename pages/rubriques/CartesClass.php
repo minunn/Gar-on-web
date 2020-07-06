@@ -43,7 +43,7 @@ class CartesClass
   public function getPlageFromNomCarte($nomCarte)
   {
     $bdd = connectDBS();
-    $query = "SELECT plage FROM `cartes` WHERE nom_carte = :carte";
+    $query = "SELECT ID_plage FROM `cartes` WHERE nom_carte = :carte";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':carte',$nomCarte);
     $stmt->execute();
@@ -54,7 +54,7 @@ class CartesClass
   public function setMarqueurCarte($nomCarte,$idMarqueur,$newIdMarqueur)
   {
     $bdd = connectDBS();
-    $query = "SELECT ID_cartes FROM `cartes` WHERE marqueur = :marqueur";
+    $query = "SELECT ID_cartes FROM `cartes` WHERE ID_marqueur = :marqueur";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':marqueur',$idMarqueur);
     $stmt->execute();
@@ -70,16 +70,30 @@ class CartesClass
     $stmt->execute();
   }
 
-  public function setPlageCarteFromID($idCarte, $newNomMarqueur)
+  public function setPlageCarte($idCarte,$idPlage, $newIdPlage)
   {
-    // code...
+    $bdd = connectDBS();
+    $query = "SELECT ID_cartes FROM `cartes` WHERE ID_plage = :plage";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':plage',$idMarqueur);
+    $stmt->execute();
+    $data = $stmt->fetch();
+    $idCarte = $data["ID_cartes"];
+
+    $query = "UPDATE `cartes`
+    SET `marqueur` = :plage
+    WHERE `cartes`.`ID_cartes` = :carte ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':carte',$idCarte);
+    $stmt->bindValue(':plage',$newNomPlage);
+    $stmt->execute();
   }
 
   public function addMarqueurCarte($nomCarte, $newNomMarqueur)
   {
     $Marqueurs = new MarqueurClass;
     $marqueur = $Marqueurs->getMarqueurByNom($newNomMarqueur);
-    var_dump($marqueur);
+    //var_dump($marqueur);
 
     $bdd = connectDBS();
     $query = "INSERT INTO `cartes` (`nom_carte`, `ID_marqueur`)
@@ -89,7 +103,39 @@ class CartesClass
     $stmt->bindValue(':marqueur',$marqueur["ID_marqueur"]);
     $stmt->execute();
   }
+  public function addPlageCarte($nomCarte, $newNomPlage)
+  {
+    $Plages = new PlageClass;
+    $plage = $Plages->getPlageByNom($newNomPlage);
+    //var_dump($plage);
 
+    $bdd = connectDBS();
+    $query = "INSERT INTO `cartes` (`nom_carte`, `ID_plage`)
+    VALUES (:carte, :plage) ";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':carte',$nomCarte);
+    $stmt->bindValue(':plage',$plage["ID_plage"]);
+    $stmt->execute();
+  }
+
+  public function deleteMarqueurCarte($nomCarte,$idMarqueur)
+  {
+    $bdd = connectDBS();
+    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_cartes` = :plage";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':plage',$idMarqueur);
+    $stmt->execute();
+  }
+
+  public function deletePlageCarte($idPlage)
+  {
+    var_dump($idPlage);
+    $bdd = connectDBS();
+    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_cartes` = :plage";
+    $stmt = $bdd->prepare($query);
+    $stmt->bindValue(':plage',$idPlage);
+    $stmt->execute();
+  }
 }
 
 
