@@ -23,6 +23,22 @@ require_once 'pages/rubriques/auth_check.php';*/
   var divMap = document.getElementById('map')
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
+  var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
@@ -55,7 +71,7 @@ require_once 'pages/rubriques/auth_check.php';*/
     if ($popup == '') {
       echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
         draggable:true,
-
+        icon: redIcon
       }).addTo(map);
       marqueur$idMarqueur.on('dragend',function(e) {
         newLatLong = marqueur$idMarqueur.getLatLng();
@@ -72,6 +88,7 @@ require_once 'pages/rubriques/auth_check.php';*/
       } else {
         echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
         draggable:true,
+        icon: redIcon
         }).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
@@ -87,6 +104,43 @@ require_once 'pages/rubriques/auth_check.php';*/
 
           switchFormChildren('marqueur$idMarqueur')
         });";
+    }
+
+  }
+
+  // NOTE: code copié collé du code pour les marqueurs, temporaire
+  $sql_selectPlages = "SELECT * FROM plages";
+  $result_plages = $db->prepare($sql_selectPlages);
+  $result_plages -> execute();
+
+  foreach ($result_plages as $plageActuelle) {
+    $idPlage = $plageActuelle["ID_plage"];
+    $latitudePlage = $plageActuelle["Latitude"];
+    $longitudePlage = $plageActuelle["Longitude"];
+    $textePlage = $plageActuelle["Texte"];
+    $photoPlage = $plageActuelle["Photo"];
+    $imagetypePlage = $plageActuelle["Image_type"];
+    $polygonPlage = $plageActuelle["polygon"]; // TODO: au lieu d'utiliser des points pour les plages, utiliser les polygones
+
+    $popup = '';
+    if (isset($textePlage)) {
+      $popup .= $textePlage;
+    }
+    if (isset($photoPlage) && isset($imagetypePlage)) {
+      // TODO: changer pour qu'on utilise pas un lien absolu
+      $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+      $image = "<img src=$imgSource".' width="100%"/>';
+      $popup .= " " .$image;
+    }
+    if ($popup == '') {
+      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map);";
+    }
+    else {
+      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
+          .bindPopup('$popup',{
+            maxWidth: 'auto'
+          });
+          ";
     }
 
   }
