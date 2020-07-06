@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : lun. 06 juil. 2020 à 10:56
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 06 juil. 2020 à 11:31
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -85,7 +86,38 @@ INSERT INTO `cartes` (`ID_cartes`, `nom_carte`, `ID_marqueur`, `ID_plage`) VALUE
 (47, 'Carte 15', 1905, NULL),
 (48, 'Carte 15', 1906, NULL),
 (49, 'Carte 16', 1899, NULL),
-(59, 'Carte 1', 1908, NULL);
+(59, 'Carte 1', 1908, NULL),
+(63, 'Carte 1', NULL, 7),
+(64, 'Carte 1', NULL, 8),
+(65, 'Carte 1', NULL, 9),
+(66, 'Carte 1', NULL, 10),
+(67, 'Carte 2', NULL, 11),
+(68, 'Carte 2', NULL, 12),
+(69, 'Carte 2', NULL, 13),
+(70, 'Carte 2', NULL, 14),
+(71, 'Carte 3', NULL, 15),
+(72, 'Carte 3', NULL, 16),
+(73, 'Carte 3', NULL, 17),
+(74, 'Carte 3', NULL, 18),
+(75, 'Carte 4', NULL, 19),
+(76, 'Carte 4', NULL, 20),
+(77, 'Carte 4', NULL, 21),
+(78, 'Carte 5', NULL, 22),
+(79, 'Carte 5', NULL, 23),
+(80, 'Carte 5', NULL, 24),
+(81, 'Carte 5', NULL, 25),
+(82, 'Carte 5', NULL, 26),
+(83, 'Carte 6', NULL, 27),
+(84, 'Carte 6', NULL, 28),
+(85, 'Carte 6', NULL, 29),
+(86, 'Carte 6', NULL, 30),
+(87, 'Carte 6', NULL, 31),
+(88, 'Carte 7', NULL, 32),
+(89, 'Carte 7', NULL, 33),
+(90, 'Carte 8', NULL, 34),
+(91, 'Carte 9', NULL, 35),
+(92, 'Carte 10', NULL, 36),
+(93, 'Carte 11', NULL, 37);
 
 -- --------------------------------------------------------
 
@@ -208,6 +240,43 @@ CREATE TABLE `plages` (
   `polygon` polygon DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `plages`
+--
+
+INSERT INTO `plages` (`ID_plage`, `Nom`, `Latitude`, `Longitude`, `Texte`, `Photo`, `Image_type`, `polygon`) VALUES
+(7, 'Banc de sable 1', 44.5514, -0.001979, 'Banc de sable', NULL, NULL, NULL),
+(8, 'Banc de sable 2', 44.5431, 0.031672, 'Banc de sable', NULL, NULL, NULL),
+(9, 'Banc de sable 3', 44.5435, 0.041506, 'Banc de sable', NULL, NULL, NULL),
+(10, 'Banc de sable 4', 44.5345, 0.035974, 'Banc de sable', NULL, NULL, NULL),
+(11, 'Banc de sable 5', 44.524, 0.037568, 'banc de sable ', NULL, NULL, NULL),
+(12, 'Banc de sable 6', 44.5184, 0.044568, 'Banc de sable', NULL, NULL, NULL),
+(13, 'Banc de sable 7', 44.5364, 0.058688, 'Banc de sable', NULL, NULL, NULL),
+(14, 'Banc de sable 8', 44.5401, 0.068311, 'Banc de sable', NULL, NULL, NULL),
+(15, 'Banc de sable 9', 44.5317, 0.07912, 'Banc de sable', NULL, NULL, NULL),
+(16, 'Banc de sable 10', 44.5193, 0.08264, 'Banc de sable', NULL, NULL, NULL),
+(17, 'Banc de sable 11', 44.5097, 0.083037, 'Banc de sable', NULL, NULL, NULL),
+(18, 'Banc de sable 12', 44.5004, 0.105336, 'Banc de sable', NULL, NULL, NULL),
+(19, 'Banc de sable 13', 44.5024, 0.123084, 'Banc de sable', NULL, NULL, NULL),
+(20, 'Banc de sable 14', 44.503, 0.13079, 'Banc de sable', NULL, NULL, NULL),
+(21, 'Banc de sable 15', 44.5029, 0.135731, 'Banc de sable', NULL, NULL, NULL),
+(22, 'Banc de sable 16', 44.5004, 0.152775, 'Banc de sable', NULL, NULL, NULL),
+(23, 'Banc de sable 17', 44.4884, 0.156518, 'Banc de sable', NULL, NULL, NULL),
+(24, 'Banc de sable 18', 44.4844, 0.164862, 'Banc de sable', NULL, NULL, NULL),
+(25, 'Banc de sable 19', 44.4851, 0.172788, 'Banc de sable', NULL, NULL, NULL),
+(26, 'Banc de sable 20', 44.4806, 0.181677, 'Banc de sable', NULL, NULL, NULL),
+(27, 'Banc de sable 21', 44.469, 0.183174, 'Banc de sable', NULL, NULL, NULL),
+(28, 'Banc de sable 22', 44.4637, 0.180889, 'Banc de sable', NULL, NULL, NULL),
+(29, 'Banc de sable 23', 44.4511, 0.170702, 'Banc de sable', NULL, NULL, NULL),
+(30, 'Banc de sable 24', 44.444, 0.177822, 'Banc de sable', NULL, NULL, NULL),
+(31, 'Banc de sable 25', 44.4456, 0.194106, 'Banc de sable', NULL, NULL, NULL),
+(32, 'Banc de sable 26', 44.4286, 0.21055, 'Banc de sable', NULL, NULL, NULL),
+(33, 'Banc de sable 27', 44.4185, 0.214256, 'Banc de sable', NULL, NULL, NULL),
+(34, 'Banc de sable 28', 44.4036, 0.243368, 'Banc de sable', NULL, NULL, NULL),
+(35, 'Banc de sable 29', 44.3868, 0.30867, 'Banc de sable', NULL, NULL, NULL),
+(36, 'Banc de sable 30', 44.3832, 0.314935, 'Banc de sable', NULL, NULL, NULL),
+(37, 'Banc de sable 31', 44.324, 0.332375, 'Banc de sable', NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -294,7 +363,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `cartes`
 --
 ALTER TABLE `cartes`
-  MODIFY `ID_cartes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `ID_cartes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT pour la table `liste_cartes`
@@ -312,7 +381,7 @@ ALTER TABLE `marqueurs`
 -- AUTO_INCREMENT pour la table `plages`
 --
 ALTER TABLE `plages`
-  MODIFY `ID_plage` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_plage` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `users`
