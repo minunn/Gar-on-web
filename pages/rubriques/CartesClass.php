@@ -118,12 +118,12 @@ class CartesClass
     $stmt->execute();
   }
 
-  public function deleteMarqueurCarte($nomCarte,$idMarqueur)
+  public function deleteMarqueurCarte($idMarqueur)
   {
     $bdd = connectDBS();
-    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_cartes` = :plage";
+    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_marqueur` = :marqueur";
     $stmt = $bdd->prepare($query);
-    $stmt->bindValue(':plage',$idMarqueur);
+    $stmt->bindValue(':marqueur',$idMarqueur);
     $stmt->execute();
   }
 
@@ -131,7 +131,7 @@ class CartesClass
   {
     var_dump($idPlage);
     $bdd = connectDBS();
-    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_cartes` = :plage";
+    $query = "DELETE FROM `cartes` WHERE `cartes`.`ID_plage` = :plage";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':plage',$idPlage);
     $stmt->execute();
