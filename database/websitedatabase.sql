@@ -215,7 +215,7 @@ CREATE TABLE `plages` (
 --
 
 INSERT INTO `plages` (`ID_plage`, `Nom`, `Latitude`, `Longitude`, `Texte`, `Photo`, `Image_type`, `polygon`) VALUES
-(1, '', 44.4563, 0.1325, NULL, NULL, NULL, 0x);
+(1, '', 44.4563, 0.1325, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
