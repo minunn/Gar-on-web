@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : lun. 06 juil. 2020 à 10:39
+-- Généré le : lun. 06 juil. 2020 à 10:56
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
@@ -41,7 +41,6 @@ CREATE TABLE `cartes` (
 INSERT INTO `cartes` (`ID_cartes`, `nom_carte`, `ID_marqueur`, `ID_plage`) VALUES
 (1, 'Carte 1', 1, NULL),
 (2, 'Carte 1', 2, NULL),
-(5, 'Carte 2', 4, NULL),
 (6, 'Carte 2', 5, NULL),
 (7, 'Carte 3', 6, NULL),
 (8, 'Carte 3', 7, NULL),
@@ -86,8 +85,7 @@ INSERT INTO `cartes` (`ID_cartes`, `nom_carte`, `ID_marqueur`, `ID_plage`) VALUE
 (47, 'Carte 15', 1905, NULL),
 (48, 'Carte 15', 1906, NULL),
 (49, 'Carte 16', 1899, NULL),
-(59, 'Carte 1', 1908, NULL),
-(60, 'Carte 1', NULL, 4);
+(59, 'Carte 1', 1908, NULL);
 
 -- --------------------------------------------------------
 
@@ -207,15 +205,8 @@ CREATE TABLE `plages` (
   `Texte` text DEFAULT NULL,
   `Photo` longblob DEFAULT NULL,
   `Image_type` varchar(20) DEFAULT NULL,
-  `polygon` polygon NOT NULL
+  `polygon` polygon DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `plages`
---
-
-INSERT INTO `plages` (`ID_plage`, `Nom`, `Latitude`, `Longitude`, `Texte`, `Photo`, `Image_type`, `polygon`) VALUES
-(1, '', 44.4563, 0.1325, NULL, NULL, NULL, 0x000000000103000000010000000400000000000000000000000000000000000000000000000000f03f000000000000f03f0000000000000040000000000000004000000000000000000000000000000000);
 
 -- --------------------------------------------------------
 
@@ -303,7 +294,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `cartes`
 --
 ALTER TABLE `cartes`
-  MODIFY `ID_cartes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `ID_cartes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT pour la table `liste_cartes`
@@ -321,7 +312,7 @@ ALTER TABLE `marqueurs`
 -- AUTO_INCREMENT pour la table `plages`
 --
 ALTER TABLE `plages`
-  MODIFY `ID_plage` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_plage` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `users`
