@@ -23,8 +23,8 @@ require_once 'pages/rubriques/auth_check.php';*/
   var divMap = document.getElementById('map')
   var map = L.map(divMap).setView([44.4563, 0.1325], 10);
 
-  var redIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  var blueIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
@@ -46,67 +46,7 @@ require_once 'pages/rubriques/auth_check.php';*/
 
 <?php
 
-  $sql_selectMarqueurs = "SELECT * FROM marqueurs";
-  $result_marqueur = $db->prepare($sql_selectMarqueurs);
-  $result_marqueur -> execute();
 
-  foreach ($result_marqueur as $marqueurActuel) {
-    $idMarqueur = $marqueurActuel["ID_marqueur"];
-    $latitudeMarqueur = $marqueurActuel["Latitude"];
-    $longitudeMarqueur = $marqueurActuel["Longitude"];
-    $texteMarqueur = $marqueurActuel["Texte"];
-    $photoMarqueur = $marqueurActuel["Photo"];
-    $imagetypeMarqueur = $marqueurActuel["Image_type"];
-
-    $popup = '';
-    if (isset($texteMarqueur)) {
-      $popup .= $texteMarqueur;
-    }
-    if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
-      // TODO: changer pour qu'on utilise pas un lien absolu
-      $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource".' width="100%"/>';
-      $popup .= " " .$image;
-    }
-    if ($popup == '') {
-      echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
-        draggable:true,
-        icon: redIcon
-      }).addTo(map);
-      marqueur$idMarqueur.on('dragend',function(e) {
-        newLatLong = marqueur$idMarqueur.getLatLng();
-        marqueurForm = document.getElementById('form$idMarqueur');
-        inputLat = marqueurForm.children[1].children[2];
-        inputLong = marqueurForm.children[1].children[5];
-
-        inputLat.value = newLatLong.lat;
-        inputLong.value = newLatLong.lng;
-
-        switchFormChildren('marqueur$idMarqueur')
-      });";
-
-      } else {
-        echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
-        draggable:true,
-        icon: redIcon
-        }).addTo(map)
-          .bindPopup('$popup',{
-            maxWidth: 'auto'
-        });
-        marqueur$idMarqueur.on('dragend',function(e) {
-          newLatLong = marqueur$idMarqueur.getLatLng()
-          marqueurForm = document.getElementById('form$idMarqueur')
-          inputLat = marqueurForm.children[1].children[2]
-          inputLong = marqueurForm.children[1].children[5]
-
-          inputLat.value = newLatLong.lat;
-          inputLong.value = newLatLong.lng;
-
-          switchFormChildren('marqueur$idMarqueur')
-        });";
-    }
-
-  }
 
   // NOTE: code copié collé du code pour les marqueurs, temporaire
   $sql_selectPlages = "SELECT * FROM plages";
@@ -141,6 +81,68 @@ require_once 'pages/rubriques/auth_check.php';*/
             maxWidth: 'auto'
           });
           ";
+    }
+
+  }
+
+  $sql_selectMarqueurs = "SELECT * FROM marqueurs";
+  $result_marqueur = $db->prepare($sql_selectMarqueurs);
+  $result_marqueur -> execute();
+
+  foreach ($result_marqueur as $marqueurActuel) {
+    $idMarqueur = $marqueurActuel["ID_marqueur"];
+    $latitudeMarqueur = $marqueurActuel["Latitude"];
+    $longitudeMarqueur = $marqueurActuel["Longitude"];
+    $texteMarqueur = $marqueurActuel["Texte"];
+    $photoMarqueur = $marqueurActuel["Photo"];
+    $imagetypeMarqueur = $marqueurActuel["Image_type"];
+
+    $popup = '';
+    if (isset($texteMarqueur)) {
+      $popup .= $texteMarqueur;
+    }
+    if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
+      // TODO: changer pour qu'on utilise pas un lien absolu
+      $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+      $image = "<img src=$imgSource".' width="100%"/>';
+      $popup .= " " .$image;
+    }
+    if ($popup == '') {
+      echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+        icon: blueIcon
+      }).addTo(map);
+      marqueur$idMarqueur.on('dragend',function(e) {
+        newLatLong = marqueur$idMarqueur.getLatLng();
+        marqueurForm = document.getElementById('form$idMarqueur');
+        inputLat = marqueurForm.children[1].children[2];
+        inputLong = marqueurForm.children[1].children[5];
+
+        inputLat.value = newLatLong.lat;
+        inputLong.value = newLatLong.lng;
+
+        switchFormChildren('marqueur$idMarqueur')
+      });";
+
+      } else {
+        echo"var marqueur$idMarqueur = L.marker([$latitudeMarqueur, $longitudeMarqueur],{
+        draggable:true,
+        icon: blueIcon
+        }).addTo(map)
+          .bindPopup('$popup',{
+            maxWidth: 'auto'
+        });
+        marqueur$idMarqueur.on('dragend',function(e) {
+          newLatLong = marqueur$idMarqueur.getLatLng()
+          marqueurForm = document.getElementById('form$idMarqueur')
+          inputLat = marqueurForm.children[1].children[2]
+          inputLong = marqueurForm.children[1].children[5]
+
+          inputLat.value = newLatLong.lat;
+          inputLong.value = newLatLong.lng;
+
+          switchFormChildren('marqueur$idMarqueur')
+        });";
     }
 
   }
