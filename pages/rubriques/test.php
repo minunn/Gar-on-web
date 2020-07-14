@@ -11,9 +11,4 @@ $data = $stmt->fetch();
 $polygon = geoPHP::load($data["limites"]);
 var_dump($polygon->out('json'));
 
-
-
-//var_dump(strpos($data["limites"], "))"));
-//please fucking kill me
-//var_dump($data["limites"]);
  ?>
