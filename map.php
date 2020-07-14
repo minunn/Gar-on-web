@@ -2,6 +2,7 @@
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
+include_once('pages/rubriques/geoPHP/geoPHP.inc');
 
 /*appel des fichier pour check si l'utilisateur est connecté
 Provoque 2 erreurs car l'utilisateur n'est pas connecté lors de l'appel dans l'index
@@ -47,41 +48,68 @@ require_once 'pages/rubriques/auth_check.php';*/
 <?php
 
 
-  // NOTE: code copié collé du code pour les marqueurs, temporaire
+
   $sql_selectPlages = "SELECT * FROM plages";
   $result_plages = $db->prepare($sql_selectPlages);
   $result_plages -> execute();
-
+  $sql_selectPolygon = "SELECT AsText(polygon) AS limites FROM `plages` ";
+  $result_polygon = $db->prepare($sql_selectPolygon);
+  $result_polygon->execute();
+  $data_polygon = $result_polygon->fetchAll();
+  
   foreach ($result_plages as $plageActuelle) {
+
     $idPlage = $plageActuelle["ID_plage"];
     $latitudePlage = $plageActuelle["Latitude"];
     $longitudePlage = $plageActuelle["Longitude"];
     $textePlage = $plageActuelle["Texte"];
     $photoPlage = $plageActuelle["Photo"];
     $imagetypePlage = $plageActuelle["Image_type"];
-    $polygonPlage = $plageActuelle["polygon"]; // TODO: au lieu d'utiliser des points pour les plages, utiliser les polygones
 
-    $popup = '';
-    if (isset($textePlage)) {
-      $popup .= $textePlage;
-    }
-    if (isset($photoPlage) && isset($imagetypePlage)) {
-      // TODO: changer pour qu'on utilise pas un lien absolu
-      $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource".' width="100%"/>';
-      $popup .= " " .$image;
-    }
-    if ($popup == '') {
-      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map);";
-    }
-    else {
-      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
-          .bindPopup('$popup',{
-            maxWidth: 'auto'
-          });
-          ";
-    }
+    $sql_selectPolygon = "SELECT AsText(polygon) AS limites FROM `plages` WHERE ID_plage = :id ";
+    $result_polygon = $db->prepare($sql_selectPolygon);
+    $result_polygon->bindValue(":id",$idPlage);
+    $result_polygon->execute();
+    $data_polygon = $result_polygon->fetch();
+    if ($data_polygon["limites"] != NULL) {
+      $polygon = geoPHP::load($data_polygon["limites"]);
+      $kmlPoly = $polygon->out('kml');
+      $poly = kmlToJsVarAsString($kmlPoly);
 
+      $popup = '';
+      if (isset($textePlage)) {
+        $popup .= $textePlage;
+      }
+      if (isset($photoPlage) && isset($imagetypePlage)) {
+        // TODO: changer pour qu'on utilise pas un lien absolu
+        $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
+        $image = "<img src=$imgSource".' width="100%"/>';
+        $popup .= " " .$image;
+      }
+      /*
+      if ($popup == '') {
+        echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map);";
+      }
+      else {
+        echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
+            .bindPopup('$popup',{
+              maxWidth: 'auto'
+            });
+            ";
+      }*/
+      if ($popup == '') {
+        echo "var polygon = L.polygon($poly, {color: 'red'})
+        .addTo(map);";
+      }
+      else {
+        echo "var polygon = L.polygon($poly, {color: 'red'})
+        .addTo(map)
+        .bindPopup('$popup',{
+          maxWidth: 'auto'
+        });";
+      }
+
+    }
   }
 
   $sql_selectMarqueurs = "SELECT * FROM marqueurs";
@@ -116,9 +144,24 @@ require_once 'pages/rubriques/auth_check.php';*/
           });
           ";
     }
-
   }
 
+  function kmlToJsVarAsString($kmlPoly)
+  {
+    $kmlPoly = explode("<Polygon><outerBoundaryIs><LinearRing><coordinates>", $kmlPoly);
+    $kmlPoly = explode("</coordinates></LinearRing></outerBoundaryIs></Polygon>", $kmlPoly[1]);
+    //var_dump($kmlPoly);
+    $kmlPoly = $kmlPoly[0];
+    $arrPoly = explode(" ", $kmlPoly);
+    $stringPoly = '[';
+    foreach ($arrPoly as $polyact) {
+      $stringPoly .= "[$polyact],";
+    }
+    $stringPoly = substr($stringPoly, 0, -1);
+    $stringPoly .= "]";
+    //var_dump($stringPoly);
+    return $stringPoly;
+  }
   #fonction afin d'éviter d'encombrer le code
   function sqlSelect($sql, $db){
     $sqlCode = $sql;
