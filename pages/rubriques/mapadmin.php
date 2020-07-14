@@ -51,10 +51,6 @@ require_once 'pages/rubriques/auth_check.php';*/
 $sql_selectPlages = "SELECT * FROM plages";
 $result_plages = $db->prepare($sql_selectPlages);
 $result_plages -> execute();
-$sql_selectPolygon = "SELECT AsText(polygon) AS limites FROM `plages` ";
-$result_polygon = $db->prepare($sql_selectPolygon);
-$result_polygon->execute();
-$data_polygon = $result_polygon->fetchAll();
 
 foreach ($result_plages as $plageActuelle) {
 
