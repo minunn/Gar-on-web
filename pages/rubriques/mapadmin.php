@@ -19,6 +19,8 @@ require_once 'pages/rubriques/auth_check.php';*/
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
   <script type="text/javascript" defer>';
   echo "
   var divMap = document.getElementById('map')
@@ -43,7 +45,42 @@ require_once 'pages/rubriques/auth_check.php';*/
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
-  }).addTo(map);"?>
+  }).addTo(map);
+  var editableLayers = new L.FeatureGroup();
+map.addLayer(editableLayers);
+
+var drawPluginOptions = {
+  position: 'topright',
+  draw: {
+    polygon: {
+      allowIntersection: false, // Restricts shapes to simple polygons
+      drawError: {
+        color: '#e1e100', // Color the shape will turn when intersects
+        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+      },
+      shapeOptions: {
+        color: '#97009c'
+      }
+    },
+    // disable toolbar item by setting it to false
+    polyline: false,
+    circle: false, // Turns off this drawing tool
+    rectangle: false,
+    marker: false,
+    },
+  edit: {
+    featureGroup: editableLayers, //REQUIRED!!
+    remove: false
+  }
+};
+
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw(drawPluginOptions);
+map.addControl(drawControl);
+
+var editableLayers = new L.FeatureGroup();
+map.addLayer(editableLayers);
+  "?>
 
 <?php
 
@@ -83,11 +120,11 @@ foreach ($result_plages as $plageActuelle) {
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo "var polygon = L.polygon($poly, {color: 'red'})
+      echo "var polygon = L.polygon($poly, {color: 'yellow'})
       .addTo(map);";
     }
     else {
-      echo "var polygon = L.polygon($poly, {color: 'red'})
+      echo "var polygon = L.polygon($poly, {color: 'yellow'})
       .addTo(map)
       .bindPopup('$popup',{
         maxWidth: 'auto'

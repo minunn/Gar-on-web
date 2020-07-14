@@ -186,5 +186,6 @@
         </div>
 
 </body>
+  
   <?php include 'mapadmin.php'; ?>
 </html>

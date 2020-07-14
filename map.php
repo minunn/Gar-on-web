@@ -43,7 +43,8 @@ require_once 'pages/rubriques/auth_check.php';*/
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
-  }).addTo(map);"?>
+  }).addTo(map);";
+  ?>
 
 <?php
 
@@ -94,12 +95,12 @@ require_once 'pages/rubriques/auth_check.php';*/
             ";
       }*/
       if ($popup == '') {
-        echo "var polygon = L.polygon($poly, {color: 'red'})
-        .addTo(map);";
+        echo "var polygon = L.polygon($poly, {color: 'yellow'})
+        .addTo(editableLayers);";
       }
       else {
-        echo "var polygon = L.polygon($poly, {color: 'red'})
-        .addTo(map)
+        echo "var polygon = L.polygon($poly, {color: 'yellow'})
+        .addTo(editableLayers)
         .bindPopup('$popup',{
           maxWidth: 'auto'
         });";
