@@ -2,6 +2,7 @@
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
+include_once('geoPHP/geoPHP.inc');
 
 /*appel des fichier pour check si l'utilisateur est connecté
 Provoque 2 erreurs car l'utilisateur n'est pas connecté lors de l'appel dans l'index
