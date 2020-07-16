@@ -2,7 +2,7 @@
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
-include_once('pages/rubriques/geoPHP/geoPHP.inc');
+//include_once('pages/rubriques/geoPHP/geoPHP.inc');
 
 /*appel des fichier pour check si l'utilisateur est connecté
 Provoque 2 erreurs car l'utilisateur n'est pas connecté lors de l'appel dans l'index
@@ -68,10 +68,10 @@ require_once 'pages/rubriques/auth_check.php';*/
     $result_polygon->bindValue(":id",$idPlage);
     $result_polygon->execute();
     $data_polygon = $result_polygon->fetch();
-    if ($data_polygon["limites"] != NULL) {
-      $polygon = geoPHP::load($data_polygon["limites"]);
-      $kmlPoly = $polygon->out('kml');
-      $poly = kmlToJsVarAsString($kmlPoly);
+    //if ($data_polygon["limites"] != NULL) {
+      //$polygon = geoPHP::load($data_polygon["limites"]);
+      //$kmlPoly = $polygon->out('kml');
+      //$poly = kmlToJsVarAsString($kmlPoly);
 
       $popup = '';
       if (isset($textePlage)) {
@@ -82,31 +82,27 @@ require_once 'pages/rubriques/auth_check.php';*/
         $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
         $image = "<img src=$imgSource".' width="100%"/>';
         $popup .= " " .$image;
+
       }
-      /*
       if ($popup == '') {
+      //  echo "var polygon = L.polygon($poly, {color: 'yellow'})
+      //  .addTo(editableLayers);";
         echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map);";
       }
       else {
-        echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
-            .bindPopup('$popup',{
-              maxWidth: 'auto'
-            });
-            ";
-      }*/
-      if ($popup == '') {
-        echo "var polygon = L.polygon($poly, {color: 'yellow'})
-        .addTo(editableLayers);";
-      }
-      else {
-        echo "var polygon = L.polygon($poly, {color: 'yellow'})
+      /*  echo "var polygon = L.polygon($poly, {color: 'yellow'})
         .addTo(editableLayers)
         .bindPopup('$popup',{
           maxWidth: 'auto'
-        });";
+        });";*/
+        echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
+          .bindPopup('$popup',{
+            maxWidth: 'auto'
+          });
+          ";
       }
 
-    }
+    //}
   }
 
   $sql_selectMarqueurs = "SELECT * FROM marqueurs";
@@ -132,13 +128,13 @@ require_once 'pages/rubriques/auth_check.php';*/
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur], {icon: blueIcon}).addTo(map);";
+      echo"L.marker([$latitudeMarqueur, $longitudeMarqueur], {icon: blueIcon}).addTo(map);\n";
     }
     else {
       echo"L.marker([$latitudeMarqueur, $longitudeMarqueur], {icon: blueIcon}).addTo(map)
           .bindPopup('$popup',{
             maxWidth: 'auto'
-          });
+          });\n
           ";
     }
   }

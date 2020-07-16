@@ -2,7 +2,7 @@
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
 $db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
-include_once('geoPHP/geoPHP.inc');
+//include_once('geoPHP/geoPHP.inc');
 
 /*appel des fichier pour check si l'utilisateur est connecté
 Provoque 2 erreurs car l'utilisateur n'est pas connecté lors de l'appel dans l'index
@@ -46,7 +46,9 @@ require_once 'pages/rubriques/auth_check.php';*/
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
   }).addTo(map);
-  var editableLayers = new L.FeatureGroup();
+
+  // Initialise the FeatureGroup to store editable layers
+var editableLayers = new L.FeatureGroup();
 map.addLayer(editableLayers);
 
 var drawPluginOptions = {
@@ -80,6 +82,26 @@ map.addControl(drawControl);
 
 var editableLayers = new L.FeatureGroup();
 map.addLayer(editableLayers);
+
+map.on('draw:created', function(e) {
+  var type = e.layerType,
+    layer = e.layer;
+    console.log(e.layer['_latlngs'])
+
+  if (type === 'marker') {
+    layer.bindPopup('A popup!');
+  }
+
+  editableLayers.addLayer(layer);
+});
+
+map.on('draw:edited', function (e) {
+         var layers = e.layers;
+         layers.eachLayer(function (layer) {
+             //do whatever you want; most likely save back to db
+         });
+     });
+
   "?>
 
 <?php
@@ -104,10 +126,10 @@ foreach ($result_plages as $plageActuelle) {
   $result_polygon->bindValue(":id",$idPlage);
   $result_polygon->execute();
   $data_polygon = $result_polygon->fetch();
-  if ($data_polygon["limites"] != NULL) {
-    $polygon = geoPHP::load($data_polygon["limites"]);
-    $kmlPoly = $polygon->out('kml');
-    $poly = kmlToJsVarAsString($kmlPoly);
+  //if ($data_polygon["limites"] != NULL) {
+    //$polygon = geoPHP::load($data_polygon["limites"]);
+    //$kmlPoly = $polygon->out('kml');
+    //$poly = kmlToJsVarAsString($kmlPoly);
 
     $popup = '';
     if (isset($textePlage)) {
@@ -120,18 +142,24 @@ foreach ($result_plages as $plageActuelle) {
       $popup .= " " .$image;
     }
     if ($popup == '') {
-      echo "var polygon = L.polygon($poly, {color: 'yellow'})
-      .addTo(map);";
+    //  echo "var polygon = L.polygon($poly, {color: 'yellow'})
+    //  .addTo(editableLayers);";
+      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map);";
     }
     else {
-      echo "var polygon = L.polygon($poly, {color: 'yellow'})
-      .addTo(map)
+    /*  echo "var polygon = L.polygon($poly, {color: 'yellow'})
+      .addTo(editableLayers)
       .bindPopup('$popup',{
         maxWidth: 'auto'
-      });";
+      });";*/
+      echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
+        .bindPopup('$popup',{
+          maxWidth: 'auto'
+        });
+        ";
     }
 
-  }
+  //}
 }
 
   $sql_selectMarqueurs = "SELECT * FROM marqueurs";
