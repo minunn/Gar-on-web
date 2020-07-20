@@ -86,8 +86,11 @@
                 <h3>Télecharger la carte</h3><br>
                 <p>Cliquez sur un bouton ci-dessous pour télécharger la carte au format souhaité.</p>
                 <div class="boutons">
-                    <div class="formats"><a href="Download/map.kap" download="Download/map.kap">KAP</a></div>
-                    <div class="formats"><a href="Download/points.gpx" download="Download/points.gpx">GPX</a></div>
+                    <div class="formats"><a href="Download/Langon-Bourdelles.kap" download="Download/Langon-Bourdelles.kap">KAP <p>Langon - Bourdelles</p></a></div>
+                    <div class="formats"><a href="Download/Bourdelles-Aiguillon.kap" download="Download/Bourdelles-Aiguillon.kap">KAP <p>Bourdelles - Aiguillon</p></a></div>
+                </div>
+                <div class="boutons">
+                    <div class="formats"><a href="Download/points.gpx">GPX</a></div>
                 </div>
             </div>
             <footer>

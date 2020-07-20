@@ -206,6 +206,10 @@ iframe {
   justify-content: space-around;
 }
 
+.boutons p {
+  font-size: 0.8em;
+}
+
 .formats {
   border: 1px solid black;
   font-size: 120%;
