@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 06 juil. 2020 à 11:31
+-- Généré le : lun. 20 juil. 2020 à 09:32
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.3
 
@@ -294,9 +294,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(2, 'test', '$2y$10$LdVlzWO/X9FQb8J4fg.EFu9vLYc2VAYiMnZU1FsS1afpvYa7Vmguu'),
-(3, 'hugo', '$2y$10$Kv3SfURul5ZKfdeX9IkA3.rowiM8A6w.nOQ0pt0lr0hQ721ZacYsi'),
-(4, 'marco', '$2y$10$EYeCxs5bbWf.gqrPVN0CF.mQeiuKz3Wc9P.x1ZksqbOqHpMA3JtUK');
+(2, 'admin1', '$2a$04$erbmS.QCHcEpn0rTZR.h9.i4t.dQis4Dx0w5EnrGDYX75CAL7X2uW'),
+(3, 'admin2', '$2a$04$iV93usUdkosS8PWZG4Q1YOkRS1wtsVztycEmhJgfbiNnELO02QFUy'),
+(4, 'admin3', '$2a$04$QOdc4yEvMIWHiewblILz.eV5fdy5Q4bd4Gpwn20CvfoLnlulYKHLa');
 
 -- --------------------------------------------------------
 
