@@ -67,9 +67,7 @@
             <a href="plages.php">
                 <div class="sidebardiv">Plages</div>
             </a>
-            <a href="users.php">
-                <div class="sidebardiv">Utilisateurs</div>
-            </a>
+          
             <hr>
         </div>
         <div id="main">

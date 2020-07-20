@@ -80,7 +80,7 @@ require_once 'pages/rubriques/auth_check.php';*/
       if (isset($photoPlage) && isset($imagetypePlage)) {
         // TODO: changer pour qu'on utilise pas un lien absolu
         $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-        $image = "<img src=$imgSource".' width="100%"/>';
+        $image = "<br><img src=$imgSource".' width="75%"/>';
         $popup .= " " .$image;
 
       }
@@ -97,7 +97,7 @@ require_once 'pages/rubriques/auth_check.php';*/
         });";*/
         echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
           .bindPopup('$popup',{
-            maxWidth: 'auto'
+            maxWidth: '500'
           });
           ";
       }
@@ -124,7 +124,7 @@ require_once 'pages/rubriques/auth_check.php';*/
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
       // TODO: changer pour qu'on utilise pas un lien absolu
       $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource".' width="100%"/>';
+      $image = "<br><img src=$imgSource".' width="80%"/>';
       $popup .= " " .$image;
     }
     if ($popup == '') {
@@ -133,7 +133,7 @@ require_once 'pages/rubriques/auth_check.php';*/
     else {
       echo"L.marker([$latitudeMarqueur, $longitudeMarqueur], {icon: blueIcon}).addTo(map)
           .bindPopup('$popup',{
-            maxWidth: 'auto'
+            maxWidth: '500'
           });\n
           ";
     }

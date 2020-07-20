@@ -67,9 +67,7 @@
             <a href="plages.php">
                 <div class="sidebardiv" style="background-color: darkgray;">Plages</div>
             </a>
-            <a href="users.php">
-                <div class="sidebardiv">Utilisateurs</div>
-            </a>
+            
             <hr>
         </div>
         <div id="main">
@@ -186,6 +184,6 @@
         </div>
 
 </body>
-  
+
   <?php include 'mapadmin.php'; ?>
 </html>

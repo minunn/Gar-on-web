@@ -13,7 +13,7 @@
     require_once 'rubriques/auth_check.php';
     ?>
 
-        
+
     </head>
 
     <body>
@@ -40,9 +40,7 @@
                 <a href="rubriques/plages.php">
                     <div class="sidebardiv">Plages</div>
                 </a>
-                <a href="rubriques/users.php">
-                    <div class="sidebardiv">Utilisateurs</div>
-                </a>
+              
                 <hr>
             </div>
             <div id="main">
