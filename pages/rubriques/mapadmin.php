@@ -47,60 +47,6 @@ require_once 'pages/rubriques/auth_check.php';*/
     attribution: '&copy; <a href=`https://www.openstreetmap.org/copyright`>OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  // Initialise the FeatureGroup to store editable layers
-var editableLayers = new L.FeatureGroup();
-map.addLayer(editableLayers);
-
-var drawPluginOptions = {
-  position: 'topright',
-  draw: {
-    polygon: {
-      allowIntersection: false, // Restricts shapes to simple polygons
-      drawError: {
-        color: '#e1e100', // Color the shape will turn when intersects
-        message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
-      },
-      shapeOptions: {
-        color: '#97009c'
-      }
-    },
-    // disable toolbar item by setting it to false
-    polyline: false,
-    circle: false, // Turns off this drawing tool
-    rectangle: false,
-    marker: false,
-    },
-  edit: {
-    featureGroup: editableLayers, //REQUIRED!!
-    remove: false
-  }
-};
-
-// Initialise the draw control and pass it the FeatureGroup of editable layers
-var drawControl = new L.Control.Draw(drawPluginOptions);
-map.addControl(drawControl);
-
-var editableLayers = new L.FeatureGroup();
-map.addLayer(editableLayers);
-
-map.on('draw:created', function(e) {
-  var type = e.layerType,
-    layer = e.layer;
-    console.log(e.layer['_latlngs'])
-
-  if (type === 'marker') {
-    layer.bindPopup('A popup!');
-  }
-
-  editableLayers.addLayer(layer);
-});
-
-map.on('draw:edited', function (e) {
-         var layers = e.layers;
-         layers.eachLayer(function (layer) {
-             //do whatever you want; most likely save back to db
-         });
-     });
 
   "?>
 
@@ -138,7 +84,7 @@ foreach ($result_plages as $plageActuelle) {
     if (isset($photoPlage) && isset($imagetypePlage)) {
       // TODO: changer pour qu'on utilise pas un lien absolu
       $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource".' width="100%"/>';
+      $image = "<img src=$imgSource".' width="80%"/>';
       $popup .= " " .$image;
     }
     if ($popup == '') {
@@ -154,7 +100,7 @@ foreach ($result_plages as $plageActuelle) {
       });";*/
       echo"L.marker([$latitudePlage, $longitudePlage], {icon: yellowIcon}).addTo(map)
         .bindPopup('$popup',{
-          maxWidth: 'auto'
+          maxWidth: '500'
         });
         ";
     }
@@ -181,7 +127,7 @@ foreach ($result_plages as $plageActuelle) {
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
       // TODO: changer pour qu'on utilise pas un lien absolu
       $imgSource = '"/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur.'"';
-      $image = "<img src=$imgSource".' width="100%"/>';
+      $image = "<br><img src=$imgSource".' width="80%"/>';
       $popup .= " " .$image;
     }
     if ($popup == '') {
@@ -207,7 +153,7 @@ foreach ($result_plages as $plageActuelle) {
         icon: blueIcon
         }).addTo(map)
           .bindPopup('$popup',{
-            maxWidth: 'auto'
+            maxWidth: '500'
         });
         marqueur$idMarqueur.on('dragend',function(e) {
           newLatLong = marqueur$idMarqueur.getLatLng()
