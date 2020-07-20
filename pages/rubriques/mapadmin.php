@@ -127,7 +127,7 @@ foreach ($result_plages as $plageActuelle) {
       $popup .= $texteMarqueur;
     }
     if (isset($photoMarqueur) && isset($imagetypeMarqueur)) {
-      // TODO: changer pour qu'on utilise pas un lien absolu
+      
       $imgSource = '/Gar-On-Web/pages/rubriques/viewImage.php?image_id='.$idMarqueur;
       $image = "<br>
       <a href='$imgSource' target='_blank' rel='noopener noreferrer'>

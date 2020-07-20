@@ -28,7 +28,7 @@ class CartesClass
     $data = $stmt->fetchAll();
     return $data;
   }
-  // TODO: utiliser les id des marqueurs et pas le nom
+
   public function getMarqueursFromNomCarte($nomCarte)
   {
     $bdd = connectDBS();
