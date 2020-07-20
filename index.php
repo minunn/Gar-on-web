@@ -90,7 +90,7 @@
                     <div class="formats"><a href="Download/Bourdelles-Aiguillon.kap" download="Download/Bourdelles-Aiguillon.kap">KAP <p>Bourdelles - Aiguillon</p></a></div>
                 </div>
                 <div class="boutons">
-                    <div class="formats"><a href="Download/points.gpx">GPX</a></div>
+                    <div class="formats"><a href="Download/points.gpx" download="Download/points.gpx">GPX</a></div>
                 </div>
             </div>
             <footer>
