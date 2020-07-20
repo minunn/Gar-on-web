@@ -1,7 +1,7 @@
 <?php
 #connexion à la base de données
 # // TODO: créer un compte avec un mot de passe, pour plus de sécurité.
-$db = new PDO('mysql:host=localhost;dbname=websitedatabase', 'root', '');
+$db = new PDO('mysql:host=amigaronndcartes.mysql.db;dbname=amigaronndcartes', 'amigaronndcartes', 'LaGaronne47');
 //include_once('geoPHP/geoPHP.inc');
 
 /*appel des fichier pour check si l'utilisateur est connecté

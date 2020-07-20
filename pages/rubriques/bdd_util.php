@@ -1,7 +1,7 @@
 <?php
 function connectDBS() {
 try {
-  $bdd = new PDO('mysql:host=localhost; dbname=websitedatabase;charset=utf8', 'root', '');
+  $bdd = new PDO('mysql:host=amigaronndcartes.mysql.db; dbname=amigaronndcartes;charset=utf8', 'amigaronndcartes', 'LaGaronne47');
   return $bdd;
   }
 catch (Exception $err) {

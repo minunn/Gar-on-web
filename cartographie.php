@@ -31,7 +31,7 @@
                 <a href="https://www.amigaronne.com/nos-actions"><div class="elements" onmouseover="sous_menu_2_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Nos actions</p></div></a>
                 <a href="https://www.amigaronne.com/actualites2019"><div class="elements" onmouseover="sous_menu_3_on(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Actualités</p></div></a>
                 <a href="https://www.amigaronne.com/infos-pratiques"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Infos pratiques</p></div></a>
-                <a href="https://www.amigaronne.com/blog"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Blog</p></div></a>
+                <a href="https://www.amigaronne.com/cartographie.php"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Cartographie</p></div></a>
                 <a href="https://www.amigaronne.com/contact"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Contact</p></div></a>
                 <a href="https://www.amigaronne.com/reservation"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Réservation</p></div></a>
                 <a href="https://www.amigaronne.com/membres"><div class="elements" onmouseover="sous_menus_off(); this.style.backgroundColor = 'darkgray'" onmouseout="this.style.backgroundColor = 'lightgray'"><p>Membres</p></div></a>
@@ -74,8 +74,8 @@
             <div id="legende"> <!-- Légende de la carte -->
                 <h3>Légende</h3><br>
                 <!-- Chaque élément sera représenté par son icône et une rapide description -->
-                <img src="images/marker.png" id="element1" alt="Marqueurs"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p><br>
-                <img src="images/marker2.png" id="element2" alt="Plages"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                <img src="images/marker.png" id="element1" alt="Marqueurs"><p>Éléments de navigation</p><br>
+                <img src="images/marker2.png" id="element2" alt="Plages"><p>Plages et accès au fleuve</p>
             </div>
 
             <div id="texte"> <!-- Si le commanditaire souhaite apporter des explications sur la carte ou autre texte -->
