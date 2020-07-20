@@ -22,7 +22,7 @@
 
       // On vérifie si on a reçu une requête POST
       if (isset($_POST["modifMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
-        echo "modif";
+        //echo "modif";
         $Marqueurs->updateMarqueur($_POST, $_FILES);
       }
       elseif (isset($_POST["modifMarqueur"])) {
@@ -30,7 +30,7 @@
       }
 
       if (isset($_POST["ajoutMarqueur"])&&isset($_FILES["changerImage"]["name"])) {
-        echo "ajout";
+        //echo "ajout";
         $Marqueurs->createNewMarqueur($_POST, $_FILES);
       }
       elseif (isset($_POST["ajoutMarqueur"])) {
@@ -67,7 +67,7 @@
             <a href="plages.php">
                 <div class="sidebardiv">Plages</div>
             </a>
-          
+
             <hr>
         </div>
         <div id="main">
@@ -122,7 +122,7 @@
                         </div>";
                     echo"<div class='maindiv marqueurs'>
                           <h4>Changer Texte</h4>
-                          <input type='text' name='texteMarqueur' id='texteMarqueur' value='$texte'><br>
+                          <textarea name='texteMarqueur' id='texteMarqueur' value=''>$texte</textarea><br>
                         </div>";
                     echo"<div class='maindiv marqueurs'>
                           <h4>Changer Image</h4>

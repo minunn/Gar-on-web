@@ -22,7 +22,7 @@
 
       // On vérifie si on a reçu une requête POST
       if (isset($_POST["modifPlage"])&&isset($_FILES["changerImage"]["name"])) {
-        echo "modif";
+        //echo "modif";
         $Plages->updatePlage($_POST, $_FILES);
       }
       elseif (isset($_POST["modifPlage"])) {
@@ -30,7 +30,7 @@
       }
 
       if (isset($_POST["ajoutPlage"])&&isset($_FILES["changerImage"]["name"])) {
-        echo "ajout";
+        //echo "ajout";
         $Plages->createNewPlage($_POST, $_FILES);
       }
       elseif (isset($_POST["ajoutPlage"])) {
@@ -67,7 +67,7 @@
             <a href="plages.php">
                 <div class="sidebardiv" style="background-color: darkgray;">Plages</div>
             </a>
-            
+
             <hr>
         </div>
         <div id="main">
