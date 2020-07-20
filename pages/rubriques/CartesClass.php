@@ -75,7 +75,7 @@ class CartesClass
     $bdd = connectDBS();
     $query = "SELECT ID_cartes FROM `cartes` WHERE ID_plage = :plage";
     $stmt = $bdd->prepare($query);
-    $stmt->bindValue(':plage',$idMarqueur);
+    $stmt->bindValue(':plage',$idPlage);
     $stmt->execute();
     $data = $stmt->fetch();
     $idCarte = $data["ID_cartes"];
@@ -85,7 +85,7 @@ class CartesClass
     WHERE `cartes`.`ID_cartes` = :carte ";
     $stmt = $bdd->prepare($query);
     $stmt->bindValue(':carte',$idCarte);
-    $stmt->bindValue(':plage',$newNomPlage);
+    $stmt->bindValue(':plage',$newIdPlage);
     $stmt->execute();
   }
 
