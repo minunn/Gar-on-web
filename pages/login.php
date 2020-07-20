@@ -71,8 +71,8 @@
                 <input type="password" name="password" placeholder="Entrez votre mot de passe" id="myInput">
 
                 <!-- Bouton Retour à l'accueil -->
-                <input type="button" name="button" onclick="window.location.href = '../index.php'"
-                    value=" Retour à l'accueil" href="../index.php">
+                <input type="button" name="button" onclick="window.location.href = '../cartographie.php'"
+                    value=" Retour à l'accueil" href="../cartographie.php">
 
                 <!-- Bouton Connexion -->
                 <input type="submit" name="submit" value="Connexion">

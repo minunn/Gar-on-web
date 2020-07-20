@@ -24,7 +24,7 @@
                 if(isset($_GET['logout']))
                 {
                     session_destroy();
-                    header('Location: /Gar-On-Web/pages/login.php');
+                    header('Location: /Gar-On-Web/pages/cartographie.php');
                 }
                 ?>
 
